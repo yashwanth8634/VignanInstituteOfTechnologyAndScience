@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "Vignan Institute of Technology and Science | VGNT",
   description:
     "Vignan Institute of Technology and Science (VGNT) — An Institution Nurturing Innovation and Excellence. AICTE Approved, JNTUK Affiliated, NAAC Accredited.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
