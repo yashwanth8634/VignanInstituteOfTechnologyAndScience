@@ -39,7 +39,7 @@ const navLinks: NavLink[] = [
         hasSubmenu: true,
         submenu: [
           { label: "Computer Science And Engineering", href: "/departments/cse" },
-          { label: "CSE(Artifical Intelligence And Machine Learning)", href: "/departments/cse-aiml" },
+          { label: "CSE(Artificial Intelligence And Machine Learning)", href: "/departments/cse-aiml" },
           { label: "CSE(Data Science)", href: "/departments/cse-data-science" },
           { label: "CSE(Information Technology)", href: "/departments/cse-it" },
           { label: "Artificial Intelligence And Machine Learning", href: "/departments/aiml" },
@@ -200,7 +200,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                           </>
                         ) : (
                           <Link
-                            href={item.href}
+                            href={item.href || "#"}
                             className="block px-5 py-2.5 text-base text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple transition-colors"
                           >
                             {item.label}
@@ -294,8 +294,8 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                                   {item.label}
                                   <ChevronDown
                                     className={`w-4 h-4 transition-transform ${activeSubmenu === item.label
-                                        ? "rotate-180"
-                                        : ""
+                                      ? "rotate-180"
+                                      : ""
                                       }`}
                                   />
                                 </button>
