@@ -123,7 +123,7 @@ export default function Stats() {
         <h2 className="text-3xl md:text-5xl font-bold text-vignan-purple text-center mb-3">
           Our Achievements in Numbers
         </h2>
-        <p className="text-gray-600 text-lg text-center mb-14">
+        <p className="text-gray-600 text-base md:text-lg text-center mb-14">
           Vignan Institute takes pride in its accomplishments across academics,
           research, and infrastructure
         </p>

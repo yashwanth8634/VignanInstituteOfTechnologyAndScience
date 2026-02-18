@@ -26,7 +26,21 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  {
+    label: "About",
+    href: "/about",
+    hasDropdown: true,
+    dropdown: [
+      { label: "Chairman", href: "/about/chairman" },
+      { label: "CEO", href: "/about/ceo" },
+      { label: "Principal", href: "/about/principal" },
+      { label: "Vision & Mission", href: "/about/vision-mission" },
+      { label: "Governing Body", href: "/about/governing-body" },
+      { label: "Core Values", href: "/about/core-values" },
+      { label: "IQAC", href: "/about/iqac" },
+      { label: "Organogram", href: "/about/organogram" },
+    ],
+  },
   { label: "Admissions", href: "/admissions" },
   {
     label: "Academics",
@@ -40,7 +54,7 @@ const navLinks: NavLink[] = [
         submenu: [
           { label: "Computer Science And Engineering", href: "/departments/cse" },
           { label: "CSE(Artificial Intelligence And Machine Learning)", href: "/departments/cse-aiml" },
-          { label: "CSE(Data Science)", href: "/departments/cse-data-science" },
+          { label: "CSE(Data Science)", href: "/departments/cse-ds" },
           { label: "CSE(Information Technology)", href: "/departments/cse-it" },
           { label: "Artificial Intelligence And Machine Learning", href: "/departments/aiml" },
           { label: "Artificial Intelligence And Data Science", href: "/departments/aids" },
@@ -109,13 +123,13 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
         }`}
     >
       <div className="max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-10  ">
+        <div className="flex items-center justify-between h-20 gap-10 ">
 
           {/* Logo */}
           <div className="relative w-44 h-12 md:w-56 md:h-20 flex-shrink-0 mr-2">
             <Link href="/" className="flex items-center">
               <Image
-                src="https://vignanits.ac.in/wp-content/uploads/2020/07/1595497656733.png"
+                src="/VignanLogo.png"
                 alt="Vignan Institute of Technology and Science"
                 fill
                 className="object-contain"
@@ -125,7 +139,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
           </div>
 
           {/* Center Navigation */}
-          <div className="hidden xl:flex items-center gap-6 font-semibold">
+          <div className="hidden xl:flex items-center gap-4 font-semibold">
 
             {navLinks.map((link) => (
               <div
@@ -217,18 +231,10 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
           {/* Right Buttons */}
           <div className="hidden xl:flex items-center gap-5">
             <Link
-              href="/nba"
+              href="/nirf"
               className="px-7 py-3 bg-vignan-purple text-white text-sm font-semibold rounded-full hover:bg-vignan-purple-dark transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105"
             >
-              NBA
-            </Link>
-
-            <Link
-              href="https://ecap.vignanits.ac.in"
-              target="_blank"
-              className="px-7 py-3 bg-vignan-purple text-white text-sm font-semibold rounded-full hover:bg-vignan-purple-dark transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105"
-            >
-              ECAP
+              NIRF
             </Link>
           </div>
 
@@ -257,7 +263,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
         <div className="h-full overflow-y-auto py-6 px-4 pb-20">
           <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
-              <div key={link.label} className="border-b border-gray-100 pb-2">
+              <div key={link.label} className="border-b border-vignan-purple/30 pb-2">
                 {link.hasDropdown ? (
                   <div className="space-y-2">
                     <button
@@ -301,7 +307,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                                 </button>
 
                                 {activeSubmenu === item.label && (
-                                  <div className="pl-2 space-y-2 border-l-2 border-vignan-purple/20">
+                                  <div className="pl-2 space-y-2 border-l-2 border-vignan-purple/50">
                                     {item.submenu?.map((sub) => (
                                       <Link
                                         key={sub.label}
@@ -343,19 +349,11 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
 
             <div className="pt-4 flex flex-col gap-3">
               <Link
-                href="/nba"
+                href="/nirf"
                 onClick={() => setMobileOpen(false)}
                 className="w-full text-center px-6 py-3 bg-vignan-purple text-white text-base font-semibold rounded-lg shadow-md"
               >
-                NBA
-              </Link>
-              <Link
-                href="https://ecap.vignanits.ac.in"
-                target="_blank"
-                onClick={() => setMobileOpen(false)}
-                className="w-full text-center px-6 py-3 border-2 border-vignan-purple text-vignan-purple text-base font-semibold rounded-lg"
-              >
-                ECAP
+                NIRF
               </Link>
             </div>
           </div>
