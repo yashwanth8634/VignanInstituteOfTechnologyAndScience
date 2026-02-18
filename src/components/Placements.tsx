@@ -63,7 +63,7 @@ export default function Placements() {
         {/* Placements */}
         <div>
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
               <Award className="w-8 h-8 text-vignan-purple" />
               <h2 className="text-3xl md:text-5xl font-bold text-vignan-purple">
                 Our Placements
@@ -76,11 +76,10 @@ export default function Placements() {
           </div>
 
           <div
-            className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 transition-all duration-700 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 transition-all duration-700 ${isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
+              }`}
           >
             {placementHighlights.map((p, i) => (
               <div
@@ -102,7 +101,7 @@ export default function Placements() {
         {/* MOUs */}
         <div>
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 mb-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
               <Handshake className="w-8 h-8 text-vignan-purple" />
               <h2 className="text-3xl md:text-5xl font-bold text-vignan-purple">
                 Our MOUs
@@ -128,7 +127,7 @@ export default function Placements() {
         {/* Testimonials */}
         <div>
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 mb-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
               <MessageSquareQuote className="w-8 h-8 text-vignan-purple" />
               <h2 className="text-3xl md:text-5xl font-bold text-vignan-purple">
                 Student Testimonies
@@ -143,11 +142,10 @@ export default function Placements() {
             {testimonials.map((t, i) => (
               <div
                 key={i}
-                className={`relative bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-500 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
+                className={`relative bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all duration-500 ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+                  }`}
                 style={{ transitionDelay: `${i * 150}ms` }}
               >
                 <div className="text-4xl text-vignan-purple/20 absolute top-4 right-4">
