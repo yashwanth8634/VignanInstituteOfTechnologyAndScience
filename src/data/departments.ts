@@ -2,10 +2,11 @@ export interface DepartmentData {
   id: string;
   name: string;
   fullName: string;
-  established: string;
-  intake: string;
   heroImage?: string;
   overview: string;
+  academicCalendars: { name: string; url: string }[];
+  courseMaterials: { name: string; link: string }[];
+  clubs: { name: string; description?: string; image?: string }[];
   vision: string;
   mission: string[];
   hod: {
@@ -39,8 +40,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "cse",
     name: "CSE",
     fullName: "Computer Science and Engineering",
-    established: "1999",
-    intake: "180",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: `The Department of Computer Science and Engineering has been a core part of the Vignan Institute of Technology and Science since its inception in 1999. It started with an initial intake of 60 students, which has progressively increased to 180. The department has also been offering a Post Graduate (M.Tech) program in Computer Science and Engineering since 2009 with an intake of 18 students.`,
     vision: `To emerge as a premier centre for education and research in computer science and engineering and in transforming students into innovative professionals of contemporary and future technologies to cater for the global needs of human resources for IT and ITES companies.`,
     mission: [
@@ -156,8 +158,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "cse-aiml",
     name: "CSE (AI & ML)",
     fullName: "Computer Science and Engineering (Artificial Intelligence & Machine Learning)",
-    established: "2020",
-    intake: "300",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of CSE (AI & ML) was established in 2020. It focuses on designing models using structured, semi-structured, and unstructured data to solve complex problems in areas such as Image Recognition, Automatic Language Translation, Speech Recognition, and Self-Driving Cars. The department offers a B.Tech program with an intake of 300 students.",
     vision: "To foster a collaborative and diverse community of Artificial Intelligence and Machine Learning experts who work together to advance the state of the art and address major societal challenges.",
     mission: [
@@ -236,8 +239,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "cse-ds",
     name: "CSE (Data Science)",
     fullName: "Computer Science and Engineering (Data Science)",
-    established: "2020",
-    intake: "60",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of CSE (Data Science) was established in 2020 with an intake of 60 students. It focuses on extracting knowledge from various data types — structured, semi-structured, and unstructured — to drive innovation across industries. The department offers a 4-year B.Tech program.",
     vision: "To develop Data Science professionals through creative and innovative approaches to address the present and future challenges of the modern computing world.",
     mission: [
@@ -299,8 +303,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "cse-it",
     name: "CSE(IT)",
     fullName: "Computer Science and Engineering(Information Technology)",
-    established: "2019",
-    intake: "60",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of Information Technology was established in 2019 with an intake of 60 students. The department focuses on transforming students into innovative IT professionals equipped with the latest technologies. It is supported by TCS iON technical infrastructure.",
     vision: "To emerge as a premier center for education and research in computer science and engineering and in transforming students into innovative professionals.",
     mission: [
@@ -359,8 +364,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "aiml",
     name: "AI & ML",
     fullName: "Artificial Intelligence and Machine Learning",
-    established: "2020",
-    intake: "60",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of Artificial Intelligence and Machine Learning was established in 2020. It focuses on the field of computer science used to design models using structured, semi-structured, and unstructured data to solve complex problems in various areas such as Image Recognition, Automatic Language Translation, Speech Recognition, and Self-Driving Cars.",
     vision: "To foster a collaborative and diverse community of Artificial Intelligence and Machine Learning experts who work together to advance the state of the art and address major societal challenges.",
     mission: [
@@ -424,8 +430,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "aids",
     name: "AI & DS",
     fullName: "Artificial Intelligence and Data Science",
-    established: "2021",
-    intake: "60",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of Artificial Intelligence and Data Science provides advanced knowledge and skills in Artificial Intelligence and Data Science combined with Analytical Visualization Technologies. It focuses on nurturing collaborative innovations and maintaining high standards of quality education.",
     vision: "To empower individuals to acquire advanced knowledge and skills with cutting edge combination in Artificial Intelligence and Data Science with Analytical Visualization Technologies through excellent standards of quality-education by nurturing collaborative innovations towards serving the greater cause of society.",
     mission: [
@@ -487,8 +494,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "eie",
     name: "EIE",
     fullName: "Electronics and Instrumentation Engineering",
-    established: "1999",
-    intake: "60",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of Electronics and Instrumentation Engineering focuses on advanced education and research in design, instrumentation, and control systems. The department equips students with skills in industrial automation, process control, and biomedical instrumentation.",
     vision: "To develop into an advanced centre for exceptionally good Education and Research in the field of Electronics and Instrumentation Engineering.",
     mission: [
@@ -550,8 +558,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "ece",
     name: "ECE",
     fullName: "Electronics and Communication Engineering",
-    established: "1999",
-    intake: "180",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of Electronics and Communication Engineering was established in 1999 with an initial intake of 60 students, which increased to 180 in 2005. The department offers B.Tech and M.Tech programs (VLSI and Embedded Systems). It is committed to providing high-quality academic programs and research facilities.",
     vision: "To impart technical education through latest pedagogical techniques and transform students into competent, committed & creative professionals with abilities to address the challenges of the century for the benefit of society.",
     mission: [
@@ -614,8 +623,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "eee",
     name: "EEE",
     fullName: "Electrical and Electronics Engineering",
-    established: "1999",
-    intake: "60",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of Electrical and Electronics Engineering was established in 1999 with an intake of 60 students. The department offers B.Tech and M.Tech (Power Electronics and Electrical Drives) programs. It is committed to producing competent engineers who can contribute to the socio-economic development of the nation.",
     vision: "To become a centre of excellence in Electrical and Electronics Engineering Education which produce competent engineers who can contribute for the socio-economic development of the nation.",
     mission: [
@@ -681,8 +691,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "mech",
     name: "MECH",
     fullName: "Mechanical Engineering",
-    established: "1999",
-    intake: "120",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of Mechanical Engineering was established in 1999 with an intake of 60 students, currently increased to 120. The department is a center for advanced education and research in mechanical engineering design, materials, and manufacturing technologies.",
     vision: "To develop into an advanced center for exceptionally good education and research in the field of Mechanical Engineering design, materials, and manufacturing technologies.",
     mission: [
@@ -745,8 +756,9 @@ export const departments: Record<string, DepartmentData> = {
     id: "civil",
     name: "CIVIL",
     fullName: "Civil Engineering",
-    established: "2011",
-    intake: "60",
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
     overview: "The Department of Civil Engineering was established in 2011 with an intake of 60 students. The department focuses on providing sound knowledge in analysis, design, and laboratory experiments in civil engineering. It is committed to producing competent civil engineers with professional ethical values and research culture.",
     vision: "To produce competent Civil Engineers with professional ethical values and research culture.",
     mission: [
@@ -800,5 +812,37 @@ export const departments: Record<string, DepartmentData> = {
       "Proficiency in geotechnical investigation, environmental assessment, and hydraulic design.",
       "Competence in project planning, construction management, and quality control.",
     ],
+  },
+  
+  // ─────────────────────────────────────────────────────────────────────────────
+  "bsh": {
+    id: "bsh",
+    name: "BS&H",
+    fullName: "Basic Sciences And Humanities",
+    overview: "The Department of Basic Sciences and Humanities serves as the foundation for the engineering curriculum. It comprises the disciplines of Mathematics, Physics, Chemistry, and English. The department focuses on imparting fundamental scientific knowledge and communication skills essential for engineering education.",
+    vision: "To provide a strong foundation in basic sciences and humanities for engineering students, fostering analytical thinking and effective communication skills.",
+    mission: [
+      "To impart quality education in basic sciences and humanities.",
+      "To develop analytical and problem-solving skills among students.",
+      "To enhance communication and soft skills for professional development.",
+    ],
+    hod: {
+      name: "Dr. BSH HOD",
+      designation: "Professor & HOD",
+      message: "The BS&H department plays a crucial role in shaping the academic journey of engineering students. We are committed to providing a strong scientific foundation and fostering holistic development.",
+    },
+    laboratories: [
+      "Physics Lab",
+      "Chemistry Lab",
+      "English Language Communication Skills Lab",
+    ],
+    academicCalendars: [],
+    courseMaterials: [],
+    clubs: [],
+    achievements: [],
+    faculty: [],
+    peos: [],
+    pos: [],
+    psos: [],
   },
 };
