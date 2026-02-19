@@ -12,7 +12,7 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/vignanvideo.mp4" type="video/mp4" />
+        <source src="/HeroSection/vignanvideo.mp4" type="video/mp4" />
       </video>
 
       {/* Dark Overlay */}
@@ -23,9 +23,9 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-blue-600 leading-tight max-w-5xl animate-fade-in-up">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight max-w-5xl animate-fade-in-up text-transparent bg-clip-text bg-center bg-cover bg-[url('/HeroSection/HeroTextImage.webp')]">
           An Institution{" "}
-          <span className="text-vignan-purple-light">
+          <span className="font-black">
             Nurturing Innovation and Excellence
           </span>
         </h1>

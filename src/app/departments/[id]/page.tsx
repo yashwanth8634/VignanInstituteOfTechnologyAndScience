@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 import { departments } from "@/data/departments";
 import {
   BookOpen,
@@ -22,19 +22,24 @@ import {
   Award,
   Briefcase,
   BookMarked,
+  Calendar,
+  Book,
 } from "lucide-react";
 
 /* ---------- Sidebar Menu ---------- */
 
 const sidebarItems = [
   { id: "overview", label: "Overview", icon: BookOpen },
+
   { id: "hod", label: "HOD's Desk", icon: User },
   { id: "vision", label: "Vision & Mission", icon: Target },
   { id: "faculty", label: "Faculty", icon: Users },
   { id: "syllabus", label: "Syllabus", icon: FileText },
   { id: "labs", label: "Laboratories", icon: FlaskConical },
   { id: "achievements", label: "Achievements", icon: Trophy },
-  { id: "courses", label: "Courses", icon: GraduationCap },
+  { id: "academic-calendars", label: "Academic Calendars", icon: Calendar },
+  { id: "course-materials", label: "Course Materials", icon: Book },
+  { id: "clubs", label: "Clubs", icon: Users },
 ];
 
 export default function DepartmentPage() {
@@ -172,27 +177,7 @@ export default function DepartmentPage() {
                   ))}
                 </div>
 
-                {/* Quick Facts */}
-                <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
-                  <h3 className="text-sm font-semibold text-gray-800 mb-4 uppercase tracking-wide">
-                    Quick Facts
-                  </h3>
-
-                  <div className="space-y-3 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-500">Established</span>
-                      <span className="font-semibold">{dept.established}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-500">Intake</span>
-                      <span className="font-semibold">{dept.intake}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-500">Accreditation</span>
-                      <span className="font-semibold text-vignan-purple">NBA</span>
-                    </div>
-                  </div>
-                </div>
+                {/* Quick Facts Removed */}
               </div>
             </aside>
 
@@ -284,7 +269,8 @@ export default function DepartmentPage() {
                     </h2>
                     <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
 
-                    <div className="overflow-x-auto">
+                    {/* Desktop View (Table) */}
+                    <div className="hidden lg:block overflow-x-auto">
                       <table className="w-full border-collapse border border-gray-200 min-w-[600px]">
                         <thead>
                           <tr className="bg-vignan-purple text-white">
@@ -320,6 +306,37 @@ export default function DepartmentPage() {
                         </tbody>
                       </table>
                     </div>
+
+                    {/* Mobile View (Cards) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
+                      {dept.faculty?.map((member) => (
+                        <div
+                          key={member.sno}
+                          onClick={() => setSelectedFaculty(member)}
+                          className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 flex flex-col gap-3 cursor-pointer hover:border-vignan-purple transition-all duration-200 active:scale-[0.98]"
+                        >
+                          <div className="flex justify-between items-start gap-4">
+                            <h3 className="font-bold text-gray-900 text-lg leading-tight group-hover:text-vignan-purple">
+                              {member.name}
+                            </h3>
+                            <span className="shrink-0 text-xs font-mono font-medium text-gray-400 bg-gray-100 px-2 py-1 rounded-md">
+                              #{member.sno}
+                            </span>
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <p className="text-vignan-blue font-semibold text-sm">
+                              {member.designation}
+                            </p>
+                            <p className="text-xs text-gray-500 font-mono bg-gray-50 px-2 py-1.5 rounded-lg border border-gray-100 w-fit mt-1">
+                              {member.registrationNumber}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+
 
                     {/* Faculty Details Modal */}
                     {selectedFaculty && (
@@ -479,10 +496,14 @@ export default function DepartmentPage() {
                   </>
                 )}
 
-                {/* Placeholder sections for now */}
+
+
+                {/* Dynamic Sections with Placeholder Content */}
                 {(
                   activeSection === "syllabus" ||
-                  activeSection === "courses") && (
+                  activeSection === "academic-calendars" ||
+                  activeSection === "course-materials" ||
+                  activeSection === "clubs") && (
                     <>
                       <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 capitalize">
                         {sidebarItems.find((i) => i.id === activeSection)?.label}
@@ -491,7 +512,7 @@ export default function DepartmentPage() {
 
                       <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
                         <p className="text-gray-500">
-                          Content for this section will be updated soon.
+                          Content for {sidebarItems.find((i) => i.id === activeSection)?.label} will be updated soon.
                         </p>
                       </div>
                     </>
@@ -500,9 +521,9 @@ export default function DepartmentPage() {
             </div>
           </div>
         </div>
-      </section >
+      </section>
 
       <Footer />
-    </main >
+    </main>
   );
 }

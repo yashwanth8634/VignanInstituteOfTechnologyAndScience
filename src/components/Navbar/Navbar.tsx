@@ -47,7 +47,7 @@ const navLinks: NavLink[] = [
     href: "/academics",
     hasDropdown: true,
     dropdown: [
-      { label: "CGPA to Percentage Certificate", href: "/cgpa-certificate" },
+
       {
         label: "Departments",
         hasSubmenu: true,
@@ -63,23 +63,45 @@ const navLinks: NavLink[] = [
           { label: "Electrical And Electronics Engineering", href: "/departments/eee" },
           { label: "Mechanical Engineering", href: "/departments/mech" },
           { label: "Civil Engineering", href: "/departments/civil" },
+          { label: "Basic Sciences And Humanities", href: "/departments/bsh" },
         ],
       },
-      { label: "Faculty", href: "/faculty" },
-      { label: "Overview", href: "/academics" },
+      { label: "Academic Regulations", href: "/academics/academic-regulations" },
+      { label: "Examinations", href: "/academics/examinations" },
+      { label: "Certification Courses", href: "/academics/certification-courses" },
     ],
   },
 
   { label: "Placements", href: "/placements" },
-  { label: "Mandatory Disclosures", href: "/mandatory-disclosures" },
   {
-    label: "Administration",
-    href: "/administration",
+    label: "Facilities",
+    href: "/facilities",
     hasDropdown: true,
     dropdown: [
-      { label: "Principal", href: "/administration/principal" },
-      { label: "Governing Body", href: "/administration/governing-body" },
-      { label: "Academic Council", href: "/administration/academic-council" },
+      { label: "Vignan Dhara", href: "/facilities/vignan-dhara" },
+      { label: "ICT Facilities", href: "/facilities/ict-facilities" },
+      { label: "Computer Center", href: "/facilities/computer-center" },
+      { label: "Communication & Soft Skills", href: "/facilities/communication-soft-skills" },
+      { label: "Physical Education", href: "/facilities/physical-education" },
+      { label: "Cafeteria", href: "/facilities/cafeteria" },
+      { label: "Transportation", href: "/facilities/transportation" },
+      { label: "Hostel", href: "/facilities/hostel" },
+      { label: "Other Facilities", href: "/facilities/other-facilities" },
+    ],
+  },
+  {
+    label: "Mandatory Disclosures",
+    href: "/mandatory-disclosures",
+    hasDropdown: true,
+    dropdown: [
+      { label: "Right to Information (RTI)", href: "/mandatory-disclosures/rti" },
+      { label: "IT Policy", href: "/mandatory-disclosures/it-policy" },
+      { label: "Maintenance Policy", href: "/mandatory-disclosures/maintenance-policy" },
+      { label: "Strategic Plans", href: "/mandatory-disclosures/strategic-plans" },
+      { label: "ARIIA", href: "/mandatory-disclosures/ariia" },
+      { label: "Online Grievance", href: "http://103.10.134.234/login/Grievance" },
+      { label: "College Level Committees", href: "/mandatory-disclosures/committees" },
+      { label: "Professional Bodies", href: "/mandatory-disclosures/professional-bodies" },
     ],
   },
   {
@@ -87,9 +109,24 @@ const navLinks: NavLink[] = [
     href: "/information",
     hasDropdown: true,
     dropdown: [
-      { label: "Campus Life", href: "/campus-life" },
-      { label: "Research", href: "/research" },
-      { label: "Events", href: "/events" },
+      { label: "Student Start-Ups & Careers", href: "/information/student-startups" },
+      { label: "VGNT in Media", href: "/information/media" },
+      { label: "Industrial Consultancy Bureau", href: "/information/consultancy" },
+      { label: "Institutional Values", href: "/information/values" },
+      { label: "EDC Centre", href: "/information/edc" },
+      { label: "News Letters", href: "/information/newsletters" },
+      { label: "Alumni", href: "/information/alumni" },
+      { label: "College Level Events", href: "/information/events" },
+      { label: "Green Initiatives", href: "/information/green-initiatives" },
+      { label: "VITS–NSS", href: "/information/nss" },
+      { label: "Achievements", href: "/information/achievements" },
+      { label: "Skills Enhancement", href: "/information/skills" },
+      { label: "Innovation & Incubation", href: "/information/innovation" },
+      { label: "IDEA LAB", href: "/information/idea-lab" },
+      { label: "I & E Activities", href: "/information/ie-activities" },
+      { label: "Student Registration", href: "/information/registration" },
+      { label: "Route Map", href: "/information/route-map" },
+      { label: "Blog", href: "/information/blog" },
     ],
   },
 ];
@@ -126,20 +163,35 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
         <div className="flex items-center justify-between h-20 gap-10 ">
 
           {/* Logo */}
-          <div className="relative w-44 h-12 md:w-56 md:h-20 flex-shrink-0 mr-2">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/VignanLogo.png"
-                alt="Vignan Institute of Technology and Science"
-                fill
-                className="object-contain"
-                priority
-              />
-            </Link>
-          </div>
+          {/* Logo */}
+          <Link href="/" className="flex flex-col gap-0 group">
+            <div className="flex items-center">
+              <div className="relative w-9 h-9 md:w-12 md:h-12 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/Logo.png"
+                  alt="VGNT Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <span
+                className={`text-4xl md:text-5xl font-bold tracking-tight leading-none transition-colors duration-300 ${scrolled
+                    ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/NavSection/NavTextImage.webp')]"
+                    : "text-transparent bg-clip-text bg-center bg-cover bg-[url('/NavSection/NavTextImage.webp')]"
+                  }`}
+              >
+                VIGNAN
+              </span>
+            </div>
+            <span className={` text-[12px] md:text-[16px] font-medium tracking-tighter leading-tight transition-colors duration-300 ml-2 ${scrolled ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/NavSection/NavTextImage.webp')]" : "text-transparent bg-clip-text bg-center bg-cover bg-[url('/NavSection/NavTextImage.webp')]"
+              }`}>
+              Institute of Technology and Science
+            </span>
+          </Link>
 
           {/* Center Navigation */}
-          <div className="hidden xl:flex items-center gap-4 font-semibold">
+          <div className="hidden xl:flex items-center gap-4 font-medium">
 
             {navLinks.map((link) => (
               <div
@@ -152,7 +204,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
               >
                 <Link
                   href={link.href}
-                  className={`relative flex items-center gap-0 text-lg font-semibold transition-colors duration-300 whitespace-nowrap ${scrolled
+                  className={`relative flex items-center gap-0 text-lg font-medium transition-colors duration-300 whitespace-nowrap ${scrolled
                     ? "text-black hover:text-vignan-purple"
                     : "text-white hover:text-vignan-purple-light"
                     }`}
@@ -173,9 +225,14 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                 {/* Dropdown */}
                 {link.hasDropdown && (
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-5 w-64 bg-white rounded-md shadow-2xl border border-gray-100 py-3 transition-all duration-300 ${activeDropdown === link.label
-                      ? "opacity-100 translate-y-0 visible"
-                      : "opacity-0 -translate-y-3 invisible"
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-5 w-64 bg-white rounded-md shadow-2xl border border-gray-100 py-3 transition-all duration-300 ${
+                      // Only add scroll if no nested submenus to prevent clipping
+                      !link.dropdown?.some((item) => item.hasSubmenu)
+                        ? "max-h-[80vh] overflow-y-auto"
+                        : ""
+                      } ${activeDropdown === link.label
+                        ? "opacity-100 translate-y-0 visible"
+                        : "opacity-0 -translate-y-3 invisible"
                       }`}
                   >
                     {link.dropdown?.map((item) => (
@@ -205,7 +262,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                                 <Link
                                   key={sub.label}
                                   href={sub.href}
-                                  className="block px-4 py-2 text-s text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple transition-colors"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple transition-colors"
                                 >
                                   {sub.label}
                                 </Link>
@@ -231,7 +288,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
           {/* Right Buttons */}
           <div className="hidden xl:flex items-center gap-5">
             <Link
-              href="/nirf"
+              href="/Pdfs/NIRF/NIRF2025.pdf"
               className="px-7 py-3 bg-vignan-purple text-white text-sm font-semibold rounded-full hover:bg-vignan-purple-dark transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105"
             >
               NIRF
@@ -272,7 +329,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                           activeDropdown === link.label ? null : link.label
                         )
                       }
-                      className="flex items-center justify-between w-full text-lg font-semibold text-gray-800"
+                      className="flex items-center justify-between w-full text-lg font-medium text-gray-800"
                     >
                       {link.label}
                       <ChevronDown
@@ -339,7 +396,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block text-lg font-semibold text-gray-800"
+                    className="block text-lg font-medium text-gray-800"
                   >
                     {link.label}
                   </Link>

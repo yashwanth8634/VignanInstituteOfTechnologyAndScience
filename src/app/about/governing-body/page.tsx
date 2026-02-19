@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 import Link from "next/link";
 
 export const metadata = {
@@ -9,21 +9,21 @@ export const metadata = {
 };
 
 const governingBodyMembers = [
-    { sno: 1, name: "Dr. L. Rathaiah", designation: "Chairman", category: "Management Representative" },
-    { sno: 2, name: "Sri. L. Krishna Devarayalu", designation: "Vice-Chairman", category: "Management Representative" },
-    { sno: 3, name: "Sri. B. Shravan", designation: "Member", category: "CEO, Vignan Group of Institutions" },
-    { sno: 4, name: "Smt. L. Rani Rudrama Devi", designation: "Member", category: "Management Representative" },
-    { sno: 5, name: "Dr. B. Padmaja Rani", designation: "Member", category: "JNTUH Nominee" },
-    { sno: 6, name: "Prof. N. V. Ramana Rao", designation: "Member", category: "NIT-Warangal Nominee" },
-    { sno: 7, name: "Dr. G. Durga Sukumar", designation: "Member Secretary", category: "Principal, VGNT" },
-    { sno: 8, name: "Sri. K. Srinivas Rao", designation: "Member", category: "Industry Representative" },
-    { sno: 9, name: "Dr. P. Srinivasa Rao", designation: "Member", category: "Faculty Representative" },
-    { sno: 10, name: "Sri. M. Suresh Kumar", designation: "Member", category: "Alumni Representative" },
-    { sno: 11, name: "Dr. K. Ramesh Babu", designation: "Member", category: "Academic Expert" },
-    { sno: 12, name: "Sri. V. Ravi Kumar", designation: "Member", category: "Industry Expert" },
-    { sno: 13, name: "Dr. S. Narayana", designation: "Member", category: "State Government Nominee" },
-    { sno: 14, name: "Sri. T. Venkat Rao", designation: "Member", category: "Local Society Representative" },
-    { sno: 15, name: "Dr. A. Ramesh", designation: "Member", category: "Technical Expert" },
+    { sno: 1, name: "Dr. L Rathaiah", designation: "Chairman", category: "President, Lavu Educational Society" },
+    { sno: 2, name: "Sri. L Krishna Devarayalu", designation: "Vice-Chairman", category: "Vice-President, Lavu Educational Society" },
+    { sno: 3, name: "Sri. B Shravan", designation: "Member", category: "CEO, Vignan Group of Institutions, Hyderabad, & Member, Lavu Educational Society" },
+    { sno: 4, name: "Smt. L Rani Rudrama Devi", designation: "Member", category: "Joint Secretary, Lavu Educational Society" },
+    { sno: 5, name: "Smt. L Nirmala", designation: "Member", category: "Member, Lavu Educational Society" },
+    { sno: 6, name: "Dr. B. Padmaja Rani", designation: "JNTUH Nominee & Member", category: "Professor of CSE, JNTUH UCESTH, Hyderabad" },
+    { sno: 7, name: "Nominee of the State Government", designation: "Member Representative of CTE-Telangana", category: "Department of Technical Education, Telangana" },
+    { sno: 8, name: "Dr. G Durga Sukumar", designation: "Member Secretary", category: "Professor of EEE & Principal, Vignan Institute of Tech. & Science" },
+    { sno: 9, name: "Dr. B. L. Narasimharaju", designation: "Member/ Academician", category: "Professor of EEE, NIT-Warangal" },
+    { sno: 10, name: "Sri. Gaddam Rabbani", designation: "Member/ Eminent Professional", category: "Team Leader, Verizon, Bangalore." },
+    { sno: 11, name: "Sri. Karthik Vagicharla", designation: "Member/ Eminent Professional", category: "Assistant Director, Central Electricity Authority, Mumbai" },
+    { sno: 12, name: "Dr. M. Ramakrishna", designation: "Member", category: "Professor of ME & Dean IQAC, VFSTR, Guntur" },
+    { sno: 13, name: "Dr. K. Chandra Shekar", designation: "Member", category: "Professor of ME & Dean Academics, Vignan Institute of Tech. & Science" },
+    { sno: 14, name: "Dr. N. Dinesh Kumar", designation: "Member", category: "Associate Professor and Dean R & D, Vignan Institute of Tech. & Science" },
+    { sno: 15, name: "Dr. T Ram Subba Reddy", designation: "Member", category: "Professor of EEE and Dean, student Affairs, Vignan Institute of Tech. & Science" },
 ];
 
 export default function GoverningBodyPage() {
