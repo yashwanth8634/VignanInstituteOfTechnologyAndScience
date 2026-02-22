@@ -1,12 +1,12 @@
-import Navbar from "@/components/Navbar/Navbar";
-import Hero from "@/components/Hero/Hero";
-import About from "@/components/About/About";
-import Accreditations from "@/components/Accreditations/Accreditations";
-import Stats from "@/components/Stats/Stats";
-import CampusExplorer from "@/components/CampusExplorer/CampusExplorer";
-import Placements from "@/components/Placements/Placements";
-import CTA from "@/components/CTA/CTA";
-import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/HomePage/Navbar";
+import Hero from "@/components/HomePage/Hero";
+import About from "@/components/HomePage/About";
+import Accreditations from "@/components/HomePage/Accreditations";
+import Stats from "@/components/HomePage/Stats";
+import CampusExplorer from "@/components/HomePage/CampusExplorer";
+import Placements from "@/components/HomePage/Placements";
+import CTA from "@/components/HomePage/CTA";
+import Footer from "@/components/HomePage/Footer";
 
 export default function Home() {
   return (

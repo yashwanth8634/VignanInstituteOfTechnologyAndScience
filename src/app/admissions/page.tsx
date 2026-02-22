@@ -1,23 +1,24 @@
 
 "use client";
 
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import Link from "next/link";
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import { CheckCircle2, Phone, Mail, GraduationCap, IndianRupee, MapPin } from "lucide-react";
 
 export default function AdmissionsPage() {
     const btechCourses = [
-        { id: 1, name: "Civil Engineering", intake: 30 },
-        { id: 2, name: "Electrical & Electronics Engineering", intake: 60 },
-        { id: 3, name: "Mechanical Engineering", intake: 30 },
-        { id: 4, name: "Electronics & Communication Engineering", intake: 120 },
-        { id: 5, name: "Computer Science & Engineering", intake: 240 },
-        { id: 6, name: "CSE(Artificial Intelligence & Machine Learning)", intake: 240 },
-        { id: 7, name: "CSE(Data Science)", intake: 180 },
-        { id: 8, name: "Information Technology", intake: 60 },
-        { id: 9, name: "Artificial Intelligence & Data Science", intake: 60 },
-        { id: 10, name: "Artificial Intelligence & Machine Learning", intake: 60 },
-        { id: 11, name: "Electronics & Instrumentation Engineering", intake: 30 },
+        { id: 1, name: "Computer Science & Engineering", intake: 240 },
+        { id: 2, name: "CSE(Artificial Intelligence & Machine Learning)", intake: 240 },
+        { id: 3, name: "CSE(Data Science)", intake: 180 },
+        { id: 4, name: "Information Technology", intake: 60 },
+        { id: 5, name: "Artificial Intelligence & Machine Learning", intake: 60 },
+        { id: 6, name: "Artificial Intelligence & Data Science", intake: 60 },
+        { id: 7, name: "Electronics & Instrumentation Engineering", intake: 30 },
+        { id: 8, name: "Electronics & Communication Engineering", intake: 120 },
+        { id: 9, name: "Electrical & Electronics Engineering", intake: 60 },
+        { id: 10, name: "Civil Engineering", intake: 30 },
+        { id: 11, name: "Mechanical Engineering", intake: 30 },
     ];
 
     const mtechCourses = [
@@ -38,11 +39,19 @@ export default function AdmissionsPage() {
             <Navbar variant="solid" />
 
             {/* Hero Section */}
-            <section className="bg-vignan-purple pt-32 pb-16 text-white text-center px-4">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">Admissions</h1>
-                <p className="text-xl opacity-90 max-w-2xl mx-auto">
-                    Your gateway to a successful engineering career.
-                </p>
+            <section className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-32 pb-6">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav className="text-sm text-purple-200 mb-3">
+                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                        <span className="mx-2">/</span>
+                        <span className="text-white font-medium">Admissions</span>
+                    </nav>
+
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-1">Admissions</h1>
+                    <p className="text-xl text-white opacity-90 max-w-2xl">
+                        Your gateway to a successful engineering career.
+                    </p>
+                </div>
             </section>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12">

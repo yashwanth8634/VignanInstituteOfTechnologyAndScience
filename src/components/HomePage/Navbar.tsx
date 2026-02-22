@@ -67,6 +67,7 @@ const navLinks: NavLink[] = [
         ],
       },
       { label: "Academic Regulations", href: "/academics/academic-regulations" },
+      { label: "Academic Calendars", href: "/academics/academic-calendars" },
       { label: "Examinations", href: "/academics/examinations" },
       { label: "Certification Courses", href: "/academics/certification-courses" },
     ],
@@ -154,7 +155,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-150 ${scrolled
         ? "bg-white shadow-md border-b border-gray-100 py-3"
         : "bg-transparent py-4"
         }`}
@@ -166,7 +167,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
           {/* Logo */}
           <Link href="/" className="flex flex-col gap-0 group">
             <div className="flex items-center">
-              <div className="relative w-9 h-9 md:w-12 md:h-12 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+              <div className="relative w-9 h-9 md:w-12 md:h-12 flex-shrink-0 transition-transform duration-150 group-hover:scale-105">
                 <Image
                   src="/Logo.png"
                   alt="VGNT Logo"
@@ -176,15 +177,15 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                 />
               </div>
               <span
-                className={`text-4xl md:text-5xl font-bold tracking-tight leading-none transition-colors duration-300 ${scrolled
-                    ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/NavSection/NavTextImage.webp')]"
-                    : "text-transparent bg-clip-text bg-center bg-cover bg-[url('/NavSection/NavTextImage.webp')]"
+                className={`text-4xl md:text-6xl font-bold tracking-tight leading-none transition-colors duration-150 ${scrolled
+                  ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/HomePage/NavSection/NavTextImage.webp')]"
+                  : "text-[#ecf4e5]"
                   }`}
               >
                 VIGNAN
               </span>
             </div>
-            <span className={` text-[12px] md:text-[16px] font-medium tracking-tighter leading-tight transition-colors duration-300 ml-2 ${scrolled ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/NavSection/NavTextImage.webp')]" : "text-transparent bg-clip-text bg-center bg-cover bg-[url('/NavSection/NavTextImage.webp')]"
+            <span className={` text-[12px] md:text-[19px] font-medium tracking-tighter leading-tight transition-colors duration-150 ml-2 ${scrolled ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/HomePage/NavSection/NavTextImage.webp')]" : "text-[#ecf4e5]"
               }`}>
               Institute of Technology and Science
             </span>
@@ -204,7 +205,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
               >
                 <Link
                   href={link.href}
-                  className={`relative flex items-center gap-0 text-lg font-medium transition-colors duration-300 whitespace-nowrap ${scrolled
+                  className={`relative flex items-center gap-0 text-lg font-medium transition-colors duration-150 whitespace-nowrap ${scrolled
                     ? "text-black hover:text-vignan-purple"
                     : "text-white hover:text-vignan-purple-light"
                     }`}
@@ -213,19 +214,19 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
 
                   {link.hasDropdown && (
                     <ChevronDown
-                      className={`ml-1 w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? "rotate-180" : ""
+                      className={`ml-1 w-4 h-4 transition-transform duration-100 ${activeDropdown === link.label ? "rotate-180" : ""
                         } ${scrolled ? "text-black" : "text-white"}`}
                     />
                   )}
 
                   {/* Animated Underline */}
-                  <span className="absolute left-0 -bottom-2 h-[3px] w-0 bg-vignan-purple transition-all duration-300 group-hover:w-full rounded-full"></span>
+                  <span className="absolute left-0 -bottom-2 h-[3px] w-0 bg-vignan-purple transition-all duration-150 group-hover:w-full rounded-full"></span>
                 </Link>
 
                 {/* Dropdown */}
                 {link.hasDropdown && (
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-5 w-64 bg-white rounded-md shadow-2xl border border-gray-100 py-3 transition-all duration-300 ${
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-5 w-64 bg-white rounded-md shadow-2xl border border-gray-100 py-3 transition-all duration-150 ${
                       // Only add scroll if no nested submenus to prevent clipping
                       !link.dropdown?.some((item) => item.hasSubmenu)
                         ? "max-h-[80vh] overflow-y-auto"
@@ -253,7 +254,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
 
                             {/* Submenu */}
                             <div
-                              className={`absolute top-0 left-full ml-2 w-56 bg-white rounded-md shadow-xl border border-gray-100 py-2 transition-all duration-300 ${activeSubmenu === item.label
+                              className={`absolute top-0 left-full ml-2 w-56 bg-white rounded-md shadow-xl border border-gray-100 py-2 transition-all duration-150 ${activeSubmenu === item.label
                                 ? "opacity-100 visible translate-x-0"
                                 : "opacity-0 invisible -translate-x-2"
                                 }`}
@@ -272,7 +273,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                         ) : (
                           <Link
                             href={item.href || "#"}
-                            className="block px-5 py-2.5 text-base text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple transition-colors"
+                            className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple transition-colors"
                           >
                             {item.label}
                           </Link>
@@ -289,7 +290,8 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
           <div className="hidden xl:flex items-center gap-5">
             <Link
               href="/Pdfs/NIRF/NIRF2025.pdf"
-              className="px-7 py-3 bg-vignan-purple text-white text-sm font-semibold rounded-full hover:bg-vignan-purple-dark transition-all duration-300 shadow-md hover:shadow-xl hover:scale-105"
+              className="px-7 py-3 bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 
+            backdrop-blur-md shadow-lg text-white text-sm font-semibold rounded-full hover:bg-vignan-purple-dark transition-all duration-150 shadow-md hover:shadow-xl hover:scale-105"
             >
               NIRF
             </Link>
@@ -302,9 +304,9 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               {mobileOpen ? (
-                <X className="w-6 h-6 text-gray-800" />
+                <X className={`w-6 h-6 ${scrolled || variant === "solid" ? "text-gray-800" : "text-white"}`} />
               ) : (
-                <Menu className="w-6 h-6 text-gray-800" />
+                <Menu className={`w-6 h-6 ${scrolled || variant === "solid" ? "text-gray-800" : "text-white"}`} />
               )}
             </button>
           </div>
@@ -313,7 +315,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
       </div>
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-white z-40 transition-transform duration-300 xl:hidden ${mobileOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-0 bg-white z-40 transition-transform duration-150 xl:hidden ${mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
         style={{ top: "80px", height: "calc(100vh - 80px)" }}
       >

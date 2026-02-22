@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -59,7 +59,7 @@ export default function IQACPage() {
             <Navbar variant="solid" />
 
             {/* Page Header */}
-            <div className="bg-vignan-purple pt-30 pb-7">
+            <div className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-30 pb-7">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <nav className="text-sm text-purple-200 mb-3">
                         <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -68,6 +68,8 @@ export default function IQACPage() {
                         <span className="mx-2">/</span>
                         <span className="text-white font-medium">IQAC</span>
                     </nav>
+
+
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                         Internal Quality Assurance Cell (IQAC)
                     </h1>
@@ -144,24 +146,6 @@ export default function IQACPage() {
                                     <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
                                     <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.description}</p>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Annual Reports */}
-                <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-10">
-                    <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
-                        Annual Quality Assurance Reports (AQAR)
-                    </h2>
-                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4">
-                        {[2016, 2017, 2018, 2019, 2020, 2021].map((year) => (
-                            <div
-                                key={year}
-                                className="bg-vignan-purple/5 border border-vignan-purple/20 rounded-xl p-3 sm:p-4 text-center hover:bg-vignan-purple/10 transition-colors cursor-pointer"
-                            >
-                                <div className="text-vignan-purple font-bold text-base sm:text-lg">{year}</div>
-                                <div className="text-gray-500 text-xs mt-1">AQAR</div>
                             </div>
                         ))}
                     </div>

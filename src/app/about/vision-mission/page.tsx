@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 
 export const metadata = {
@@ -14,7 +14,7 @@ export default function VisionMissionPage() {
             <Navbar variant="solid" />
 
             {/* Page Header */}
-            <div className="bg-vignan-purple pt-30 pb-7">
+            <div className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-30 pb-7">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <nav className="text-sm text-purple-200 mb-3">
                         <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -23,6 +23,8 @@ export default function VisionMissionPage() {
                         <span className="mx-2">/</span>
                         <span className="text-white font-medium">Vision &amp; Mission</span>
                     </nav>
+
+
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                         Vision &amp; Mission
                     </h1>
@@ -30,7 +32,7 @@ export default function VisionMissionPage() {
             </div>
 
             {/* Content */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* Vision */}
                     <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-10 border-t-4 border-vignan-purple">
