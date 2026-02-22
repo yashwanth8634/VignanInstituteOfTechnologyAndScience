@@ -41,7 +41,7 @@ export default function CEOPage() {
                             {/* Larger photo */}
                             <div className="relative w-64 h-80 sm:w-72 sm:h-[22rem] md:w-72 md:h-96 rounded-2xl overflow-hidden shadow-lg mb-6 group border-[3px] border-vignan-purple transition-all duration-500 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl cursor-pointer">
                                 <Image
-                                    src="/AboutPage/ceo.webp"
+                                    src="/AboutPage/Ceo.webp"
                                     alt="Mr. Shravan Boyapati - CEO"
                                     fill
                                     className="object-cover object-top"
