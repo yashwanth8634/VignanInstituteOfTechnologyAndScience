@@ -1,9 +1,18 @@
 
+import Link from "next/link";
 import React from 'react';
 
 export default function Page() {
   return (
     <div className="container mx-auto py-12 px-4 max-w-7xl">
+      <nav className="text-sm text-purple-200 mb-3">
+      <Link href="/" className="hover:text-white transition-colors">Home</Link>
+      <span className="mx-2">/</span>
+      <Link href="/facilities" className="hover:text-white transition-colors">Facilities</Link>
+      <span className="mx-2">/</span>
+      <span className="text-white font-medium">Communication Soft Skills</span>
+      </nav>
+
       <h1 className="text-4xl font-bold mb-8 text-[#003666] border-b-2 border-gray-200 pb-4">Communication & Soft Skills</h1>
       <div 
         className="prose prose-lg max-w-none text-[#333333] leading-relaxed prose-headings:text-[#003666] prose-a:text-[#003666] prose-img:rounded-lg prose-img:shadow-md"

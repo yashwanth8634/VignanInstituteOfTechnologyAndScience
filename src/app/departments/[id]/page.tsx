@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import { departments } from "@/data/departments";
 import {
   BookOpen,
@@ -24,22 +24,33 @@ import {
   BookMarked,
   Calendar,
   Book,
+  Handshake,
+  Presentation,
+  Shield
 } from "lucide-react";
 
 /* ---------- Sidebar Menu ---------- */
 
 const sidebarItems = [
   { id: "overview", label: "Overview", icon: BookOpen },
-
-  { id: "hod", label: "HOD's Desk", icon: User },
   { id: "vision", label: "Vision & Mission", icon: Target },
+  { id: "hod", label: "HOD's Desk", icon: User },
   { id: "faculty", label: "Faculty", icon: Users },
-  { id: "syllabus", label: "Syllabus", icon: FileText },
   { id: "labs", label: "Laboratories", icon: FlaskConical },
-  { id: "achievements", label: "Achievements", icon: Trophy },
-  { id: "academic-calendars", label: "Academic Calendars", icon: Calendar },
+
+  { id: "syllabus", label: "Syllabus", icon: FileText },
   { id: "course-materials", label: "Course Materials", icon: Book },
+
+  { id: "research-projects", label: "Research / Consultancy Projects", icon: Briefcase },
+  { id: "publications", label: "Publications", icon: BookOpen },
+  { id: "mous", label: "MOUs", icon: Handshake },
+  { id: "seminars", label: "Seminars / Workshops / Conferences", icon: Presentation },
+
+  { id: "department-committee", label: "Department Level Committee", icon: Users },
+  { id: "disciplinary-committee", label: "Disciplinary Committee", icon: Shield },
+
   { id: "clubs", label: "Clubs", icon: Users },
+  { id: "achievements", label: "Achievements", icon: Trophy },
 ];
 
 export default function DepartmentPage() {
@@ -48,6 +59,7 @@ export default function DepartmentPage() {
   const [activeSection, setActiveSection] = useState("overview");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedFaculty, setSelectedFaculty] = useState<any>(null); // Using any temporarily to avoid import issues if type isn't updated yet, or use FacultyMember if imported
+  const [activeOverviewTab, setActiveOverviewTab] = useState("about");
 
   // Look up the department by ID — returns 404 if not found
   const dept = departments[deptId];
@@ -56,17 +68,18 @@ export default function DepartmentPage() {
     return notFound();
   }
 
-  /* ---------- Scroll to Content on Mobile ---------- */
-
   const handleSectionChange = (id: string) => {
     setActiveSection(id);
-    // On mobile (width < 1024px), scroll to content
-    if (window.innerWidth < 1024) {
+    // Scroll to content on all screen sizes so the active section comes into view
+    setTimeout(() => {
       const element = document.getElementById("dept-content");
       if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Calculate offset to account for the sticky header
+        const yOffset = -220;
+        const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
       }
-    }
+    }, 50);
   };
 
   return (
@@ -75,22 +88,33 @@ export default function DepartmentPage() {
 
       {/* ================= HEADER ================= */}
       <section className="relative lg:sticky lg:top-0 z-30 pt-28 pb-8 px-4 bg-white border-b border-vignan-purple transition-all duration-300">
+
         <div className="max-w-7xl mx-auto">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-gray-500 mb-2 mt-2">
-            <Link href="/" className="hover:text-black">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+            <Link href="/" className="hover:text-vignan-purple transition-colors">
               Home
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/academics" className="hover:text-black">
+            <Link
+              href="/academics"
+              className="hover:text-vignan-purple transition-colors"
+            >
               Academics
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-black font-medium">{dept.name}</span>
-          </div>
+            <Link
+              href="/departments"
+              className="hover:text-vignan-purple transition-colors"
+            >
+              Departments
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-gray-900 font-medium">
+              {dept.name || deptId.toUpperCase()}
+            </span>
+          </nav>
 
-          {/* Title */}
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900" >
             {dept.fullName}
           </h1>
 
@@ -130,7 +154,7 @@ export default function DepartmentPage() {
 
               {/* Dropdown Content */}
               {mobileMenuOpen && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-100 rounded-xl shadow-xl overflow-hidden py-1 animate-in fade-in zoom-in-95 duration-200">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-100 rounded-xl shadow-xl overflow-y-auto max-h-[60vh] py-1 animate-in fade-in zoom-in-95 duration-200">
                   {sidebarItems.map((item) => (
                     <button
                       key={item.id}
@@ -161,7 +185,7 @@ export default function DepartmentPage() {
             {/* ===== SIDEBAR (Desktop) ===== */}
             <aside className="hidden lg:block w-full lg:w-80 xl:w-96 shrink-0">
               <div className="sticky top-[280px] space-y-6 transition-all duration-300">
-                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4">
+                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-4 max-h-[calc(100vh-320px)] overflow-y-auto">
                   {sidebarItems.map((item) => (
                     <button
                       key={item.id}
@@ -183,15 +207,105 @@ export default function DepartmentPage() {
 
             {/* ===== MAIN CONTENT ===== */}
             <div className="flex-1 w-full" id="dept-content">
-              <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-5 sm:p-8 md:p-10 lg:p-12">
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-5 sm:p-8 md:p-10 lg:p-12 ">
                 {activeSection === "overview" && (
                   <>
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
                       Department Overview
                     </h2>
                     <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
-                    <div className="text-gray-700 leading-relaxed text-justify text-base md:text-lg space-y-6 whitespace-pre-line">
-                      <p>{dept.overview}</p>
+
+                    <div className="flex flex-wrap gap-3 mb-6">
+                      <button
+                        onClick={() => setActiveOverviewTab('about')}
+                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${activeOverviewTab === 'about' ? 'bg-vignan-purple text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                      >
+                        About
+                      </button>
+                      <button
+                        onClick={() => setActiveOverviewTab('peos')}
+                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${activeOverviewTab === 'peos' ? 'bg-vignan-purple text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                      >
+                        PEOs
+                      </button>
+                      <button
+                        onClick={() => setActiveOverviewTab('pos')}
+                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${activeOverviewTab === 'pos' ? 'bg-vignan-purple text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                      >
+                        POs
+                      </button>
+                      <button
+                        onClick={() => setActiveOverviewTab('psos')}
+                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${activeOverviewTab === 'psos' ? 'bg-vignan-purple text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                      >
+                        PSOs
+                      </button>
+                    </div>
+
+                    <div className="bg-gray-50/50 p-6 rounded-2xl border border-gray-100 min-h-[500px]">
+                      <div className="text-gray-700 leading-relaxed text-justify text-base md:text-lg space-y-6 whitespace-pre-line animate-in fade-in duration-300">
+                        {activeOverviewTab === 'about' && <p>{dept.overview}</p>}
+
+                        {activeOverviewTab === 'peos' && (
+                          <div>
+                            <h3 className="text-xl font-bold text-vignan-blue mb-6">Program Educational Objectives (PEOs)</h3>
+                            <ul className="space-y-4">
+                              {dept.peos?.length > 0 ? dept.peos.map((item, index) => (
+                                <li key={index} className="flex items-start gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                                  <div className="mt-1 w-2.5 h-2.5 rounded-full bg-vignan-purple shrink-0" />
+                                  <span className="text-gray-700 leading-relaxed">{item}</span>
+                                </li>
+                              )) : <p className="text-gray-500 italic">Information will be updated soon.</p>}
+                            </ul>
+                          </div>
+                        )}
+
+                        {activeOverviewTab === 'pos' && (
+                          <div>
+                            <h3 className="text-xl font-bold text-vignan-blue mb-6">Program Outcomes (POs)</h3>
+                            <ul className="space-y-4">
+                              {dept.pos?.length > 0 ? dept.pos.map((item, index) => (
+                                <li key={index} className="flex items-start gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                                  <div className="mt-1 w-2.5 h-2.5 rounded-full bg-vignan-purple shrink-0" />
+                                  <span className="text-gray-700 leading-relaxed"><span className="font-bold text-vignan-blue">PO{index + 1}:</span> {item}</span>
+                                </li>
+                              )) : <p className="text-gray-500 italic">Information will be updated soon.</p>}
+                            </ul>
+                          </div>
+                        )}
+
+                        {activeOverviewTab === 'psos' && (
+                          <div className="space-y-8">
+                            <div>
+                              <h3 className="text-xl font-bold text-vignan-blue mb-6">
+                                {dept.pgPsos?.length ? "U G Program Specific Outcomes" : "Program Specific Outcomes (PSOs)"}
+                              </h3>
+                              <ul className="space-y-4">
+                                {dept.psos?.length > 0 ? dept.psos.map((item, index) => (
+                                  <li key={index} className="flex items-start gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                                    <div className="mt-1 w-2.5 h-2.5 rounded-full bg-vignan-purple shrink-0" />
+                                    <span className="text-gray-700 leading-relaxed"><span className="font-bold text-vignan-blue">PSO{index + 1}:</span> {item}</span>
+                                  </li>
+                                )) : <p className="text-gray-500 italic">Information will be updated soon.</p>}
+                              </ul>
+                            </div>
+
+                            {dept.pgPsos && dept.pgPsos.length > 0 && (
+                              <div>
+                                <h3 className="text-xl font-bold text-vignan-blue mb-6">P G Program Specific Outcomes</h3>
+                                <ul className="space-y-4">
+                                  {dept.pgPsos.map((item, index) => (
+                                    <li key={index} className="flex items-start gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                                      <div className="mt-1 w-2.5 h-2.5 rounded-full bg-vignan-purple shrink-0" />
+                                      <span className="text-gray-700 leading-relaxed"><span className="font-bold text-vignan-blue">PSO{index + 1}:</span> {item}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </>
                 )}
@@ -257,6 +371,40 @@ export default function DepartmentPage() {
                         <div className="text-gray-700 leading-relaxed text-justify space-y-4 whitespace-pre-line">
                           <p>{dept.hod.message}</p>
                         </div>
+
+                        {((dept.hod.stats && dept.hod.stats.length > 0) || (dept.hod.achievements && dept.hod.achievements.length > 0)) && (
+                          <div className="mt-8 space-y-6">
+                            {/* Stats List */}
+                            {dept.hod.stats && dept.hod.stats.length > 0 && (
+                              <ul className="space-y-2">
+                                {dept.hod.stats.map((stat, idx) => (
+                                  <li key={idx} className="flex items-start gap-2 text-gray-700">
+                                    <div className="mt-2 w-1.5 h-1.5 rounded-full bg-vignan-purple shrink-0" />
+                                    <span className="font-semibold text-vignan-blue">{stat.label}:</span> {stat.value}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+
+                            {/* Achievements List */}
+                            {dept.hod.achievements && dept.hod.achievements.length > 0 && (
+                              <div>
+                                <h4 className="text-lg font-bold text-vignan-blue mb-3 flex items-center gap-2">
+                                  <Award className="w-5 h-5 text-vignan-purple" />
+                                  Key Achievements & Roles
+                                </h4>
+                                <ul className="space-y-2">
+                                  {dept.hod.achievements.map((achievement, idx) => (
+                                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+                                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-vignan-purple shrink-0" />
+                                      <span className="leading-relaxed">{achievement}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </>
@@ -498,11 +646,244 @@ export default function DepartmentPage() {
 
 
 
+                {activeSection === "department-committee" && (
+                  <>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                      Department Level Committee
+                    </h2>
+                    <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
+
+                    {dept.departmentCommittee && dept.departmentCommittee.length > 0 ? (
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse border border-gray-200 min-w-[500px]">
+                          <thead>
+                            <tr className="bg-vignan-purple text-white">
+                              <th className="p-3 text-left border border-white/20 w-16">S.No</th>
+                              <th className="p-3 text-left border border-white/20">Name of the Member</th>
+                              <th className="p-3 text-left border border-white/20">Designation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {dept.departmentCommittee.map((member) => (
+                              <tr key={member.sno} className="even:bg-gray-50 border-b border-gray-100 last:border-0 hover:bg-vignan-purple/5 transition-colors">
+                                <td className="p-4 border-r border-gray-100 text-center font-medium text-gray-500">{member.sno}</td>
+                                <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{member.name}</td>
+                                <td className="p-4 text-vignan-blue font-medium">{member.designation}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">Information will be updated soon.</p>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {activeSection === "disciplinary-committee" && (
+                  <>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                      Disciplinary Committee
+                    </h2>
+                    <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
+
+                    {dept.disciplinaryCommittee && dept.disciplinaryCommittee.length > 0 ? (
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse border border-gray-200 min-w-[500px]">
+                          <thead>
+                            <tr className="bg-vignan-purple text-white">
+                              <th className="p-3 text-left border border-white/20 w-16">S.No</th>
+                              <th className="p-3 text-left border border-white/20">Name of the Member</th>
+                              <th className="p-3 text-left border border-white/20">Designation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {dept.disciplinaryCommittee.map((member) => (
+                              <tr key={member.sno} className="even:bg-gray-50 border-b border-gray-100 last:border-0 hover:bg-vignan-purple/5 transition-colors">
+                                <td className="p-4 border-r border-gray-100 text-center font-medium text-gray-500">{member.sno}</td>
+                                <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{member.name}</td>
+                                <td className="p-4 text-vignan-blue font-medium">{member.designation}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">Information will be updated soon.</p>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {activeSection === "research-projects" && (
+                  <>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                      Research / Consultancy Projects
+                    </h2>
+                    <div className="w-25 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
+
+                    {((dept.researchProjects && dept.researchProjects.length > 0) || (dept.consultancyProjects && dept.consultancyProjects.length > 0)) ? (
+                      <div className="space-y-12">
+                        {dept.researchProjects && dept.researchProjects.length > 0 && (
+                          <div>
+                            <h3 className="text-xl font-bold text-vignan-blue mb-4">Research Projects</h3>
+                            <div className="overflow-x-auto rounded-xl border border-gray-200">
+                              <table className="w-full border-collapse bg-white">
+                                <thead>
+                                  <tr className="bg-vignan-purple text-white">
+                                    <th className="p-3 text-left border border-white/20 w-16">S.No</th>
+                                    <th className="p-3 text-left border border-white/20">Title</th>
+                                    <th className="p-3 text-left border border-white/20">Faculty</th>
+                                    <th className="p-3 text-left border border-white/20">Funding Agency</th>
+                                    <th className="p-3 text-left border border-white/20">Sanction Date</th>
+                                    <th className="p-3 text-left border border-white/20">Duration</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {dept.researchProjects.map((project, idx) => (
+                                    <tr key={idx} className="even:bg-gray-50 border-b border-gray-100 last:border-0">
+                                      <td className="p-4 border-r border-gray-100 text-center font-medium text-gray-500">{idx + 1}</td>
+                                      <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{project.title}</td>
+                                      <td className="p-4 border-r border-gray-100 text-gray-600">{project.faculty.join(', ')}</td>
+                                      <td className="p-4 border-r border-gray-100 text-gray-600">{project.fundingAgency}</td>
+                                      <td className="p-4 border-r border-gray-100 text-gray-600">{project.sanctionDate}</td>
+                                      <td className="p-4 text-gray-600">{project.duration}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        )}
+                        {dept.consultancyProjects && dept.consultancyProjects.length > 0 && (
+                          <div>
+                            <h3 className="text-xl font-bold text-vignan-blue mb-4">Consultancy Projects</h3>
+                            <div className="overflow-x-auto rounded-xl border border-gray-200">
+                              <table className="w-full border-collapse bg-white">
+                                <thead>
+                                  <tr className="bg-vignan-purple text-white">
+                                    <th className="p-3 text-left border border-white/20 w-16">S.No</th>
+                                    <th className="p-3 text-left border border-white/20">Title</th>
+                                    <th className="p-3 text-left border border-white/20">Faculty</th>
+                                    <th className="p-3 text-left border border-white/20">Funding Agency</th>
+                                    <th className="p-3 text-left border border-white/20">Date</th>
+                                    <th className="p-3 text-left border border-white/20">Amount (Lakhs)</th>
+                                    <th className="p-3 text-left border border-white/20">Duration</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {dept.consultancyProjects.map((project, idx) => (
+                                    <tr key={idx} className="even:bg-gray-50 border-b border-gray-100 last:border-0">
+                                      <td className="p-4 border-r border-gray-100 text-center font-medium text-gray-500">{idx + 1}</td>
+                                      <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{project.title}</td>
+                                      <td className="p-4 border-r border-gray-100 text-gray-600">{project.faculty}</td>
+                                      <td className="p-4 border-r border-gray-100 text-gray-600">{project.fundingAgency}</td>
+                                      <td className="p-4 border-r border-gray-100 text-gray-600">{project.date}</td>
+                                      <td className="p-4 border-r border-gray-100 text-gray-600 text-center">{project.amountInLakhs ? `₹${project.amountInLakhs}` : '-'}</td>
+                                      <td className="p-4 text-gray-600">{project.duration || '-'}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">Information will be updated soon.</p>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {activeSection === "mous" && (
+                  <>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                      MOUs
+                    </h2>
+                    <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
+
+                    {dept.mous && dept.mous.length > 0 ? (
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse border border-gray-200 min-w-[600px]">
+                          <thead>
+                            <tr className="bg-vignan-purple text-white">
+                              <th className="p-3 text-left border border-white/20 w-16">S.No</th>
+                              <th className="p-3 text-left border border-white/20">Name of MOU</th>
+                              <th className="p-3 text-left border border-white/20">Duration</th>
+                              <th className="p-3 text-left border border-white/20">Activities Included</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {dept.mous.map((mou, index) => (
+                              <tr key={index} className="even:bg-gray-50 border-b border-gray-100 last:border-0">
+                                <td className="p-4 border-r border-gray-100 text-center font-medium text-gray-500">{index + 1}</td>
+                                <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{mou.name}</td>
+                                <td className="p-4 border-r border-gray-100 text-gray-600">{mou.duration}</td>
+                                <td className="p-4 text-gray-600 text-sm">{mou.activities}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">Information will be updated soon.</p>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {activeSection === "publications" && (
+                  <>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                      Publications
+                    </h2>
+                    <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
+
+                    {dept.publications && dept.publications.length > 0 ? (
+                      <div className="overflow-x-auto rounded-xl border border-gray-200">
+                        <table className="w-full border-collapse bg-white">
+                          <thead>
+                            <tr className="bg-vignan-purple text-white">
+                              <th className="p-3 text-left border border-white/20 w-16">S.No</th>
+                              <th className="p-3 text-left border border-white/20">Academic Year</th>
+                              <th className="p-3 text-left border border-white/20">Document</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {dept.publications.map((item, index) => (
+                              <tr key={index} className="even:bg-gray-50 border-b border-gray-100 last:border-0">
+                                <td className="p-4 border-r border-gray-100 text-center font-medium text-gray-500">{index + 1}</td>
+                                <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{item.AcademicYear}</td>
+                                <td className="p-4 text-vignan-blue font-medium hover:underline cursor-pointer">
+                                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                    <BookOpen className="w-4 h-4" /> View Document
+                                  </a>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">Information will be updated soon.</p>
+                      </div>
+                    )}
+                  </>
+                )}
+
                 {/* Dynamic Sections with Placeholder Content */}
                 {(
                   activeSection === "syllabus" ||
                   activeSection === "academic-calendars" ||
                   activeSection === "course-materials" ||
+                  activeSection === "seminars" ||
                   activeSection === "clubs") && (
                     <>
                       <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 capitalize">

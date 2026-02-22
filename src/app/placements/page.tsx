@@ -1,9 +1,10 @@
 
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import Image from "next/image";
 import { Briefcase, Building2, BookOpen, User, Phone, Mail, Award, ChevronDown } from "lucide-react";
 
@@ -106,11 +107,11 @@ export default function PlacementsPage() {
     ];
 
     const infrastructure = [
-        { title: "Seminar Hall", desc: "Air-conditioned Hall with a seating capacity of 200 members", image: "/PlacementSectionImages/SeminarHall.jpg", color: "bg-purple-100" },
-        { title: "Interview Rooms", desc: "Separate air-conditioned rooms to accommodate 8 – 10 Panels for conducting interviews simultaneously", image: "/PlacementSectionImages/InterviewRoom.jpg", color: "bg-blue-100" },
-        { title: "Open Air Auditorium", desc: "Capacity 2000", image: "/PlacementSectionImages/OpenAirAuditorium.jpg", color: "bg-green-100" },
-        { title: "Computer Systems", desc: "1050 systems with internet and UPS backup facilities", image: "/PlacementSectionImages/ComputerSystems.jpg", color: "bg-orange-100" },
-        { title: "GD rooms", desc: "3 Separate air-conditioned rooms furnished with round table and chairs to conduct GDs with 20 – 25 members", image: "/PlacementSectionImages/GDRooms.jpg", color: "bg-red-100" },
+        { title: "Seminar Hall", desc: "Air-conditioned Hall with a seating capacity of 200 members", image: "/PlacementPage/SeminarHall.jpg", color: "bg-purple-100" },
+        { title: "Interview Rooms", desc: "Separate air-conditioned rooms to accommodate 8 – 10 Panels for conducting interviews simultaneously", image: "/PlacementPage/InterviewRoom.jpg", color: "bg-blue-100" },
+        { title: "Open Air Auditorium", desc: "Capacity 2000", image: "/PlacementPage/OpenAirAuditorium.jpg", color: "bg-green-100" },
+        { title: "Computer Systems", desc: "1050 systems with internet and UPS backup facilities", image: "/PlacementPage/ComputerSystems.jpg", color: "bg-orange-100" },
+        { title: "GD rooms", desc: "3 Separate air-conditioned rooms furnished with round table and chairs to conduct GDs with 20 – 25 members", image: "/PlacementPage/GDRooms.jpg", color: "bg-red-100" },
     ];
 
     return (
@@ -118,12 +119,23 @@ export default function PlacementsPage() {
             <Navbar variant="solid" />
 
             {/* Hero Section */}
-            <section className="bg-vignan-purple pt-32 pb-16 text-white text-center px-4">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6">Placements</h1>
-                <p className="text-lg opacity-90 max-w-3xl mx-auto leading-relaxed">
-                    The credo of the Training and Placement department is to incorporate a wide range of relevant learning opportunities that support and develop students at different stages of their academics.
-                </p>
-            </section>
+            <div className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-[120px] pb-7">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav className="text-sm text-purple-200 mb-3">
+                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                        <span className="mx-2">/</span>
+                        <span className="text-white font-medium">Placements</span>
+                    </nav>
+                    <div className="flex flex-col gap-2">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                            Placements
+                        </h1>
+                        <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed">
+                            The credo of the Training and Placement department is to incorporate a wide range of relevant learning opportunities that support and develop students at different stages of their academics.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
 
@@ -322,7 +334,7 @@ export default function PlacementsPage() {
                         {/* Coordinator 2 */}
                         <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
                             <div className="w-25 h-25 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-vignan-purple">
-                                <Image src="/PlacementSectionImages/DeanTraining.png" alt="CH V B Aditya Kumar" width={100} height={100} className="w-25 h-25 text-gray-400/50 group-hover:scale-110 transition-transform duration-500 rounded-full" />
+                                <Image src="/PlacementPage/DeanTraining.png" alt="CH V B Aditya Kumar" width={100} height={100} className="w-25 h-25 text-gray-400/50 group-hover:scale-110 transition-transform duration-500 rounded-full" />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900">CH V B Aditya Kumar</h3>
                             <p className="text-gray-500 font-medium mb-4">Dean Training & Corporate Relations</p>

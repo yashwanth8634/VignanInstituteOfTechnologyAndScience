@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 
 export const metadata = {
@@ -107,8 +107,14 @@ export default function AboutPage() {
             <Navbar variant="solid" />
 
             {/* Page Header */}
-            <div className="bg-vignan-purple pt-30 pb-7">
+            <div className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-30 pb-7">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <nav className="text-sm text-purple-200 mb-3">
+                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                        <span className="mx-2">/</span>
+                        <span className="text-white font-medium">About</span>
+                    </nav>
+
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         About VGNT
                     </h1>
