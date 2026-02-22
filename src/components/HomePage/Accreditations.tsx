@@ -19,7 +19,7 @@ const accreditations = [
     subtitle: "Accredited Programs",
   },
   {
-    image: "/HomePage/MouLogos/naac.png",
+    image: "/HomePage/MouLogos/NAAC.png",
     title: "NAAC A+",
     subtitle: "A+ Grade Institution",
   },
