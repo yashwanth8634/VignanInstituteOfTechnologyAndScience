@@ -69,7 +69,7 @@ export default function CEOPage() {
                                 </h3>
                             </div>
 
-                            <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+                            <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base text-justify">
                                 <p>
                                     Mr. Shravan Boyapati has been instrumental in carving the
                                     institution into what it is today. His vision and leadership

@@ -1,222 +1,329 @@
+"use client";
 
 import Link from "next/link";
-import React from 'react';
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
+import { Users, ChevronDown, FileText, ExternalLink } from "lucide-react";
+import { useState } from "react";
 
-export default function Page() {
+interface CommitteeLink {
+  label: string;
+  href: string;
+}
+
+interface CommitteeMember {
+  sno: string | number;
+  name: string;
+  designation: string;
+  position: string;
+}
+
+interface Committee {
+  name: string;
+  links?: CommitteeLink[];
+  members?: CommitteeMember[];
+  extraLinks?: CommitteeLink[];
+}
+
+const committees: Committee[] = [
+  {
+    name: "Governing Body",
+    links: [
+      { label: "Governing Body Members", href: "https://vignanits.ac.in/committee/new/GOB%20MEM.pdf" },
+      { label: "Governing Body Minutes of Meeting", href: "https://vignanits.ac.in/committee/new/GOB_MOM.pdf" },
+    ],
+  },
+  {
+    name: "IQAC Composition",
+    links: [
+      { label: "IQAC Composition Document", href: "https://vignanits.ac.in/committee/iqac.pdf" },
+    ],
+    members: [
+      { sno: 1, name: "Dr. G. Durga Sukumar", designation: "Principal", position: "Chairman" },
+      { sno: 2, name: "Dr. M Rama Krishna", designation: "Dean IQAC", position: "Member" },
+      { sno: 3, name: "Prof. G. Narendar", designation: "Dean Administration", position: "Member" },
+      { sno: 4, name: "Prof. N. Leela Prasad", designation: "Dean Faculty Affairs", position: "Member" },
+      { sno: 5, name: "Dr. J.V. Rao", designation: "Dean Evaluation", position: "Member" },
+      { sno: 6, name: "Mr. N. Sri Anjaneya", designation: "Assistant Professor, CSE", position: "Member" },
+      { sno: 7, name: "Mr. G. Srinivas", designation: "Assistant Professor, EEE", position: "Member" },
+      { sno: 8, name: "Mr. S. Kranthi Reddy", designation: "Assistant Professor, CSE", position: "Member" },
+      { sno: 9, name: "Mr. Anup Kumar Jana", designation: "Assistant Professor, ME", position: "Member" },
+      { sno: 10, name: "Mr. Sarat Chandra Mohanty", designation: "Assistant Professor, ME", position: "Member" },
+      { sno: 11, name: "Mr. Aga Reddy", designation: "Dean Placements", position: "Management Representative" },
+      { sno: 16, name: "Dr. K. Naga Sujatha", designation: "Professor, EEE – JNTUH College of Engineering Jagtial", position: "External Expert" },
+      { sno: 17, name: "Mr. M Ashok", designation: "Associate Software Engineer, CGI Technologies", position: "Alumni" },
+      { sno: 18, name: "Mr. Vannaldesi Anand", designation: "Relationship Manager SBI, Hyderabad", position: "Alumni" },
+      { sno: 19, name: "Mr. N Aditya Bharadwaj", designation: "Business Analyst, Express Scripts Inc, USA", position: "Alumni" },
+      { sno: 20, name: "Ms. Buram Pranitha", designation: "Technology Analyst, Infosys, Bangalore", position: "Alumni" },
+      { sno: 21, name: "Mr. Aditya Nimmagadda", designation: "Assistant Manager, Hyundai, Hyderabad", position: "Alumni" },
+      { sno: 22, name: "Mr. N. Prudhvi", designation: "Entrepreneur, Hyderabad", position: "Alumni" },
+      { sno: 23, name: "Mr. K. Sudhakar", designation: "Stakeholder", position: "Parent" },
+      { sno: 24, name: "Mr. R. Anil Kumar", designation: "Stakeholder", position: "Parent" },
+      { sno: 25, name: "Mr. K.V.R.K. Sarma", designation: "Stakeholder", position: "Parent" },
+      { sno: 26, name: "Mr. Srinivas", designation: "Office Assistant", position: "" },
+    ],
+  },
+  {
+    name: "Examination Committee",
+    links: [
+      { label: "Examination Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Examination%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Training & Placements Committee",
+    links: [
+      { label: "Training & Placements Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/T%26P%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Entrepreneurship & Development Committee",
+    links: [
+      { label: "Entrepreneurship & Development Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/EDC%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Library Committee",
+    links: [
+      { label: "Library Committee Document", href: "https://vignanits.ac.in/committee/LIBRARAY_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Intellectual Property Rights Committee",
+    links: [],
+  },
+  {
+    name: "Research & Development Committee",
+    links: [
+      { label: "R&D Committee Document", href: "https://drive.google.com/file/d/1D3J6iuH-_nke5uK089rl6zKMPmL4MQAL/view?usp=share_link" },
+      { label: "R&D Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/R%26D%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Industry Institute Interaction Committee",
+    links: [
+      { label: "Industry Institute Interaction Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/IIC%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Minority Committee",
+    links: [
+      { label: "Minority Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Minority%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "SC/ST Committee",
+    links: [
+      { label: "SC/ST Committee Document", href: "https://vignanits.ac.in/committee/SC_ST_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Internal Complaint Committee (Women Protection Cell)",
+    links: [
+      { label: "Women Protection Cell – Minutes of Meeting", href: "https://vignanits.ac.in/committee/WPC%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Anti Ragging Committee",
+    links: [],
+  },
+  {
+    name: "Canteen Committee",
+    links: [
+      { label: "Canteen Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Canteen%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Sports Committee",
+    links: [
+      { label: "Sports Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Sports%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Admission Committee",
+    links: [
+      { label: "Admission Committee Document", href: "https://vignanits.ac.in/committee/admn_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Cultural Committee",
+    links: [
+      { label: "Cultural Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Cultural%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "Finance Committee",
+    links: [
+      { label: "Finance Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Finance%20Committee_MoM_2022-23.pdf" },
+    ],
+  },
+  {
+    name: "NSS Committee",
+    links: [
+      { label: "NSS Committee Document", href: "https://vignanits.ac.in/committee/NSS_22-23.pdf" },
+    ],
+  },
+  {
+    name: "Transport Committee",
+    links: [
+      { label: "Transport Committee Document", href: "https://vignanits.ac.in/committee/new/TRANSPORT.pdf" },
+    ],
+  },
+  {
+    name: "Other Backward Class (OBC) Committee",
+    links: [
+      { label: "OBC Committee Document", href: "https://vignanits.ac.in/committee/new/OBC.pdf" },
+    ],
+  },
+  {
+    name: "Hostel Committee",
+    links: [
+      { label: "Hostel Committee Document", href: "https://vignanits.ac.in/committee/new/HOSTAL%20COMMITTEE.pdf" },
+    ],
+  },
+  {
+    name: "Central Faculty Recruitment Committee (CFRC)",
+    links: [],
+  },
+  {
+    name: "Grievance Redressal Committee",
+    links: [],
+  },
+  {
+    name: "Academic Audit",
+    links: [
+      { label: "Academic Audit – I Semester", href: "https://vignanits.ac.in/committee/Academic%20Audit%20I%20Sem.pdf" },
+      { label: "Academic Audit – II Semester", href: "https://vignanits.ac.in/committee/Academic%20Audit%20II%20Sem.pdf" },
+    ],
+  },
+];
+
+function AccordionItem({ committee }: { committee: Committee }) {
+  const [open, setOpen] = useState(false);
+
+  const hasContent =
+    (committee.links && committee.links.length > 0) ||
+    (committee.members && committee.members.length > 0);
+
   return (
-    <div className="container mx-auto py-12 px-4 max-w-7xl">
-      <nav className="text-sm text-purple-200 mb-3">
-      <Link href="/" className="hover:text-white transition-colors">Home</Link>
-      <span className="mx-2">/</span>
-      <Link href="/mandatory-disclosures" className="hover:text-white transition-colors">Mandatory Disclosures</Link>
-      <span className="mx-2">/</span>
-      <span className="text-white font-medium">Committees</span>
-      </nav>
+    <div className="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className={`w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-200 ${open
+            ? "bg-gradient-to-r from-purple-700 to-indigo-600 text-white"
+            : "bg-white hover:bg-purple-50 text-gray-800"
+          }`}
+        aria-expanded={open}
+      >
+        <span className="flex items-center gap-3 font-semibold text-base">
+          <Users
+            className={`w-5 h-5 shrink-0 ${open ? "text-white/80" : "text-vignan-purple"}`}
+          />
+          {committee.name}
+        </span>
+        <ChevronDown
+          className={`w-5 h-5 shrink-0 transition-transform duration-300 ${open ? "rotate-180 text-white" : "text-gray-400"
+            }`}
+        />
+      </button>
 
-      <h1 className="text-4xl font-bold mb-8 text-[#003666] border-b-2 border-gray-200 pb-4">College Level Committees</h1>
-      <div 
-        className="prose prose-lg max-w-none text-[#333333] leading-relaxed prose-headings:text-[#003666] prose-a:text-[#003666] prose-img:rounded-lg prose-img:shadow-md"
-        dangerouslySetInnerHTML={{ __html: `><p class="mb-4 text-gray-700 leading-relaxed">VGNT, formed Various committees in the College for the smooth and efficient management of activities. It also gives the opportunity to the faculty to grow and develop in their extracurricular activity/field and administrative skills. The committees are constituted by the Principal in consultation with Deans &amp; HODs.</p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Governing Body</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/new/GOB%20MEM.pdf">Governing Body Members</a><br /><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/new/GOB_MOM.pdf">Governing Body Members Minutes</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >IQAC Composition</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/iqac.pdf">IQAC Composition</a><br /><!--</p>
-<div class="overflow-x-auto my-8 border border-gray-200 rounded-lg"><table class="min-w-full divide-y divide-gray-200" >
-<tbody>
-<tr>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">S.No</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">Name</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">Designation</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">Position</th>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">1</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dr. G. Durga Sukumar</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Principal</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Chairman</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">2</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dr. M Rama Krishna</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dean IQAC</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">3</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Prof. G. Narendar</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dean Administration</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">4</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Prof. N. Leela Prasad</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dean Faculty Affairs</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">5</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dr.J.V.Rao</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dean Evaluation</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">6</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr.N. Sri Anjaneya</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Assistant Professor, CSE</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">7</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr. G.Srinivas</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Assistant Professor, EEE</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">8</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr. S.Kranthi Reddy</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Assistant Professor, CSE</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">9</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr. Anup Kumar Jana</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Assistant Professor,ME</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">10</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr. Sarat Chandra Mohanty</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Assistant Professor, ME</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Member</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">11</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr.Aga Reddy</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dean Placements</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Management Representative</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">16</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Dr. K. Naga Sujatha</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Professor, Electrical &#038; Electronics Engineering<br />JNTUH College of Engineering Jagtial</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">External Experts</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">17</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr. M Ashok</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Associate Software Engineer,CGI Technologies</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Alumni</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">18</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr. Vannaldesi Anand</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Relationship Manager SBI, Hyderabad</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Alumni</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">19</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr. N Aditya Bharadwaj</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Business Analyst, Express Scripts Inc, USA</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Alumni</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">20</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Ms. Buram Pranitha</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Technology Analyst, Infosys, Bangalore</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Alumni</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">21</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"> Mr. Aditya Nimmagadda</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Assistant Manager, Hyundai, Hyderabad</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Alumni</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">22</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr.N.Prudhvi</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Entrepreneur, Hyderabad</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Alumni</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">23</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr. K.Sudhakar</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Stakeholder</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Parent</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">24</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr.R.Anil Kumar</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Stakeholder</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Parent</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">25</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr.K.V.R.K. Sarma</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Stakeholder</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Parent</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">26</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Mr.Srinivas</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">Office Assistant</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0"></td>
-</tr>
-</tbody>
-</table>
-<p class="mb-4 text-gray-700 leading-relaxed">--></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Examination Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/Examination%20Committee_MoM_2022-23.pdf">Examination Committee </a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Training & Placements</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/T&amp;P%20Committee_MoM_2022-23.pdf">Training &amp; Placements Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Entrepreneurship & Development </h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/EDC%20Committee_MoM_2022-23.pdf">Entrepreneruship &amp; Development Committee&gt;</a></p>
-<p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/EDC%20Committee_MoM_2022-23.pdf"> </a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Library Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/LIBRARAY_2022-23.pdf">Library Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Intellectual Property Rights</h3><p class="mb-4 text-gray-700 leading-relaxed"><a>Intellectual Property Rights Committee</a><br /><a>Intellectual Property Rights Minutes of Meeting</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Research & Development Committee</h3><ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-<li class="pl-1"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1D3J6iuH-_nke5uK089rl6zKMPmL4MQAL/view?usp=share_link">Research &amp; Development Committee</a></li>
-</ul>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Industry Institute Interaction Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/IIC%20Committee_MoM_2022-23.pdf">Industry Institute Interaction Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Minority Committee </h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/Minority%20Committee_MoM_2022-23.pdf">Minority Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >SC/ST Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/SC_ST_2022-23.pdf">SC/ST Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Internal Complaint Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/WPC%20Committee_MoM_2022-23.pdf">Internal Complaint Committee(Women Protection Cell) </a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Anti Ragging Committee</h3><ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-<li class="pl-1"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="http://Anti Ragging Committee_MoM_2022-23.pdf">Anti Ragging Committee</a></li>
-</ul>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Canteen Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/Canteen%20Committee_MoM_2022-23.pdf">Canteen Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Sports Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/Sports%20Committee_MoM_2022-23.pdf">Sports Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Admission Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/admn_2022-23.pdf">Admission Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Cultural Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/Cultural%20Committee_MoM_2022-23.pdf">Cultural Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Finance Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/Finance%20Committee_MoM_2022-23.pdf">Finance Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >NSS</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/NSS_22-23.pdf">NSS Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Research & Development Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/R&amp;D%20Committee_MoM_2022-23.pdf">Research &amp; Development Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Transport Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/new/TRANSPORT.pdf">Transport Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Other Backward Class Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/new/OBC.pdf">Other Backward Class Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Hostel Committee</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/new/HOSTAL%20COMMITTEE.pdf">Hostel Committee</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Central Faculty Recruitment Committee(CFRC)</h3><p class="mb-4 text-gray-700 leading-relaxed"><a>Central Faculty Recruitment Committee(CFRC)</a></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Grievance Redressal</h3><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Academic Audit</h3><p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/Academic%20Audit%20I%20Sem.pdf">Academic Audit-I Sem</a></p>
-<p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/committee/Academic%20Audit%20II%20Sem.pdf">Academic Audit-II Sem</a></p>
-</div></div></div></div>` }} 
-      />
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${open ? "max-h-[1200px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+      >
+        <div className="bg-gray-50 px-5 py-5 space-y-4 border-t border-gray-200">
+          {!hasContent && (
+            <p className="text-sm text-gray-500 italic">
+              Committee details will be updated soon.
+            </p>
+          )}
+
+          {/* PDF Links */}
+          {committee.links && committee.links.length > 0 && (
+            <div className="flex flex-wrap gap-3">
+              {committee.links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-purple-200 text-purple-700 rounded-lg text-sm font-medium hover:bg-purple-700 hover:text-white hover:border-purple-700 transition-all duration-200 shadow-sm"
+                >
+                  <FileText className="w-4 h-4" />
+                  {link.label}
+                  <ExternalLink className="w-3 h-3 opacity-70" />
+                </a>
+              ))}
+            </div>
+          )}
+
+          {/* Members Table */}
+          {committee.members && committee.members.length > 0 && (
+            <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <table className="min-w-full divide-y divide-gray-200 text-sm">
+                <thead>
+                  <tr className="bg-vignan-purple">
+                    <th className="px-4 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">S.No</th>
+                    <th className="px-4 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">Name</th>
+                    <th className="px-4 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">Designation</th>
+                    <th className="px-4 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">Position</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-100">
+                  {committee.members.map((m, i) => (
+                    <tr key={i} className="hover:bg-purple-50 transition-colors">
+                      <td className="px-4 py-3 text-gray-700 font-medium">{m.sno}</td>
+                      <td className="px-4 py-3 text-gray-800 font-medium">{m.name}</td>
+                      <td className="px-4 py-3 text-gray-600">{m.designation}</td>
+                      <td className="px-4 py-3 text-gray-600">{m.position}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
+  );
+}
+
+export default function CommitteesPage() {
+  return (
+    <main className="min-h-screen bg-gray-50 flex flex-col overflow-x-hidden">
+      <Navbar variant="solid" />
+
+      {/* Header */}
+      <div className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-[120px] pb-7">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="text-sm text-purple-200 mb-3 block">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/mandatory-disclosures" className="hover:text-white transition-colors">Mandatory Disclosures</Link>
+            <span className="mx-2">/</span>
+            <span className="text-white font-medium">College Level Committees</span>
+          </nav>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
+              <Users className="w-8 h-8 opacity-90 shrink-0" />
+              College Level Committees
+            </h1>
+            <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed">
+              VGNT has constituted various committees for the smooth and efficient management of activities, providing faculty opportunities to develop administrative and extracurricular skills.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 w-full">
+        <div className="space-y-3">
+          {committees.map((committee) => (
+            <AccordionItem key={committee.name} committee={committee} />
+          ))}
+        </div>
+      </div>
+
+      <Footer />
+    </main>
   );
 }

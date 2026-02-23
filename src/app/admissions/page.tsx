@@ -96,7 +96,7 @@ export default function AdmissionsPage() {
                             <div className="overflow-x-auto">
                                 <table className="w-full border-collapse">
                                     <thead>
-                                        <tr className="bg-vignan-blue text-white text-left">
+                                        <tr className="bg-vignan-purple text-white text-left">
                                             <th className="px-4 py-3 rounded-tl-lg text-sm font-semibold">S.No</th>
                                             <th className="px-4 py-3 text-sm font-semibold">Name of the Course</th>
                                             <th className="px-4 py-3 rounded-tr-lg text-sm font-semibold">Intake</th>

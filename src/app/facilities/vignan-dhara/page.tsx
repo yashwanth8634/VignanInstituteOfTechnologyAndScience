@@ -77,7 +77,7 @@ export default function VignanaDharaPage() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
               Vignana Dhara Library
             </h1>
-            <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed">
+            <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed text-justify">
               The Central Library built to International Standards.
             </p>
           </div>
@@ -101,12 +101,12 @@ export default function VignanaDharaPage() {
               <Library className="w-5 h-5 sm:w-6 sm:h-6 text-vignan-purple" />
               About VIGNANA DHARA
             </h2>
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-medium mb-4">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-medium mb-4 text-justify">
               <strong>VIGNANA DHARA</strong>, the Central library, has been built to International Standards, Spreads over to two floors with an area of 1670 sq.m. It is centrally air-conditioned. Specialized collections of Books, Journals & Non-book materials are available in Basic Sciences, Engineering and Technology, Humanities and Social Sciences.
             </p>
             <div className="bg-purple-50 p-4 rounded-xl border border-purple-100 mt-2 sm:mt-4">
               <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">First Floor</h3>
-              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-justify">
                 Circulation Section – Issue Counter, Return / Renewal Counter, Study Room, Journal Section, Back Volumes Section, Copier Section, Periodical office & Library OPAC. Book Bank Section.
               </p>
             </div>
@@ -209,7 +209,7 @@ export default function VignanaDharaPage() {
           <div className="w-full rounded-xl border border-blue-200 overflow-hidden bg-white">
             <table className="w-full border-collapse block md:table">
               <thead className="hidden md:table-header-group">
-                <tr className="bg-vignan-blue text-white text-left">
+                <tr className="bg-vignan-purple text-white text-left">
                   <th className="px-4 py-3 text-sm font-semibold">Course</th>
                   <th className="px-4 py-3 text-sm font-semibold">S.No</th>
                   <th className="px-4 py-3 text-sm font-semibold">Department</th>
@@ -327,7 +327,7 @@ export default function VignanaDharaPage() {
             {/* ... (E-resource cards remain same) ... */}
             <div className="bg-blue-50/50 p-4 sm:p-6 rounded-xl border border-blue-100 flex flex-col h-full">
               <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">IEEE ASPP - Transactions & Magazines</h4>
-              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-4 flex-grow">
+              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-4 flex-grow text-justify">
                 IEEE ASPP - Transactions & Magazines (CSE, ECE, EEE, IT, MCA,BME,BT) 223 journals + back file to 2001. IEEE Provides full-text access to high quality technical literature in electrical engineering, computer science, electronics, and related disciplines.
               </p>
               <a href="#" className="text-xs sm:text-sm text-center sm:text-left text-vignan-blue font-semibold hover:underline bg-white px-3 py-2 rounded-md border border-blue-200 self-start shadow-sm w-full sm:w-auto">Details about IEEE</a>
@@ -335,7 +335,7 @@ export default function VignanaDharaPage() {
 
             <div className="bg-purple-50/50 p-4 sm:p-6 rounded-xl border border-purple-100 flex flex-col h-full">
               <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">DELNET : Developing Library Network</h4>
-              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-4 flex-grow">
+              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed mb-4 flex-grow text-justify">
                 DELNET has been established with the prime objective of promoting resource sharing among the libraries through the development of a network of libraries. It aims to collect, store, and disseminate information besides offering computerized services to users.
               </p>
               <a href="#" className="text-xs sm:text-sm text-center sm:text-left text-vignan-purple font-semibold hover:underline bg-white px-3 py-2 rounded-md border border-purple-200 self-start shadow-sm w-full sm:w-auto">Details about delnet</a>
@@ -346,7 +346,7 @@ export default function VignanaDharaPage() {
           <div className="w-full rounded-xl border border-blue-200 overflow-hidden bg-white">
             <table className="w-full border-collapse block md:table">
               <thead className="hidden md:table-header-group">
-                <tr className="bg-vignan-blue text-white text-left">
+                <tr className="bg-vignan-purple text-white text-left">
                   <th className="px-4 py-3 text-sm font-semibold">S.No</th>
                   <th className="px-4 py-3 text-sm font-semibold">Name</th>
                   <th className="px-4 py-3 text-sm font-semibold">Link</th>

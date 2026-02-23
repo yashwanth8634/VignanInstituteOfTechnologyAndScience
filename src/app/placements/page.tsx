@@ -130,7 +130,7 @@ export default function PlacementsPage() {
                         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                             Placements
                         </h1>
-                        <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed">
+                        <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed text-justify">
                             The credo of the Training and Placement department is to incorporate a wide range of relevant learning opportunities that support and develop students at different stages of their academics.
                         </p>
                     </div>
@@ -142,17 +142,17 @@ export default function PlacementsPage() {
                 {/* Objectives & Approach */}
                 <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-10">
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">Training Objectives</h2>
-                    <p className="text-gray-600 leading-relaxed mb-6">
+                    <p className="text-gray-600 leading-relaxed mb-6 text-justify">
                         In order to execute this effectively, the placement cell collaborates with a number of Industries and Companies across various sectors. This helps in identifying the training needs and accordingly, training programs are facilitated to students. The main focus of the department is to train the students and to bestow them with the right opportunities for their careers.
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-purple-50 p-6 rounded-xl">
                         <div>
                             <h3 className="font-semibold text-vignan-purple mb-2">Continuous Assessment</h3>
-                            <p className="text-sm text-gray-600">The department consistently tracks the students’ performance to ensure improvement through assessment tests. These tests aid students to identify their areas of strength and areas of improvement.</p>
+                            <p className="text-sm text-gray-600 text-justify">The department consistently tracks the students’ performance to ensure improvement through assessment tests. These tests aid students to identify their areas of strength and areas of improvement.</p>
                         </div>
                         <div>
                             <h3 className="font-semibold text-vignan-purple mb-2">Mock Interviews</h3>
-                            <p className="text-sm text-gray-600">Mock Interviews equip students to face real time interviews with higher confidence using proper preparation. Group discussion and JAM sessions are also conducted regularly.</p>
+                            <p className="text-sm text-gray-600 text-justify">Mock Interviews equip students to face real time interviews with higher confidence using proper preparation. Group discussion and JAM sessions are also conducted regularly.</p>
                         </div>
                     </div>
                 </section>
@@ -260,13 +260,13 @@ export default function PlacementsPage() {
                         <div className="flex p-4 bg-blue-50 rounded-xl">
                             <div className="flex-1">
                                 <h4 className="font-semibold text-vignan-blue mb-1">Technical Certifications</h4>
-                                <p className="text-sm text-gray-600">Programs like SERVICE NOW, ORACLE CERTIFIED JAVA PROGRAM and CCNA etc. are conducted to enhance technical expertise.</p>
+                                <p className="text-sm text-gray-600 text-justify">Programs like SERVICE NOW, ORACLE CERTIFIED JAVA PROGRAM and CCNA etc. are conducted to enhance technical expertise.</p>
                             </div>
                         </div>
                         <div className="flex p-4 bg-green-50 rounded-xl">
                             <div className="flex-1">
                                 <h4 className="font-semibold text-green-700 mb-1">Language Proficiency</h4>
-                                <p className="text-sm text-gray-600">English Certification courses such as OXFORD Achiever and Business English Certification (BEC) to improve communication skills.</p>
+                                <p className="text-sm text-gray-600 text-justify">English Certification courses such as OXFORD Achiever and Business English Certification (BEC) to improve communication skills.</p>
                             </div>
                         </div>
                     </div>
@@ -295,7 +295,7 @@ export default function PlacementsPage() {
                                 </div>
                                 <div className="p-6">
                                     <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                                    <p className="text-sm text-gray-600 leading-relaxed text-justify">{item.desc}</p>
                                 </div>
                             </div>
                         ))}

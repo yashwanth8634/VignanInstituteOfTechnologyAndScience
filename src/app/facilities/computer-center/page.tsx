@@ -1,25 +1,75 @@
+"use client";
 
 import Link from "next/link";
-import React from 'react';
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
+import { Monitor } from "lucide-react";
+import Image from "next/image";
 
-export default function Page() {
+export default function ComputerCenterPage() {
   return (
-    <div className="container mx-auto py-12 px-4 max-w-7xl">
-      <nav className="text-sm text-purple-200 mb-3">
-      <Link href="/" className="hover:text-white transition-colors">Home</Link>
-      <span className="mx-2">/</span>
-      <Link href="/facilities" className="hover:text-white transition-colors">Facilities</Link>
-      <span className="mx-2">/</span>
-      <span className="text-white font-medium">Computer Center</span>
-      </nav>
+    <main className="min-h-screen bg-gray-50 flex flex-col overflow-x-hidden">
+      <Navbar variant="solid" />
 
-      <h1 className="text-4xl font-bold mb-8 text-[#003666] border-b-2 border-gray-200 pb-4">Computer Center</h1>
-      <div 
-        className="prose prose-lg max-w-none text-[#333333] leading-relaxed prose-headings:text-[#003666] prose-a:text-[#003666] prose-img:rounded-lg prose-img:shadow-md"
-        dangerouslySetInnerHTML={{ __html: `<div    id="Computer-Center" ><h2   >Computer Center</h2><p class="mb-4 text-gray-700 leading-relaxed"><span >The Computer Centre is a Central Facility of the College equipped with latest Configuration systems with 500 MBS internet speed. The Computer centre is for the students and faculty of the college with facilities for printing, scanning, and internet browsing.</span></p>
-<p class="mb-4 text-gray-700 leading-relaxed"><img class="alignnone size-medium wp-image-13233 lazyload" src="https://vignanits.ac.in/wp-content/uploads/2022/05/IMG_20220524_192200-300x169.jpg" alt=""   /></p>
-</div>` }} 
-      />
-    </div>
+      {/* Header */}
+      <div className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-[120px] pb-7">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="text-sm text-purple-200 mb-3 block">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/facilities" className="hover:text-white transition-colors">Facilities</Link>
+            <span className="mx-2">/</span>
+            <span className="text-white font-medium">Computer Center</span>
+          </nav>
+
+          <div className="flex flex-col gap-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
+              <Monitor className="w-8 h-8 opacity-90 shrink-0" />
+              Computer Center
+            </h1>
+            <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed">
+              A central facility equipped with the latest systems and high-speed internet.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Content Range */}
+      <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-12 md:space-y-16 w-full">
+
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-8">
+            {/* Image Section */}
+            <div className="relative h-64 sm:h-80 md:h-96 w-full lg:h-auto min-h-[300px] overflow-hidden group">
+              <Image
+                src="/FacilitiesPage/ComputerCenter.webp"
+                alt="Computer Center Systems"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 ease-in-out scale-110 group-hover:scale-100"
+              />
+            </div>
+
+            {/* Text Content */}
+            <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <span className="w-8 h-1 bg-vignan-purple rounded-full"></span>
+                Central Systems Facility
+              </h2>
+              <div className="prose prose-lg text-gray-600 leading-relaxed text-justify">
+                <p>
+                  The Computer Centre is a Central Facility of the College equipped with latest Configuration systems
+                  with 500 MBPS internet speed. The Computer centre is for the students and faculty of the college
+                  with facilities for printing, scanning, and internet browsing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <Footer />
+    </main>
   );
 }

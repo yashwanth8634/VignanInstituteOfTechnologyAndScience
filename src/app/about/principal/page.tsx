@@ -70,7 +70,7 @@ export default function PrincipalPage() {
                                 </h3>
                             </div>
 
-                            <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+                            <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base text-justify">
                                 <p>
                                     Warm Greetings and welcome to Vignan Institute of Technology
                                     and Science. It is my privilege to lead this institution that

@@ -45,7 +45,7 @@ export default function VisionMissionPage() {
                             </div>
                             <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Vision</h2>
                         </div>
-                        <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                        <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">
                             To evolve into a center of excellence in Science &amp; Technology
                             through creative and innovative practices in teaching-learning,
                             promoting academic achievement &amp; research excellence to produce
@@ -65,7 +65,7 @@ export default function VisionMissionPage() {
                             </div>
                             <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Mission</h2>
                         </div>
-                        <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                        <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">
                             To provide high quality academic programmes, training activities,
                             research facilities and opportunities supported by continuous
                             industry – institute interaction aimed at employability,
@@ -86,7 +86,7 @@ export default function VisionMissionPage() {
                         </div>
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Quality Policy</h2>
                     </div>
-                    <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                    <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">
                         Vignan Institute of Technology and Science is committed to providing
                         quality technical education through continuous improvement of
                         teaching-learning processes, infrastructure, and industry

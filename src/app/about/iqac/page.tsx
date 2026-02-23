@@ -79,7 +79,7 @@ export default function IQACPage() {
             {/* Content */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-8 md:space-y-12">
                 {/* About IQAC */}
-                <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-10">
+                <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-10 text-justify">
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">About IQAC</h2>
                     <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg mb-4">
                         The Internal Quality Assurance Cell (IQAC) was established at

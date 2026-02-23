@@ -37,8 +37,6 @@ const sidebarItems = [
   { id: "hod", label: "HOD's Desk", icon: User },
   { id: "faculty", label: "Faculty", icon: Users },
   { id: "labs", label: "Laboratories", icon: FlaskConical },
-
-  { id: "syllabus", label: "Syllabus", icon: FileText },
   { id: "course-materials", label: "Course Materials", icon: Book },
 
   { id: "research-projects", label: "Research / Consultancy Projects", icon: Briefcase },
@@ -87,40 +85,38 @@ export default function DepartmentPage() {
       <Navbar variant="solid" />
 
       {/* ================= HEADER ================= */}
-      <section className="relative lg:sticky lg:top-0 z-30 pt-28 pb-8 px-4 bg-white border-b border-vignan-purple transition-all duration-300">
-
-        <div className="max-w-7xl mx-auto">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <Link href="/" className="hover:text-vignan-purple transition-colors">
+      <div className="relative lg:sticky lg:top-0 z-30 bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-[120px] pb-7 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="text-sm text-purple-200 mb-3 block">
+            <Link href="/" className="hover:text-white transition-colors">
               Home
             </Link>
-            <ChevronRight className="w-4 h-4" />
+            <span className="mx-2">/</span>
             <Link
               href="/academics"
-              className="hover:text-vignan-purple transition-colors"
+              className="hover:text-white transition-colors"
             >
               Academics
             </Link>
-            <ChevronRight className="w-4 h-4" />
+            <span className="mx-2">/</span>
             <Link
               href="/departments"
-              className="hover:text-vignan-purple transition-colors"
+              className="hover:text-white transition-colors"
             >
               Departments
             </Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">
+            <span className="mx-2">/</span>
+            <span className="text-white font-medium">
               {dept.name || deptId.toUpperCase()}
             </span>
           </nav>
-
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900" >
-            {dept.fullName}
-          </h1>
-
-          <div className="w-27 h-1 bg-vignan-purple mt-3 rounded-full" />
+          <div className="flex flex-col gap-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+              {dept.fullName}
+            </h1>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* ================= BODY ================= */}
       <section className="w-full px-4 sm:px-6 lg:px-8 py-6" id="dept-body">

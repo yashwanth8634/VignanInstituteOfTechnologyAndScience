@@ -138,7 +138,7 @@ export default function Placements() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-justify">
             {testimonials.map((t, i) => (
               <div
                 key={i}

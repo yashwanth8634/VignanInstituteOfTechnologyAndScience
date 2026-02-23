@@ -15,6 +15,7 @@ interface DropdownItem {
   href?: string;
   hasSubmenu?: boolean;
   submenu?: SubmenuItem[];
+  external?: boolean;
 }
 
 interface NavLink {
@@ -67,6 +68,7 @@ const navLinks: NavLink[] = [
         ],
       },
       { label: "Academic Regulations", href: "/academics/academic-regulations" },
+      { label: "Syllabus", href: "/academics/syllabus" },
       { label: "Academic Calendars", href: "/academics/academic-calendars" },
       { label: "Examinations", href: "/academics/examinations" },
       { label: "Certification Courses", href: "/academics/certification-courses" },
@@ -87,7 +89,7 @@ const navLinks: NavLink[] = [
       { label: "Cafeteria", href: "/facilities/cafeteria" },
       { label: "Transportation", href: "/facilities/transportation" },
       { label: "Hostel", href: "/facilities/hostel" },
-      { label: "Other Facilities", href: "/facilities/other-facilities" },
+      { label: "Vignan IT Maintenance System", href: "/FacilitiesPage/VignanITManagement.pdf", external: true },
     ],
   },
   {
@@ -96,11 +98,11 @@ const navLinks: NavLink[] = [
     hasDropdown: true,
     dropdown: [
       { label: "Right to Information (RTI)", href: "/mandatory-disclosures/rti" },
-      { label: "IT Policy", href: "/mandatory-disclosures/it-policy" },
-      { label: "Maintenance Policy", href: "/mandatory-disclosures/maintenance-policy" },
+      { label: "IT Policy", href: "/mandatory-disclosures/it-policy",external: true },
+      { label: "Maintenance Policy", href: "/mandatory-disclosures/maintenance-policy",external: true },
       { label: "Strategic Plans", href: "/mandatory-disclosures/strategic-plans" },
-      { label: "ARIIA", href: "/mandatory-disclosures/ariia" },
-      { label: "Online Grievance", href: "http://103.10.134.234/login/Grievance" },
+      { label: "ARIIA", href: "/mandatory-disclosures/ariia",external: true },
+      { label: "Online Grievance", href: "http://103.10.134.234/login/Grievance",external: true },
       { label: "College Level Committees", href: "/mandatory-disclosures/committees" },
       { label: "Professional Bodies", href: "/mandatory-disclosures/professional-bodies" },
     ],
@@ -273,6 +275,8 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                         ) : (
                           <Link
                             href={item.href || "#"}
+                            target={item.external ? "_blank" : undefined}
+                            rel={item.external ? "noopener noreferrer" : undefined}
                             className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple transition-colors"
                           >
                             {item.label}
@@ -383,6 +387,8 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                             ) : (
                               <Link
                                 href={item.href || "#"}
+                                target={item.external ? "_blank" : undefined}
+                                rel={item.external ? "noopener noreferrer" : undefined}
                                 onClick={() => setMobileOpen(false)}
                                 className="block text-base text-gray-600 hover:text-vignan-purple py-1"
                               >

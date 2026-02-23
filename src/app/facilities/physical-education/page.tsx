@@ -82,7 +82,7 @@ export default function SportsPage() {
                         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                             Physical Education & Sports
                         </h1>
-                        <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed">
+                        <p className="text-base sm:text-lg text-white opacity-90 max-w-3xl leading-relaxed text-justify">
                             Nurturing athletic excellence and physical well-being.
                         </p>
                     </div>
@@ -98,14 +98,14 @@ export default function SportsPage() {
                         Overview
                     </h2>
                     <div className="space-y-4 text-gray-700 leading-relaxed font-medium">
-                        <p>
+                        <p className="text-justify">
                             Vignan Institute of Technology and Science encourage its students to take part in the sports activities. Students are trained under the guidance of qualified Physical Education Trainer & have achieved excellence in University and National level in sports activities. Besides emphasizing on technical and academic excellence, the institute organizes various sports meets to give the students an opportunity to exhibit their athletic abilities on ground. It has created number of facilities for sports activity both in indoor & outdoor games.
                         </p>
-                        <p>
+                        <p className="text-justify">
                             Various physical activities were held under the able guidance of experts from Ramakrishna math, Hyderabad like Yoga for girls was exclusively conducted at the hostel premises and the students learnt different postures of body to maintain physical as well as mental fitness. The exercises filled the students with excitement.
                         </p>
                         <div className="bg-purple-50 p-6 rounded-xl border border-purple-100 mt-6">
-                            <p className="italic text-gray-800">
+                            <p className="italic text-gray-800 text-justify">
                                 "Yoga became an integral part of human beings these days and is acquired in every walk of life. To shine in personal and professional life one needs concentration and peace of mind. This can be attained through the practice of yoga. It eases off pressure and keeps afloat the human body and mind."
                             </p>
                         </div>
@@ -119,7 +119,7 @@ export default function SportsPage() {
                             <HeartPulse className="w-6 h-6 text-red-500" />
                             Benefits of Physical Activity
                         </h2>
-                        <p className="text-sm text-gray-600 mb-4 font-medium">Physical activity can help kids cope with stress. It also promotes:</p>
+                        <p className="text-sm text-gray-600 mb-4 font-medium text-justify">Physical activity can help kids cope with stress. It also promotes:</p>
                         <ul className="space-y-3">
                             {benefits.map((benefit, index) => (
                                 <li key={index} className="flex items-center gap-3 text-gray-700 bg-gray-50 p-2.5 rounded-lg border border-gray-100">
@@ -141,7 +141,7 @@ export default function SportsPage() {
                             {achievements.map((achievement, index) => (
                                 <div key={index} className="flex gap-3 items-start border-l-4 border-vignan-purple pl-4 py-2 bg-gray-50 rounded-r-lg hover:bg-purple-50 transition-colors">
                                     <Trophy className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                                    <p className="text-sm text-gray-700 leading-relaxed font-medium">{achievement}</p>
+                                    <p className="text-sm text-gray-700 leading-relaxed font-medium text-justify">{achievement}</p>
                                 </div>
                             ))}
                         </div>

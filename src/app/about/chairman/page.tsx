@@ -73,7 +73,7 @@ export default function ChairmanPage() {
                                 </h3>
                             </div>
 
-                            <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+                            <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base text-justify">
                                 <p>
                                     We are living in a transition era in India. The country is
                                     poised to take a great leap forward in the fields of Science

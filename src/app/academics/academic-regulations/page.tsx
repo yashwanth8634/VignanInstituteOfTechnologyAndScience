@@ -41,6 +41,17 @@ export default function AcademicRegulationsPage() {
             arrowClass: "text-[#6d28d9] group-hover:text-purple-900 group-hover:translate-x-1 transition-all"
         },
         {
+            name: "B.Tech Minor Degree (VR23)",
+            description: "Rules and structure for students pursuing an additional minor alongside their major.",
+            tags: ["B.Tech", "Minor", "VR23"],
+            href: "https://drive.google.com/file/d/1ySvp_STvPiD-HxVQlfevvaPwU2XuqwBv/view",
+            bgClass: "bg-[#f0fdfa]", // Light Teal
+            textClass: "text-[#0f766e]", // tailwind teal-700
+            tagBg: "bg-teal-100/70",
+            tagText: "text-teal-800",
+            arrowClass: "text-[#0f766e] group-hover:text-teal-900 group-hover:translate-x-1 transition-all"
+        },
+        {
             name: "M.Tech VR23",
             description: "Standards and protocols for the 2023 postgraduate batches.",
             tags: ["M.Tech", "VR23", "Historical"],
