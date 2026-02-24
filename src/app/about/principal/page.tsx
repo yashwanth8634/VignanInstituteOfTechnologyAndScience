@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Principal's Message | Vignan Institute of Technology and Science",
+    title: "Principal's Message | VITS",
     description:
-        "Message from Dr. G. Durga Sukumar, Principal of Vignan Institute of Technology and Science.",
+        "Message from Dr. G. Durga Sukumar, Principal of VITS.",
 };
 
 export default function PrincipalPage() {
@@ -57,7 +57,7 @@ export default function PrincipalPage() {
                                 Principal
                             </p>
                             <p className="text-gray-500 font-medium text-sm mt-1.5 text-center">
-                                Vignan Institute of Technology and Science
+                                VITS
                             </p>
                         </div>
 
@@ -113,7 +113,7 @@ export default function PrincipalPage() {
                                     Dr. G. Durga Sukumar, Ph.D (IIT-R)
                                 </p>
                                 <p className="text-vignan-purple font-medium text-sm md:text-base">
-                                    Principal, Vignan Institute of Technology and Science
+                                    Principal, VITS
                                 </p>
                             </div>
                         </div>

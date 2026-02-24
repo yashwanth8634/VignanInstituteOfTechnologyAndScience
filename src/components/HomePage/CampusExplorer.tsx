@@ -18,7 +18,7 @@ const cards = [
     description: "Explore our comprehensive academic programs",
     href: "/academics",
     image:
-      "https://images.unsplash.com/photo-1561089489-f13d5e730d72?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8QWNhZGVtaWNzfGVufDB8fDB8fHww",
+      "https://i.pinimg.com/736x/15/b2/e2/15b2e27ffb437ac1eaadac0418262b08.jpg",
   },
   {
     icon: UserPlus,
@@ -26,7 +26,7 @@ const cards = [
     description: "Join our community of future engineers",
     href: "/admissions",
     image:
-      "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80",
+      "https://i.pinimg.com/1200x/8b/2a/26/8b2a26ab6719e37b7993ae5a7975e5e8.jpg",
   },
   {
     icon: Briefcase,
@@ -34,7 +34,7 @@ const cards = [
     description: "Excellent career opportunities await",
     href: "/placements",
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=80",
+      "https://i.pinimg.com/1200x/2d/98/12/2d9812b228eaf0802b5d5b890cce63eb.jpg",
   },
   {
     icon: Lightbulb,
@@ -42,7 +42,7 @@ const cards = [
     description: "Cutting-edge research and innovation",
     href: "/research",
     image:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1000&q=80",
+      "https://i.pinimg.com/736x/24/f1/1c/24f11c2c6eb970b194228af749ba6468.jpg",
   },
 ];
 

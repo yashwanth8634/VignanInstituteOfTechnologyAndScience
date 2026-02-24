@@ -1,66 +1,348 @@
-
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 import React from 'react';
+import { Leaf, Droplets, Recycle, Accessibility, FileCheck, Star, ArrowRight, ExternalLink } from "lucide-react";
+
+export const metadata = {
+    title: "Institutional Values and Best Practices | VITS",
+    description: "Information about Institutional Values and Best Practices at VITS.",
+};
+
+// --- Data Structure ---
+
+interface GalleryImage {
+    title: string;
+    src: string;
+}
+
+interface LinkItem {
+    text: string;
+    url: string;
+}
+
+interface SectionContent {
+    subtitle?: string;
+    description?: string;
+    points?: string[];
+    image?: string;
+    gallery?: GalleryImage[];
+    links?: LinkItem[];
+}
+
+interface Section {
+    id: string;
+    title: string;
+    icon: React.ElementType;
+    content: SectionContent[];
+}
+
+const sections: Section[] = [
+    {
+        id: "waste-management",
+        title: "Waste Management",
+        icon: Recycle,
+        content: [
+            {
+                subtitle: "Solid Waste Management",
+                description: "The institution implements a rigorous waste segregation policy:",
+                points: [
+                    "Waste is collected and segregated into blue (dry/recyclable) and green (wet/bio-degradable) bins daily.",
+                    "Organic waste from trees, plants, vegetable peels, and fruits is converted into compost in dedicated pits.",
+                    "Damaged wooden and metal furniture is repaired and refurbished by the maintenance department to extend its lifespan."
+                ],
+                image: "/InformationPage/ValuesPage/Images/1.jpeg"
+            },
+            {
+                subtitle: "Liquid Waste Management",
+                points: [
+                    "Wastewater generated from the RO process (approx. 1500 liters/day) is directed to an overhead tank for washroom use.",
+                    "Wastewater from sinks and bathrooms is collected in a separate tank and reused to meet 15% of the gardening water requirements.",
+                    "Eco-friendly floor cleaners are used to minimize chemical pollution and water usage."
+                ],
+                image: "/InformationPage/ValuesPage/Images/2.jpeg"
+            },
+            {
+                subtitle: "e-Waste Management",
+                description: "Electronic waste is handled responsibly:",
+                points: [
+                    "Outdated systems and components are handed over to authorized e-waste collectors.",
+                    "Functional components are salvaged for student projects or display models.",
+                    "Solar panels with defects are returned to vendors via buy-back agreements."
+                ],
+                image: "/InformationPage/ValuesPage/Images/3.jpeg"
+            },
+            {
+                subtitle: "Hazardous Chemicals & Radioactive Waste",
+                points: [
+                    "Hazardous chemicals are separated, appropriately labeled, and stored securely away from students.",
+                    "Chemical waste is treated using scientific methods before disposal into dedicated basins."
+                ],
+                image: "/InformationPage/ValuesPage/Images/4.jpg"
+            }
+        ]
+    },
+    {
+        id: "water-conservation",
+        title: "Water Conservation",
+        icon: Droplets,
+        content: [
+            {
+                subtitle: "Rain Water Harvesting",
+                description: "Rainwater harvesting is our first line of defense against water shortages.",
+                points: [
+                    "The campus features natural and artificial recharge structures to counter declining groundwater tables.",
+                    "Four interlinked water ponds cover approx. 3 acres, collecting an average of 20,000 cubic meters annually.",
+                    "Stored water recharges 3 bore wells and meets daily campus requirements.",
+                    "Rooftop rainwater is diverted to ground level through a network of discharge pipes."
+                ],
+                image: "/InformationPage/ValuesPage/Images/5.jpg"
+            },
+            {
+                subtitle: "Other Facilities",
+                gallery: [
+                    { title: "Bore/Open Well Recharge", src: "/InformationPage/ValuesPage/Images/6.jpg" },
+                    { title: "Tanks and Bunds", src: "/InformationPage/ValuesPage/Images/7.jpeg" },
+                    { title: "Waste Water Recycling", src: "/InformationPage/ValuesPage/Images/8.jpeg" },
+                    { title: "Water Bodies Maintenance", src: "/InformationPage/ValuesPage/Images/9.jpeg" }
+                ]
+            }
+        ]
+    },
+    {
+        id: "green-campus",
+        title: "Green Campus Initiatives",
+        icon: Leaf,
+        content: [
+            {
+                subtitle: "Eco-Friendly Transport & Pathways",
+                points: [
+                    "Restricted entry of automobiles to reduce pollution.",
+                    "Encouragement of bicycles and battery-powered vehicles.",
+                    "Pedestrian-friendly pathways throughout the campus."
+                ],
+                gallery: [
+                    { title: "Restricted Entry", src: "/InformationPage/ValuesPage/Images/10.jpg" },
+                    { title: "Battery Vehicle", src: "/InformationPage/ValuesPage/Images/11.jpg" },
+                    { title: "Pathways", src: "/InformationPage/ValuesPage/Images/12.jpg" }
+                ]
+            },
+            {
+                subtitle: "Plastic Ban & Landscaping",
+                points: [
+                    "Strict ban on single-use plastics within the campus.",
+                    "Extensive landscaping with diverse trees and plants to maintain a green environment."
+                ],
+                gallery: [
+                    { title: "Plastic Ban Awareness", src: "/InformationPage/ValuesPage/Images/13.jpg" },
+                    { title: "Green Landscaping", src: "/InformationPage/ValuesPage/Images/14.png" }
+                ]
+            }
+        ]
+    },
+    {
+        id: "divyangjan",
+        title: "Facilities for Divyangjan",
+        icon: Accessibility,
+        content: [
+            {
+                subtitle: "Inclusive Infrastructure",
+                points: [
+                    "Ramps and lifts provided for easy access to all floors.",
+                    "Disabled-friendly washrooms available.",
+                    "Clear signboards for identifying classrooms and administrative offices."
+                ],
+                gallery: [
+                    { title: "Friendly Washrooms", src: "/InformationPage/ValuesPage/Images/15.jpg" },
+                    { title: "Sign Boards", src: "/InformationPage/ValuesPage/Images/16.jpg" }
+                ],
+                links: [
+                    { text: "Assistive Technology used in VGNT (PDF)", url: "/Pdfs/ValuesPage/AssistiveTech.pdf" }
+                ]
+            }
+        ]
+    },
+    {
+        id: "audits",
+        title: "Green Audits",
+        icon: FileCheck,
+        content: [
+            {
+                description: "We regularly conduct audits to monitor our environmental impact.",
+                points: [
+                    "Green Audits",
+                    "Energy Audit",
+                    "Environment Audit",
+                    "Clean and Green Campus Awards",
+                    "Environmental Promotional Activities"
+                ],
+                links: [
+                    { text: "View Green Audit Report 2021", url: "/Pdfs/ValuesPage/green-audit2021.pdf" }
+                ]
+            }
+        ]
+    },
+    {
+        id: "practices",
+        title: "Best Practices",
+        icon: Star,
+        content: [
+            {
+                description: "Our institution follows distinct best practices to ensure holistic development.",
+                links: [
+                    { text: "Best Practice - 1 (PDF)", url: "/Pdfs/ValuesPage/BestPractice-1.pdf" },
+                    { text: "Best Practice - 2 (PDF)", url: "/Pdfs/ValuesPage/BestPractice-2.pdf" },
+                    { text: "Institutional Distinctiveness (PDF)", url: "/Pdfs/ValuesPage/InstitutionalDistinstivness.pdf" }
+                ]
+            }
+        ]
+    }
+];
 
 export default function Page() {
-  return (
-    <div className="container mx-auto py-12 px-4 max-w-7xl">
-      <nav className="text-sm text-purple-200 mb-3">
-      <Link href="/" className="hover:text-white transition-colors">Home</Link>
-      <span className="mx-2">/</span>
-      <Link href="/information" className="hover:text-white transition-colors">Information</Link>
-      <span className="mx-2">/</span>
-      <span className="text-white font-medium">Values</span>
-      </nav>
+    return (
+        <div className="flex flex-col min-h-screen bg-gray-50 scroll-smooth">
+            <Navbar variant="solid" />
 
-      <h1 className="text-4xl font-bold mb-8 text-[#003666] border-b-2 border-gray-200 pb-4">Institutional Values and Best Practices</h1>
-      <div 
-        className="prose prose-lg max-w-none text-[#333333] leading-relaxed prose-headings:text-[#003666] prose-a:text-[#003666] prose-img:rounded-lg prose-img:shadow-md"
-        dangerouslySetInnerHTML={{ __html: `><div class="nav_sec scroll_sec">
-<p class="mb-4 text-gray-700 leading-relaxed"><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="#sec1">Management of Degradable &amp; Non Degradable Waste </a><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="#sec2">Water Conservation Facilities </a><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="#sec3">Green Campus Initiatives</a><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="#sec4">Green Audits</a><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="#sec5"> Facilities for Divyangjan</a><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="#sec6"> Best Practices</a><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="#sec7">Institutional Distinctiveness </a></p>
-</div><div   id="sec1" ><h3   >Management of Degradable & Non-Degradable Waste</h3><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Solid Waste Management </h3><ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-<li class="pl-1"><img class="wp-image-12261  aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/WhatsApp-Image-2021-10-29-at-4.46.57-AM-225x300.jpeg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  />Waste is collected and segregated in bins of two different colors every day. The waste is segregated into a recyclable and bio-degradable waste. The dry and wet waste is collected separately. The dry waste is collected in blue coloured bins and the wet waste is collected in green coloured bins. These bins are provided by the recyclers.</li>
-<li class="pl-1">The institution has a practice of preparing compost from the organic waste which is derived from the trees and plants in the surroundings. The vegetable peels and waste from fruits is disposed in compost pits and other solid waste like food waste produced is disposed</li>
-<li class="pl-1">The damaged, wooden and metal furniture like chairs and tables are repaired and brought to re-usable condition to the maximum extent in the maintenance department of the institution.</li>
-</ul>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Liquid Waste Management</h3><ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-<li class="pl-1"><img class="wp-image-12262  aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/WhatsApp-Image-2021-10-29-at-4.53.24-AM-300x225.jpeg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  />The wastewater generated from the reverse osmosis (RO) process is about 1500 liters per day which is directed to an overhead tank. It is used for meeting the partial requirement of water in washrooms.</li>
-<li class="pl-1">The waste water from the sinks and bathrooms on all the floors of the building is connected through pipes which are directed to waste water tank situated by the side of the main building. It is reused to meet 15% of the water requirements for watering the lawns and gardens within the campus.</li>
-<li class="pl-1">Eco-friendly floor cleaners are being used for cleaning purpose which consume less water.</li>
-</ul>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >e-Waste Management</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12263  aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/WhatsApp-Image-2021-10-28-at-11.18.47-PM-2-225x300.jpeg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  />E-waste includes out dated systems, electronic components which are handed over to an authorized e-waste collector for proper disposal. Some of the electrical and electronic components are utilized in projects. They are also used as display models in class rooms The waste material that could not be used for any constructive purpose is given away to an authorized recycler.<br />The solar panels with dark spots are sent back to the authorized vendor and the new panels are procured through buy-back agreement.</p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Hazardous Chemicals and Radioactive waste management</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12260 aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/hcrwm-300x225.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<p class="mb-4 text-gray-700 leading-relaxed">Hazardous chemicals and radioactive waste management<br />1. Hazardous chemicals are separated from other chemicals in the chemistry laboratory.<br />2. They are appropriately labelled.<br />3.They are stored separately away from the reach of the students.<br />4. The waste generated from the use of hazardous chemicals is treated by scientific methods and drained away into the separate basin meant especially for this purpose</p>
-</div><div   id="sec2" ><h3   >Water Conservation Facility</h3><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Rain Water Harvesting </h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12265 aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/RWH-300x175.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  />Rainwater harvesting systems should be our first line of defense against water shortage. The institution has the facility of natural rain water harvest structure and it was further developed to utilize the run-off water for purposes like gardening, feeding cattle in the surroundings, ground water recharge and for meeting certain amount of water requirement in the campus.</p>
-<ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-<li class="pl-1">Initially, the college was dependent on groundwater for its daily requirements but due to a decline in the groundwater table, in subsequent years, the natural recharge structures as well as artificial recharge structures have been developed within the campus for meeting the increasing demand for utilization of water in the campus.</li>
-<li class="pl-1">Our campus has four water ponds which are interlinked and cover approx. 3 acres of land area. The total volume of water collected in the four ponds is approx. at an average of 20,000 cubic meters per annum. The water which is stored in these ponds is used to meet the daily requirements of water within the campus and also helps in recharging of 3 bore wells.</li>
-<li class="pl-1">All the volume of rainwater collected on the rooftop of the buildings is diverted to the ground level through a series of discharge pipes connected for this purpose.</li>
-<li class="pl-1">Rainwater harvesting is a cost effective solution to bridge the gap between water availability and demand which has been a successful initiative in this campus.</li>
-</ul>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Bore/Open Well Recharge </h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12266 aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/bore-well-open-well-rc-300x175.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Construction of Tanks and Bunds</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12267 aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/WhatsApp-Image-2021-10-28-at-11.18.48-PM-2-300x225.jpeg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Waste Water Recycling</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12268 aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/WhatsApp-Image-2021-10-28-at-11.19.29-PM-2-225x300.jpeg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Maintenance of Water Bodies and Distribution system in the campus</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12269 alignleft lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/WhatsApp-Image-2021-10-28-at-11.19.30-PM-2-300x225.jpeg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<p class="mb-4 text-gray-700 leading-relaxed"> </p>
-</div><div   id="sec3" ><h3   >Green Campus Initiatives</h3><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Restricted Entry of Automobiles</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12281 alignleft lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/20210916_123510PMByGPSMapCamera-300x169.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /> <img class="wp-image-12282 aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/20210916_123940PMByGPSMapCamera-1-300x169.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Use of Bicylces/Battery Powered Vehicles</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="size-medium wp-image-12293 alignnone lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/BPV-225x300.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Pedestrian Friendly Path ways</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="size-medium wp-image-12286 alignleft lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/20210916_123721PMByGPSMapCamera-300x169.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  />           <img class="alignnone size-medium wp-image-12285 lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/20210916_123558PMByGPSMapCamera-300x169.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<p class="mb-4 text-gray-700 leading-relaxed"> </p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Ban on use of Plastic</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="alignnone  wp-image-12290 lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/BP1-300x225.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  />    <img class="alignnone  wp-image-12289 lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/BP-300x169.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Landscaping with trees and plants</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="wp-image-12291 aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/image-10-300x169.png" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-</div><div   id="sec5" ><h3   >Facilities for Divyangjan</h3><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Ramps/Lifts for Easy Access</h3><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Disabled Friendly Washrooms</h3><p class="mb-4 text-gray-700 leading-relaxed"><img class="size-medium wp-image-12301 aligncenter lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/washroom-184x300.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Sign Boards for Identifying Classrooms/Offices</h3><p class="mb-4 text-gray-700 leading-relaxed" ><img class="alignnone size-medium wp-image-12299 lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/signposts-225x300.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  />           <img class="alignnone size-medium wp-image-12297 lazyload" src="https://vignanits.ac.in/wp-content/uploads/2021/11/signpost1-225x300.jpg" alt=""   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  /></p>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Assistive Technology and Facilities for Divyangjan</h3><h2><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" title="Assistive Technology used in VGNT" href="https://vignanits.ac.in/NAAC/CR7/7.1.7/7.1.7_SUB.pdf">Assistive Technology used in VGNT</a></h2>
-</div><div   id="sec4" ><h3   >Green Audits</h3><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Audits</h3><h2><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/wp-content/uploads/2021/11/green-audit2021.pdf">Green Audits</a></h2>
-<p class="mb-4 text-gray-700 leading-relaxed"> </p>
-</div><div   id="sec6" ><h3   >Green Audits</h3><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Audits</h3><p class="mb-4 text-gray-700 leading-relaxed">Green Audits</p>
-<p class="mb-4 text-gray-700 leading-relaxed">Energy Audit</p>
-<p class="mb-4 text-gray-700 leading-relaxed">Environment Audit</p>
-<p class="mb-4 text-gray-700 leading-relaxed">Clean and Green Campus Awards</p>
-<p class="mb-4 text-gray-700 leading-relaxed">Environmental Promotional Activies</p>
-</div><div   id="sec4" ><h3   >Best Practices</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/Best%20Practice-1.pdf" target="_self" >Best Practice-1</a><h5    ><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/Best%20Practice-2.pdf" target="_self" >Best Practice-2</a></h5></div><div   id="sec7" ><h3   >Institutional Distinctiviness</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR7/VITS-7.3.1-NAAC_Final.pdf"    ><span  >Institutional Distinctiveness</span></a></div></div></div>` }} 
-      />
-    </div>
-  );
+            {/* Page Header */}
+            <section className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-32 pb-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav className="text-sm text-purple-200 mb-6 flex items-center space-x-2">
+                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                        <span>/</span>
+                        <Link href="/information" className="hover:text-white transition-colors">Information</Link>
+                        <span>/</span>
+                        <span className="text-white font-medium">Values</span>
+                    </nav>
+
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Institutional Values & Best Practices</h1>
+                    <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
+                        Commitment to sustainability, inclusivity, and excellence in every aspect of campus life.
+                    </p>
+                </div>
+            </section>
+
+            {/* Main Content Layout */}
+            <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full flex flex-col lg:flex-row gap-12">
+
+                {/* Sidebar Navigation (Sticky) */}
+                <aside className="lg:w-1/4 shrink-0">
+                    <div className="sticky top-24 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div className="p-4 bg-gray-50 border-b border-gray-100 font-bold text-gray-900">
+                            Quick Navigation
+                        </div>
+                        <nav className="flex flex-col">
+                            {sections.map((section) => {
+                                const Icon = section.icon;
+                                return (
+                                    <a
+                                        key={section.id}
+                                        href={`#${section.id}`}
+                                        className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:bg-purple-50 hover:text-vignan-purple transition-colors border-b border-gray-50 last:border-0"
+                                    >
+                                        <Icon className="w-4 h-4" />
+                                        {section.title}
+                                    </a>
+                                );
+                            })}
+                        </nav>
+                    </div>
+                </aside>
+
+                {/* Content Area */}
+                <div className="flex-1 space-y-16">
+                    {sections.map((section) => {
+                        const Icon = section.icon;
+                        return (
+                            <section key={section.id} id={section.id} className="scroll-mt-32">
+                                <div className="flex items-center gap-3 mb-8 border-b border-gray-200 pb-4">
+                                    <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center text-vignan-purple">
+                                        <Icon className="w-6 h-6" />
+                                    </div>
+                                    <h2 className="text-3xl font-bold text-gray-900">{section.title}</h2>
+                                </div>
+
+                                <div className="space-y-12">
+                                    {section.content.map((block, idx) => (
+                                        <div key={idx} className="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100">
+                                            {block.subtitle && (
+                                                <h3 className="text-xl font-bold text-[#003666] mb-4">{block.subtitle}</h3>
+                                            )}
+
+                                            {block.description && (
+                                                <p className="text-gray-700 mb-4 leading-relaxed">{block.description}</p>
+                                            )}
+
+                                            <div className="flex flex-col md:flex-row gap-8">
+                                                {/* Text Content */}
+                                                <div className="flex-1">
+                                                    {block.points && (
+                                                        <ul className="space-y-3">
+                                                            {block.points.map((point, i) => (
+                                                                <li key={i} className="flex items-start gap-3 text-gray-700 leading-relaxed text-sm md:text-base">
+                                                                    <div className="w-1.5 h-1.5 rounded-full bg-vignan-purple mt-2 shrink-0" />
+                                                                    {point}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    )}
+
+                                                    {block.links && (
+                                                        <div className="mt-6 flex flex-wrap gap-4">
+                                                            {block.links.map((link, i) => (
+                                                                <a
+                                                                    key={i}
+                                                                    href={link.url}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-50 text-[#003666] font-medium rounded-lg hover:bg-[#003666] hover:text-white transition-all text-sm shadow-sm border border-gray-200"
+                                                                >
+                                                                    {link.text} <ExternalLink className="w-3 h-3" />
+                                                                </a>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                {/* Single Image */}
+                                                {block.image && (
+                                                    <div className="md:w-1/3 shrink-0">
+                                                        <img
+                                                            src={block.image}
+                                                            alt={block.subtitle || section.title}
+                                                            className="rounded-xl shadow-md w-full h-auto object-cover border border-gray-100"
+                                                        />
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            {/* Gallery Grid (for sections with multiple images) */}
+                                            {block.gallery && (
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                                                    {block.gallery.map((img, i) => (
+                                                        <div key={i} className="group">
+                                                            <div className="rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-gray-50 h-48 mb-2">
+                                                                <img
+                                                                    src={img.src}
+                                                                    alt={img.title}
+                                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                                />
+                                                            </div>
+                                                            <p className="text-sm font-medium text-gray-600 text-center">{img.title}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        );
+                    })}
+                </div>
+            </div>
+
+            <Footer />
+        </div>
+    );
 }

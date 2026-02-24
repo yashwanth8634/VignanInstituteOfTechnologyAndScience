@@ -6,6 +6,9 @@ import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import { Download, BookOpen, ChevronDown } from "lucide-react";
 
+
+
+
 export default function SyllabusPage() {
     // ---------- B.Tech VR25 ----------
     const btechVR25 = [
@@ -65,67 +68,70 @@ export default function SyllabusPage() {
         {
             year: "B.Tech III Year Syllabus",
             branches: [
-                { sno: 1, name: "Computer Science and Engineering (CSE)", href: "#" },
-                { sno: 2, name: "CSE (Artificial Intelligence & Machine Learning)", href: "#" },
-                { sno: 3, name: "CSE (Data Science)", href: "#" },
-                { sno: 4, name: "CSE (Information Technology)", href: "#" },
-                { sno: 5, name: "Artificial Intelligence and Machine Learning (AI&ML)", href: "#" },
-                { sno: 6, name: "Artificial Intelligence and Data Science (AI&DS)", href: "#" },
-                { sno: 7, name: "Electronics and Communication Engineering (ECE)", href: "#" },
-                { sno: 8, name: "Electronics and Instrumentation Engineering (EIE)", href: "#" },
-                { sno: 9, name: "Electrical and Electronics Engineering (EEE)", href: "#" },
-                { sno: 10, name: "Mechanical Engineering (ME)", href: "#" },
-                { sno: 11, name: "Civil Engineering (CE)", href: "#" },
+                { sno: 1, name: "Computer Science and Engineering (CSE)", href: "https://drive.google.com/file/d/1gt7GrmJYuCGhA0FQQYIwI3UUx6TwBrR_/view" },
+                { sno: 2, name: "CSE (Artificial Intelligence & Machine Learning)", href: "https://drive.google.com/file/d/1VclQGuPIUPdfLTvKEytmMeBF5uE2sMuS/view" },
+                { sno: 3, name: "CSE (Data Science)", href: "https://drive.google.com/file/d/1F2aQUi5W4E_ZfTdeyqinrtrJAoiV8ncd/view" },
+                { sno: 4, name: "CSE (Information Technology)", href: "https://drive.google.com/file/d/1-LOusJ421yDeulw0gMebqxE1wqRTubE1/view" },
+                { sno: 6, name: "Artificial Intelligence and Data Science (AI&DS)", href: "https://drive.google.com/file/d/1RPqn03-dxJpda0jKal7-67jQRTUh629G/view" },
+                { sno: 7, name: "Electronics and Communication Engineering (ECE)", href: "https://drive.google.com/file/d/19DSiN5btXZBkJQIZZieusJYst7QNm6a4/view" },
+                { sno: 8, name: "Electronics and Instrumentation Engineering (EIE)", href: "https://drive.google.com/file/d/1xZX7rBxy2MI8cKLuVxSsT_7CRLynFEmC/view" },
+                { sno: 9, name: "Electrical and Electronics Engineering (EEE)", href: "https://drive.google.com/file/d/1xafoRzEh2vlQwpMksLu2m3-2LAlmrNzk/view" },
+                { sno: 10, name: "Mechanical Engineering (ME)", href: "https://drive.google.com/file/d/1kar7mnxqthS6ONNlIjbo9gN_1RXaAq9B/view" },
+                { sno: 11, name: "Civil Engineering (CE)", href: "https://drive.google.com/file/d/1FJHYQ06huaih2uBInH95OKSMfbueMhLP/view" },
             ]
         },
 
         {
             year: "B.Tech IV Year Syllabus",
             branches: [
-                { sno: 1, name: "Computer Science and Engineering (CSE)", href: "#" },
-                { sno: 2, name: "CSE (Artificial Intelligence & Machine Learning)", href: "#" },
-                { sno: 3, name: "CSE (Data Science)", href: "#" },
-                { sno: 4, name: "CSE (Information Technology)", href: "#" },
-                { sno: 5, name: "Artificial Intelligence and Machine Learning (AI&ML)", href: "#" },
-                { sno: 6, name: "Artificial Intelligence and Data Science (AI&DS)", href: "#" },
-                { sno: 7, name: "Electronics and Communication Engineering (ECE)", href: "#" },
-                { sno: 8, name: "Electronics and Instrumentation Engineering (EIE)", href: "#" },
-                { sno: 9, name: "Electrical and Electronics Engineering (EEE)", href: "#" },
-                { sno: 10, name: "Mechanical Engineering (ME)", href: "#" },
-                { sno: 11, name: "Civil Engineering (CE)", href: "#" },
+                { sno: 1, name: "Computer Science and Engineering (CSE)", href: "https://drive.google.com/file/d/1rEBEaONxabaec4aBprKHywTqY6l2Ljd1/view" },
+                { sno: 2, name: "CSE (Artificial Intelligence & Machine Learning)", href: "https://drive.google.com/file/d/1swzzVaMI_jILs-Vp-N041wDz6_Vk-1MX/view" },
+                { sno: 3, name: "CSE (Data Science)", href: "https://drive.google.com/file/d/1tJTJwhtDPad2Ojdx0xboj1V-rsCqQyUu/view" },
+                { sno: 4, name: "CSE (Information Technology)", href: "https://drive.google.com/file/d/1J8crnHi4lpKWrIlkxhbxsU9GRV8NqDp_/view" },
+                { sno: 6, name: "Artificial Intelligence and Data Science (AI&DS)", href: "https://drive.google.com/file/d/1__u4dvXtF-mbBeO0B2t2RHUW0EI8tdxZ/view" },
+                { sno: 7, name: "Electronics and Communication Engineering (ECE)", href: "https://drive.google.com/file/d/1aZpqoL6yE87rShYECYa4beV5EL-RuxCp/view" },
+                { sno: 8, name: "Electronics and Instrumentation Engineering (EIE)", href: "https://drive.google.com/file/d/14d5o5gU4I4KdNaa-OLi74xJq-tVRGLRt/view" },
+                { sno: 9, name: "Electrical and Electronics Engineering (EEE)", href: "https://drive.google.com/file/d/11O4aC9jk2pEe7hDya392DYD5fbrCt2lE/view" },
+                { sno: 10, name: "Mechanical Engineering (ME)", href: "https://drive.google.com/file/d/1a9FI75m0hP9Z95l4PrmAFpxcIsa4wi7J/view" },
+                { sno: 11, name: "Civil Engineering (CE)", href: "https://drive.google.com/file/d/1KIiwW7MUca5VNtABF9axWHqx7P1Sksdw/view" },
             ]
         },
     ];
 
     const minorDepartmentsVR23 = [
-        { sno: 1, name: "B.Tech. Minor in Artificial Intelligence & Machine Learning", href: "#" },
-        { sno: 2, name: "B.Tech. Minor in Cyber Security", href: "#" },
-        { sno: 3, name: "B. Tech. Minor in Data Science", href: "#" },
-        { sno: 4, name: "B.Tech. Minor in Innovation and Entrepreneurship", href: "#" },
-        { sno: 5, name: "B.Tech. Minor in Internet of Things", href: "#" },
+        {
+            year: "B.Tech Minor Program III and IV Year",
+            branches: [
+                { sno: 1, name: "B.Tech. Minor in Artificial Intelligence & Machine Learning", href: "https://drive.google.com/file/d/1fUwVj-q9kJeLnwQi-bE3Hi4f2bAa3kkw/view" },
+                { sno: 2, name: "B.Tech. Minor in Cyber Security", href: "https://drive.google.com/file/d/1THoX6Ss_XFmckaFeVQrpzhnHWPNG6mH5/view" },
+                { sno: 3, name: "B. Tech. Minor in Data Science", href: "https://drive.google.com/file/d/1d_qX-JMS9FvnEwsBrBjp8zcGTLghxdK1/view" },
+                { sno: 4, name: "B.Tech. Minor in Innovation and Entrepreneurship", href: "https://drive.google.com/file/d/1vrr8BBvXpZWDXGxjcYXKSsAiO4OmtIcP/view" },
+                { sno: 5, name: "B.Tech. Minor in Internet of Things", href: "https://drive.google.com/file/d/16VGceC15Ad7udIzjeAAPnou-L2oggUR2/view" },
+            ]
+        }
     ];
 
     // ---------- M.Tech ----------
     const mtechVR25 = [
         {
-            year: "M.Tech Syllabus",
+            year: "M.Tech I and II Year Syllabus",
             branches: [
-                { sno: 1, name: "Embedded Systems", href: "#" },
-                { sno: 2, name: "Power Electronics & Electrical Drives", href: "#" },
-                { sno: 3, name: "Artificial Intelligence & Data Science", href: "#" },
-                { sno: 4, name: "Computer Science & Engineering", href: "#" },
+                { sno: 1, name: "Embedded Systems", href: "https://drive.google.com/file/d/1Bf2v5PG8dwrTvNhOUc8np8jp-7SC9vIN/view" },
+                { sno: 2, name: "Power Electronics & Electrical Drives", href: "https://drive.google.com/file/d/1sLqFSZp05Z4HA7NnMfCohLLckwzLwBeF/view" },
+                { sno: 3, name: "Artificial Intelligence & Data Science", href: "https://drive.google.com/file/d/1E07Kf8wSoRPYAa_BDoHNFRfIQYUO8BPu/view" },
+                { sno: 4, name: "Computer Science & Engineering", href: "https://drive.google.com/file/d/1EoEUxSDnSPthyEKMb7nqawEpR6OZ2lpF/view" },
             ]
         }
     ];
 
     const mtechVR23 = [
         {
-            year: "M.Tech Syllabus",
+            year: "M.Tech I and II Year Syllabus",
             branches: [
-                { sno: 1, name: "Embedded Systems", href: "#" },
-                { sno: 2, name: "Power Electronics & Electrical Drives", href: "#" },
-                { sno: 3, name: "Artificial Intelligence & Data Science", href: "#" },
-                { sno: 4, name: "Computer Science & Engineering", href: "#" },
+                { sno: 1, name: "Embedded Systems", href: "https://drive.google.com/file/d/1bui67VqCCzMK6Kucwv1HUvbbOiSFxjqV/view" },
+                { sno: 2, name: "Power Electronics & Electrical Drives", href: "https://drive.google.com/file/d/1vq4XV8VMhI3NK66pWYxovVXiQtMCK_Wu/view" },
+                { sno: 3, name: "Artificial Intelligence & Data Science", href: "https://drive.google.com/file/d/1XItcKmHvKd89SVMus4Yr2fK6jv9P2Bbe/view" },
+                { sno: 4, name: "Computer Science & Engineering", href: "https://drive.google.com/file/d/1MmMiKLoixgmHPXCOUGlR0mFaNtq1hUey/view" },
             ]
         }
     ];
@@ -263,7 +269,9 @@ export default function SyllabusPage() {
                     </h2>
 
                     <div className="space-y-8">
-                        <StructuredDropdown title="VR23 B.Tech with Minor Program Syllabus" items={minorDepartmentsVR23} theme="purple" />
+                        {minorDepartmentsVR23.map((item, index) => (
+                            <StructuredDropdown key={index} title={item.year} items={item.branches} theme="purple" />
+                        ))}
                     </div>
                 </div>
 

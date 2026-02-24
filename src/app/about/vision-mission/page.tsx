@@ -3,9 +3,9 @@ import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Vision & Mission | Vignan Institute of Technology and Science",
+    title: "Vision & Mission | VITS",
     description:
-        "Vision and Mission of Vignan Institute of Technology and Science.",
+        "Vision and Mission of VITS.",
 };
 
 export default function VisionMissionPage() {
@@ -87,7 +87,7 @@ export default function VisionMissionPage() {
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Quality Policy</h2>
                     </div>
                     <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">
-                        Vignan Institute of Technology and Science is committed to providing
+                        VITS is committed to providing
                         quality technical education through continuous improvement of
                         teaching-learning processes, infrastructure, and industry
                         interactions. We strive to produce graduates who are technically

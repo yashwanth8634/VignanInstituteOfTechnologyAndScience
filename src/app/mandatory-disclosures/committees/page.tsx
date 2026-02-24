@@ -6,6 +6,9 @@ import Footer from "@/components/HomePage/Footer";
 import { Users, ChevronDown, FileText, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
+
+
+
 interface CommitteeLink {
   label: string;
   href: string;

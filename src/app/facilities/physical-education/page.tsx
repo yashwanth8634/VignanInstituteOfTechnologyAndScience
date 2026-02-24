@@ -6,6 +6,9 @@ import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import { Trophy, Activity, Dumbbell, Map, Medal, Users, HeartPulse, ShieldCheck, Smile } from "lucide-react";
 
+
+
+
 export default function SportsPage() {
     const yogaPrograms = [
         { sno: 1, programme: "Yoga and Meditation", year: "2017-18", conducted: 1 },

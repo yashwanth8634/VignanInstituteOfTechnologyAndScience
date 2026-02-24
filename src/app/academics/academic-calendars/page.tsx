@@ -6,6 +6,9 @@ import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import { Calendar, Download, ChevronDown } from "lucide-react";
 
+
+
+
 export default function AcademicCalendarsPage() {
     const [openYear, setOpenYear] = useState<string | null>("2025-2026"); // Default open year
 

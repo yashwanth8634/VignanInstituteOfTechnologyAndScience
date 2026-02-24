@@ -1,23 +1,161 @@
-
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 import React from 'react';
+import { Download, FileText, Cpu, MessageCircle, HeartHandshake, MapPin, ExternalLink } from "lucide-react";
+
+export const metadata = {
+    title: "Skills Enhancement | VITS",
+    description: "Information about Skills Enhancement programs and reports at VITS.",
+};
+
+const skillCategories = [
+    {
+        title: "Soft Skills Programs",
+        description: "Training programs focused on personality development, leadership, and interpersonal skills.",
+        icon: HeartHandshake,
+        color: "text-pink-600",
+        bgColor: "bg-pink-50",
+        borderColor: "border-pink-100",
+        documents: [
+            { year: "2020-2021", link: "/Pdfs/SkillEnhancement/SoftSkills/2020-21.pdf" },
+            { year: "2019-2020", link: "/Pdfs/SkillEnhancement/SoftSkills/2019-20.pdf" },
+            { year: "2018-2019", link: "/Pdfs/SkillEnhancement/SoftSkills/2018-19.pdf" },
+            { year: "2017-2018", link: "/Pdfs/SkillEnhancement/SoftSkills/2017-18.pdf" },
+            { year: "2016-2017", link: "/Pdfs/SkillEnhancement/SoftSkills/2016-17.pdf" },
+        ],
+        geoTagLink: "/Pdfs/SkillEnhancement/SoftSkills/images.pdf"
+    },
+    {
+        title: "Language & Communication Skills",
+        description: "Initiatives to improve verbal and written communication proficiency for professional success.",
+        icon: MessageCircle,
+        color: "text-blue-600",
+        bgColor: "bg-blue-50",
+        borderColor: "border-blue-100",
+        documents: [
+            { year: "2020-2021", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2020-21.pdf" },
+            { year: "2019-2020", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2019-20.pdf" },
+            { year: "2018-2019", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2018-19.pdf" },
+            { year: "2017-2018", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2017-18.pdf" },
+            { year: "2016-2017", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2016-17.pdf" },
+        ],
+        geoTagLink: "http://ENGLISH%20LANGUAGE%20COMMUNICATION.pdf" // Note: Link preserved from source, though appears incomplete
+    },
+    {
+        title: "Life Skills",
+        description: "Workshops on yoga, physical fitness, health, and hygiene for holistic well-being.",
+        icon: FileText,
+        color: "text-green-600",
+        bgColor: "bg-green-50",
+        borderColor: "border-green-100",
+        documents: [
+            { year: "2020-2021", link: "/Pdfs/SkillEnhancement/LifeSkills/2020-21.pdf" },
+            { year: "2019-2020", link: "/Pdfs/SkillEnhancement/LifeSkills/2019-20.pdf" },
+            { year: "2018-2019", link: "/Pdfs/SkillEnhancement/LifeSkills/2018-19.pdf" },
+            { year: "2017-2018", link: "/Pdfs/SkillEnhancement/LifeSkills/2017-18.pdf" },
+            { year: "2016-2017", link: "/Pdfs/SkillEnhancement/LifeSkills/2016-17.pdf" },
+        ],
+        geoTagLink: "/Pdfs/SkillEnhancement/LifeSkills/images.pdf"
+    },
+    {
+        title: "ICT / Computing Skills",
+        description: "Technical training on latest software, tools, and computing trends.",
+        icon: Cpu,
+        color: "text-purple-600",
+        bgColor: "bg-purple-50",
+        borderColor: "border-purple-100",
+        documents: [
+            { year: "2020-2021", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2020-21.pdf" },
+            { year: "2019-2020", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2019-20.pdf" },
+            { year: "2018-2019", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2018-19.pdf" },
+            { year: "2017-2018", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2017-18.pdf" },
+            { year: "2016-2017", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2016-17.pdf" },
+        ],
+        geoTagLink: "/Pdfs/SkillEnhancement/ICTComputingSkills/images.pdf"
+    },
+];
 
 export default function Page() {
-  return (
-    <div className="container mx-auto py-12 px-4 max-w-7xl">
-      <nav className="text-sm text-purple-200 mb-3">
-      <Link href="/" className="hover:text-white transition-colors">Home</Link>
-      <span className="mx-2">/</span>
-      <Link href="/information" className="hover:text-white transition-colors">Information</Link>
-      <span className="mx-2">/</span>
-      <span className="text-white font-medium">Skills</span>
-      </nav>
+    return (
+        <div className="flex flex-col min-h-screen bg-gray-50">
+            <Navbar variant="solid" />
 
-      <h1 className="text-4xl font-bold mb-8 text-[#003666] border-b-2 border-gray-200 pb-4">Skills Enhancement</h1>
-      <div 
-        className="prose prose-lg max-w-none text-[#333333] leading-relaxed prose-headings:text-[#003666] prose-a:text-[#003666] prose-img:rounded-lg prose-img:shadow-md"
-        dangerouslySetInnerHTML={{ __html: `><h3    >Soft Skills Programs</h3><h3   >Academic Year 2020-2021</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/SS/2020-21.pdf" target="_blank"   ><span  >Downlaod</span></a><h3   >Academic Year 2017-2018</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/SS/2017-18.pdf" target="_blank"   ><span  >Downlaod</span></a><h3   >Academic Year 2019-2020</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/SS/2019-20.pdf"   ><span  >Downlaod</span></a><h3   >Academic Year 2016-2017</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/SS/2016-17.pdf"   ><span  >Downlaod</span></a><h3   >Academic Year 2018-2019</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="http://vignanits.ac.in/NAAC/CR5/5.1.3/SS/2018-19.pdf"   ><span  >Downlaod</span></a><h3   >GeoTagged Photographs</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/naac_f/DVV/CR5/SOFT%20SKILLS.pdf"   ><span  >Downlaod</span></a><h3    >Language and communication skills</h3><h3   >Academic Year 2020-2021</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/LC/2020-21.pdf"   ><span  >Download</span></a><h3   >Academic Year 2019-2020</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/LC/2019-20.pdf"   ><span  >Download</span></a><h3   >Academic Year 2018-2019</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="http://vignanits.ac.in/NAAC/CR5/5.1.3/LC/2018-19.pdf"   ><span  >Download</span></a><h3   >Academic Year 2017-2018</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/LC/2017-18.pdf"   ><span  >Download</span></a><h3   >Academic Year 2016-2017</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/LC/2016-17.pdf"   ><span  >Download</span></a><h3   >Geotagged Photographs</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="http://ENGLISH%20LANGUAGE%20COMMUNICATION.pdf"   ><span  >Download</span></a><h3    >Life skills</h3><h3   >Academic Year 2020-2021</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/LS/2020-21.pdf" target="_blank"   ><span  >Downlaod</span></a><h3   >Academic Year 2017-2018</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/LS/2017-18.pdf" target="_blank"   ><span  >Downlaod</span></a><h3   >Academic Year 2019-2020</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/LS/2019-20.pdf"   ><span  >Downlaod</span></a><h3   >Academic Year 2016-2017</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="http://vignanits.ac.in/NAAC/CR5/5.1.3/LS/2016-17.pdf"   ><span  >Downlaod</span></a><h3   >Academic Year 2018-2019</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="http://vignanits.ac.in/NAAC/CR5/5.1.3/LS/2018-19.pdf"   ><span  >Downlaod</span></a><h3   >Geotagged Photographs</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/naac_f/DVV/CR5/LIFE%20SKILL.pdf"   ><span  >Downlaod</span></a><h3    >ICT/Computing skills</h3><h3   >Academic Year 2020-2021</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/ICT/2020-2021_ICT.pdf"   ><span  >Download</span></a><h3   >Academic Year 2019-2020</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/ICT/2019-2020_ICT.pdf"   ><span  >Download</span></a><h3   >Academic Year 2018-2019</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/ICT/2018-2019_ICT.pdf"   ><span  >Download</span></a><h3   >Academic Year 2017-2018</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/NAAC/CR5/5.1.3/ICT/2017-2018_ICT.pdf"   ><span  >Download</span></a><h3   >Academic Year 2016-2017</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="http://vignanits.ac.in/NAAC/CR5/5.1.3/ICT/2016-2017_ICT.pdf"   ><span  >Download</span></a><h3   >Geotagged Photographs</h3><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/naac_f/DVV/CR5/ICT%20SKILL.pdf"   ><span  >Download</span></a></div></div>` }} 
-      />
-    </div>
-  );
+            {/* Page Header */}
+            <section className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-32 pb-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav className="text-sm text-purple-200 mb-6 flex items-center space-x-2">
+                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                        <span>/</span>
+                        <Link href="/information" className="hover:text-white transition-colors">Information</Link>
+                        <span>/</span>
+                        <span className="text-white font-medium">Skills</span>
+                    </nav>
+
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Skills Enhancement</h1>
+                    <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
+                        Comprehensive capacity building and skills enhancement initiatives for holistic student development.
+                    </p>
+                </div>
+            </section>
+
+            {/* Main Content */}
+            <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                    {skillCategories.map((category, index) => {
+                        const Icon = category.icon;
+                        return (
+                            <div key={index} className={`bg-white rounded-3xl p-8 border ${category.borderColor} shadow-sm hover:shadow-md transition-all duration-300 flex flex-col`}>
+                                <div className="flex items-start gap-4 mb-6">
+                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${category.bgColor} ${category.color}`}>
+                                        <Icon className="w-7 h-7" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-2xl font-bold text-gray-900 mb-2">{category.title}</h2>
+                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                            {category.description}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-3 flex-grow">
+                                    <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Annual Reports</h3>
+                                    {category.documents.map((doc, idx) => (
+                                        <a 
+                                            key={idx}
+                                            href={doc.link}
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-100 transition-colors group"
+                                        >
+                                            <span className="text-sm font-medium text-gray-700">Academic Year {doc.year}</span>
+                                            <span className="text-xs font-bold text-vignan-purple flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                Download <Download className="w-3 h-3" />
+                                            </span>
+                                        </a>
+                                    ))}
+                                </div>
+
+                                <div className="mt-8 pt-6 border-t border-gray-100">
+                                    <a 
+                                        href={category.geoTagLink}
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold transition-colors ${category.bgColor} ${category.color} hover:brightness-95`}
+                                    >
+                                        <MapPin className="w-4 h-4" />
+                                        View Geotagged Photographs
+                                    </a>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+
+            </div>
+
+            <Footer />
+        </div>
+    );
 }

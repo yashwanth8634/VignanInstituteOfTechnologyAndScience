@@ -6,6 +6,9 @@ import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import { CheckCircle2, Phone, Mail, GraduationCap, IndianRupee, MapPin } from "lucide-react";
 
+
+
+
 export default function AdmissionsPage() {
     const btechCourses = [
         { id: 1, name: "Computer Science & Engineering", intake: 240 },

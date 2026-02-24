@@ -7,6 +7,9 @@ import Footer from "@/components/HomePage/Footer";
 import Image from "next/image";
 import { BookOpen, Library, Clock, Users, Monitor, BookMarked, Globe } from "lucide-react";
 
+
+
+
 export default function VignanaDharaPage() {
   const booksData = [
     { type: "Under Graduate", sno: 1, department: "Civil Engineering", titles: 400, volumes: 2200 },

@@ -3,8 +3,8 @@ import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Core Values | Vignan Institute of Technology and Science",
-    description: "Core Values of Vignan Institute of Technology and Science.",
+    title: "Core Values | VITS",
+    description: "Core Values of VITS.",
 };
 
 const coreValues = [
@@ -119,7 +119,7 @@ export default function CoreValuesPage() {
                     </h2>
                     <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
                         These core values define who we are and guide everything we do at
-                        Vignan Institute of Technology and Science.
+                        VITS.
                     </p>
                 </div>
 

@@ -28,7 +28,7 @@ export default function CTA() {
             Apply Now
           </Link>
           <Link
-            href="/contact"
+            href="/admissions"
             className="px-8 py-3.5 bg-transparent border-2 border-white text-white font-bold text-lg rounded-md hover:bg-white/10 transition-all duration-300 min-w-[180px]"
           >
             Contact Us

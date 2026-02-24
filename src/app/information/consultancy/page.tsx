@@ -1,78 +1,228 @@
-
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
-import React from 'react';
+import {
+  Briefcase,
+  Users,
+  Lightbulb,
+  Settings,
+  ClipboardCheck,
+  ChevronRight,
+  Target,
+  Zap,
+  Scale,
+  ShieldAlert
+} from "lucide-react";
 
-export default function Page() {
+export const metadata = {
+  title: "Industrial Consultancy Bureau | VITS",
+  description: "Expert technological consultancy services for Mechanical Engineering and related industries at VITS.",
+};
+
+const consultants = [
+  { name: "Dr. S Dev Prasad", designation: "Lead Consultant" },
+  { name: "Prof. G.V. Rao", designation: "Expert Consultant" },
+  { name: "Assoc. Prof. N. Leela Prasad", designation: "Technical Consultant" },
+  { name: "Dr. K. Chandra Sekhar Rao", designation: "Industry Consultant" },
+  { name: "Assoc. Prof. P. Mangapathi Rao", designation: "Systems Consultant" },
+];
+
+const expertiseAreas = [
+  "Special Purpose Machine Tools",
+  "Design & Development of Production Dies",
+  "PLC Controlled Production Machines",
+  "Innovative Solutions to Home Appliance Products",
+  "Innovative Solutions to Automobile Products",
+  "Innovative Solutions to Thermal Power Plant Products",
+  "Innovative Solutions to General Purpose Products",
+  "Automated Quality Checking & Material Handling Systems",
+  "Consultancy on Composite Products"
+];
+
+const methodologySteps = [
+  "Expression of Interest for consultancy in a written form",
+  "Visit by VIGNAN consultants and submission of a commercial offer",
+  "Placement of order by Industry",
+  "Order acceptance by Vignan",
+  "Non Disclosure agreement between the parties",
+  "Laying down the approach to solution by mutual agreement",
+  "Documentation of consultancy details",
+  "Prototype fabrication wherever necessary",
+  "Protection of IPR",
+  "Submission of final Consultancy report, and commissioning of equipment"
+];
+
+const innovationElements = [
+  "Line Balancing", "Work Study", "Time Study",
+  "Partial Automation", "Semi Automation", "Automation of Material Handling",
+  "Innovative Machine Retrofitting", "Heat Recovery Systems", "Solar Energy Deployment",
+  "Value Engineering Concepts", "Concurrent Engineering Practices", "Automated Online Quality Checks",
+  "Automatic Loading/Unloading Systems", "Quality Problem Solutions", "Affordable Pre/Post Ops Tech",
+  "New Product Design & Development", "Scrap Value Solutions", "Processing Capability Matching",
+  "Simple Robotic Processing", "Automatic Assembling/Disassembling", "Bending & Cutting Solutions",
+  "Break-even Financial Analysis"
+];
+
+export default function ConsultancyPage() {
   return (
-    <div className="container mx-auto py-12 px-4 max-w-7xl">
-      <nav className="text-sm text-purple-200 mb-3">
-      <Link href="/" className="hover:text-white transition-colors">Home</Link>
-      <span className="mx-2">/</span>
-      <Link href="/information" className="hover:text-white transition-colors">Information</Link>
-      <span className="mx-2">/</span>
-      <span className="text-white font-medium">Consultancy</span>
-      </nav>
+    <div className="min-h-screen bg-gray-50">
+      <Navbar variant="solid" />
 
-      <h1 className="text-4xl font-bold mb-8 text-[#003666] border-b-2 border-gray-200 pb-4">Industrial Consultancy Bureau</h1>
-      <div 
-        className="prose prose-lg max-w-none text-[#333333] leading-relaxed prose-headings:text-[#003666] prose-a:text-[#003666] prose-img:rounded-lg prose-img:shadow-md"
-        dangerouslySetInnerHTML={{ __html: `><h3    >Bureau</h3><p class="mb-4 text-gray-700 leading-relaxed">The main objective of our industrial Consultancy bureau is to provide more profits to our customers by reducing their inputs costs and increasing their quality and quantity of production at low cost by using the innovative and advanced technologies. Our technologies payback period will be as low as three months and may extend to one year depending on the complexity of the problem. We provide all types of technological consultancy services for Mechanical Engineering related industries.</p>
-For Details Contact:<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Panel Of Consutants</h3><ol>
-<li class="pl-1">Dr. S Dev Prasad</li>
-<li class="pl-1">Prof. G.V.Rao</li>
-<li class="pl-1">Assoc. Prof. N.Leela Prasad</li>
-<li class="pl-1">Dr. K.Chandra sekhar Rao</li>
-<li class="pl-1">Assoc. Prof. P.Mangapathi Rao</li>
-</ol>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Elements Of Innovation</h3><ol>
-<li class="pl-1">Line Balancing</li>
-<li class="pl-1">Work Study</li>
-<li class="pl-1"> Time Study</li>
-<li class="pl-1">Partial Automation</li>
-<li class="pl-1">Semi Automation</li>
-<li class="pl-1"> Automation of material handling with least disturbance to the existing setup</li>
-<li class="pl-1">Innovative changes/ retro fitting of existing Machines to improve productivity.</li>
-<li class="pl-1"> Heat recovery systems for optimum power management</li>
-<li class="pl-1"> Deployment of solar energy, wherever possible</li>
-<li class="pl-1"> Value engineering concepts</li>
-<li class="pl-1">Concurrent engineering practices</li>
-<li class="pl-1"> Automated online quality checks</li>
-<li class="pl-1"> Automatic loading and unloading of components in the machines</li>
-<li class="pl-1"> Solutions to quality problems</li>
-<li class="pl-1"> Pre and post operations technology at affordable cost</li>
-<li class="pl-1"> New Products Design and development</li>
-<li class="pl-1"> Finding solutions to provide value for your scrap</li>
-<li class="pl-1"> Finding new products to match the current processing capabilities</li>
-<li class="pl-1"> Simple robotic processing operations for painting and welding</li>
-<li class="pl-1"> Automatic assembling and Disassembling</li>
-<li class="pl-1"> Bending &amp; cutting solutions for mass produce items</li>
-<li class="pl-1"> Break even financial analysis</li>
-</ol>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Area Of Expertise</h3><ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-<li class="pl-1">Special Purpose Machine Tools.</li>
-<li class="pl-1">Design &amp; Development of Production Dies.</li>
-<li class="pl-1">PLC Controlled Production Machines.</li>
-<li class="pl-1">Innovative Solutions to Home Appliance Products.</li>
-<li class="pl-1">Innovative Solutions to Automobile Products.</li>
-<li class="pl-1">Innovative Solutions to Thermal Power Plant Products.</li>
-<li class="pl-1">Innovative Solutions to General Purpose Products.</li>
-<li class="pl-1">Automated Quality Checking &amp; Material Handling Systems.</li>
-<li class="pl-1">Consultancy on Composite Products.</li>
-</ul>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"   >Methodology</h3><ol>
-<li class="pl-1"> Expression of Interest for consultancy in a written form</li>
-<li class="pl-1"> Visit by VIGNAN consultants and submission of a commercial offer</li>
-<li class="pl-1"> Placement of order by Industry</li>
-<li class="pl-1"> Order acceptance by Vignan</li>
-<li class="pl-1"> Non Disclosure agreement between the parties</li>
-<li class="pl-1"> Laying down the approach to solution by mutual agreement</li>
-<li class="pl-1"> Documentation of consultancy details</li>
-<li class="pl-1"> Prototype fabrication wherever necessary</li>
-<li class="pl-1"> Protection of IPR</li>
-<li class="pl-1"> Submission of final Consultancy report, and commissioning of equipment wherever necessary</li>
-</ol>
-</div></div>` }} 
-      />
+      {/* Page Header */}
+      <section className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-32 pb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="text-sm text-purple-200 mb-3">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <span className="mx-2">/</span>
+            <Link href="/information" className="hover:text-white transition-colors">Information</Link>
+            <span className="mx-2">/</span>
+            <span className="text-white font-medium">Consultancy</span>
+          </nav>
+
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-1">Industrial Consultancy Bureau</h1>
+          <p className="text-xl text-white opacity-90 max-w-2xl">
+            Providing innovative technological solutions to maximize industrial profitability
+            through advanced engineering and cost-effective strategies.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        {/* Objective Section */}
+        <div className="grid lg:grid-cols-3 gap-12 mb-20">
+          <div className="lg:col-span-2 space-y-8">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <Target className="w-8 h-8 text-vignan-purple" />
+                <h2 className="text-3xl font-bold text-gray-900 border-b-2 border-vignan-purple/20 pb-2 uppercase">
+                  Our Objective
+                </h2>
+              </div>
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                  The main objective of our Industrial Consultancy Bureau is to provide **more profits** to our customers by reducing their input costs and increasing their quality and quantity of production at low cost using innovative technologies.
+                </p>
+                <div className="flex items-center gap-4 bg-purple-50 p-6 rounded-xl border border-purple-100 italic text-vignan-purple font-medium">
+                  <Zap className="w-6 h-6 shrink-0" />
+                  Our technology payback period is as low as three months, extending up to one year depending on complexity.
+                </div>
+              </div>
+            </div>
+
+            {/* Methodology Section */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <ClipboardCheck className="w-8 h-8 text-vignan-purple" />
+                <h2 className="text-2xl font-bold text-gray-900 uppercase">Consultancy Methodology</h2>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {methodologySteps.map((step, i) => (
+                  <div key={i} className="flex items-start gap-4 bg-white p-4 rounded-xl border border-gray-100 shadow-sm hover:border-vignan-purple/20 transition-all group">
+                    <div className="w-8 h-8 rounded-full bg-vignan-purple/10 flex items-center justify-center shrink-0 text-vignan-purple font-bold text-xs group-hover:bg-vignan-purple group-hover:text-white transition-colors">
+                      {i + 1}
+                    </div>
+                    <p className="text-sm text-gray-600 leading-snug">{step}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Panel of Consultants */}
+          <div className="space-y-6">
+            <div className="bg-white p-8 rounded-2xl shadow-md border border-gray-100 sticky top-24">
+              <div className="flex items-center gap-3 mb-6">
+                <Users className="w-6 h-6 text-vignan-purple" />
+                <h3 className="text-xl font-bold text-gray-900">Panel of Consultants</h3>
+              </div>
+              <div className="space-y-4">
+                {consultants.map((consultant, idx) => (
+                  <div key={idx} className={`pt-3 ${idx !== 0 ? 'border-t border-gray-50' : ''}`}>
+                    <p className="font-bold text-gray-900">{consultant.name}</p>
+                    <p className="text-xs text-vignan-purple font-semibold uppercase tracking-wider">{consultant.designation}</p>
+                  </div>
+                ))}
+                <div className="mt-8 p-4 bg-vignan-blue text-white rounded-xl text-center">
+                  <p className="text-xs opacity-80 mb-1">For more details</p>
+                  <p className="font-bold">Contact Bureau Office</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Expertise & Innovation Grid */}
+        <div className="grid lg:grid-cols-2 gap-12 mb-20">
+          {/* Areas of Expertise */}
+          <div className="bg-vignan-blue rounded-3xl p-10 text-white relative overflow-hidden shadow-xl">
+            <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/5 rounded-full -mb-32 -mr-32 blur-3xl" />
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-8">
+                <Briefcase className="w-8 h-8 text-vignan-purple" />
+                <h2 className="text-3xl font-bold uppercase">Area of Expertise</h2>
+              </div>
+              <div className="grid sm:grid-cols-1 gap-3">
+                {expertiseAreas.map((area, i) => (
+                  <div key={i} className="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/5 hover:bg-white/20 transition-all cursor-default">
+                    <div className="w-2 h-2 rounded-full bg-vignan-purple" />
+                    <span className="text-sm font-medium">{area}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Elements of Innovation */}
+          <div className="bg-white rounded-3xl p-10 shadow-sm border border-gray-100">
+            <div className="flex items-center gap-3 mb-8">
+              <Lightbulb className="w-8 h-8 text-vignan-purple" />
+              <h2 className="text-3xl font-bold text-gray-900 uppercase tracking-tight">Elements of Innovation</h2>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {innovationElements.map((element, i) => (
+                <span key={i} className="px-3 py-1.5 bg-gray-50 text-gray-700 text-xs font-medium rounded-lg border border-gray-100 hover:border-vignan-purple/30 hover:text-vignan-purple transition-colors">
+                  {element}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Impact Statement */}
+        <div className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-gray-900 to-vignan-blue p-12 text-center shadow-2xl">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
+              Bridging Academic Research with Industrial Excellence
+            </h3>
+            <p className="text-blue-100 leading-relaxed mb-8">
+              Our bureau leverages the vast intellectual resources of Vignan Institute
+              to solve complex industrial problems, ensuring high ROI and technological
+              empowerment for our partners.
+            </p>
+            <div className="flex justify-center gap-6">
+              <div className="text-center">
+                <p className="text-3xl font-bold text-vignan-purple">3-12</p>
+                <p className="text-xs text-blue-200 uppercase tracking-widest mt-1">Months Payback</p>
+              </div>
+              <div className="w-px h-12 bg-white/10" />
+              <div className="text-center">
+                <p className="text-3xl font-bold text-vignan-purple">20+</p>
+                <p className="text-xs text-blue-200 uppercase tracking-widest mt-1">Innovation Areas</p>
+              </div>
+              <div className="w-px h-12 bg-white/10" />
+              <div className="text-center">
+                <p className="text-3xl font-bold text-vignan-purple">5</p>
+                <p className="text-xs text-blue-200 uppercase tracking-widest mt-1">Lead Consultants</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   );
 }

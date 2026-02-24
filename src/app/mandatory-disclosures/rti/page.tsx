@@ -4,6 +4,12 @@ import Footer from "@/components/HomePage/Footer";
 import { Scale } from "lucide-react";
 import React from 'react';
 
+
+export const metadata = {
+  title: "RTI | VITS",
+  description: "Information about Rti at VITS.",
+};
+
 export default function RightToInformationPage() {
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col overflow-x-hidden">
@@ -93,7 +99,7 @@ export default function RightToInformationPage() {
 
             <div className="mt-8">
               <a
-                href="https://vignanits.ac.in/wp-content/uploads/2021/09/RTI-Applications.pdf"
+                href="/Pdfs/RTI/RTI-Applications.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 shadow-sm rounded-lg text-[#003666] font-semibold hover:shadow-md hover:border-vignan-purple transition-all"

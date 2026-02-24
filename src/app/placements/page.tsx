@@ -8,6 +8,9 @@ import Footer from "@/components/HomePage/Footer";
 import Image from "next/image";
 import { Briefcase, Building2, BookOpen, User, Phone, Mail, Award, ChevronDown } from "lucide-react";
 
+
+
+
 // Data types
 interface PlacementStats {
     highestPackage: string;

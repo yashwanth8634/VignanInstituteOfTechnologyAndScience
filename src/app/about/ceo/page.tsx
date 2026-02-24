@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-    title: "CEO's Message | Vignan Institute of Technology and Science",
+    title: "CEO's Message | VITS",
     description:
         "Message from Mr. Shravan Boyapati, CEO of Vignan Group of Institutions.",
 };

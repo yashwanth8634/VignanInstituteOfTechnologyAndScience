@@ -3,9 +3,9 @@ import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Governing Body | Vignan Institute of Technology and Science",
+    title: "Governing Body | VITS",
     description:
-        "Governing Body members of Vignan Institute of Technology and Science.",
+        "Governing Body members of VITS.",
 };
 
 const governingBodyMembers = [
@@ -55,7 +55,7 @@ export default function GoverningBodyPage() {
                     <div className="p-6 sm:p-8 border-b border-gray-100">
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Board of Governors</h2>
                         <p className="text-gray-600 mt-2 text-sm sm:text-base">
-                            The Governing Body of Vignan Institute of Technology and Science
+                            The Governing Body of VITS
                             comprises distinguished members from academia, industry, and
                             management who guide the institution towards excellence.
                         </p>

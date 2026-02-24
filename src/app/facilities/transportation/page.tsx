@@ -6,6 +6,9 @@ import Footer from "@/components/HomePage/Footer";
 import { Bus } from "lucide-react";
 import Image from "next/image";
 
+
+
+
 export default function TransportationPage() {
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col overflow-x-hidden">

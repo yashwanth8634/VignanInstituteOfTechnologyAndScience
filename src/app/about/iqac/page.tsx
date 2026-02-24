@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = {
-    title: "IQAC | Vignan Institute of Technology and Science",
+    title: "IQAC | VITS",
     description:
-        "Internal Quality Assurance Cell (IQAC) of Vignan Institute of Technology and Science.",
+        "Internal Quality Assurance Cell (IQAC) of VITS.",
 };
 
 const iqacObjectives = [
@@ -83,7 +83,7 @@ export default function IQACPage() {
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">About IQAC</h2>
                     <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg mb-4">
                         The Internal Quality Assurance Cell (IQAC) was established at
-                        Vignan Institute of Technology and Science as a post-accreditation
+                        VITS as a post-accreditation
                         quality sustenance measure. Since quality enhancement is a
                         continuous process, the IQAC became a part of the institution&apos;s
                         system and works towards realizing the goals of quality enhancement

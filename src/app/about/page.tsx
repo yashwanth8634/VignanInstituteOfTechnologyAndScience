@@ -3,9 +3,9 @@ import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 
 export const metadata = {
-    title: "About | Vignan Institute of Technology and Science",
+    title: "About | VITS",
     description:
-        "Learn about Vignan Institute of Technology and Science — our leadership, vision, mission, and values.",
+        "Learn about VITS — our leadership, vision, mission, and values.",
 };
 
 const aboutLinks = [
@@ -91,7 +91,7 @@ const aboutLinks = [
     {
         title: "Organogram",
         description:
-            "The organizational structure of Vignan Institute of Technology and Science.",
+            "The organizational structure of VITS.",
         href: "/about/organogram",
         icon: (
             <svg className="w-8 h-8 text-vignan-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,7 +119,7 @@ export default function AboutPage() {
                         About VGNT
                     </h1>
                     <p className="text-purple-200 text-lg max-w-2xl mx-auto">
-                        Vignan Institute of Technology and Science — An Institution
+                        VITS — An Institution
                         Nurturing Innovation and Excellence since 2007.
                     </p>
                 </div>

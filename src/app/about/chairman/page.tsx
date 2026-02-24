@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Chairman's Message | Vignan Institute of Technology and Science",
+    title: "Chairman's Message | VITS",
     description:
         "Message from Dr. Lavu Rathaiah, Chairman of Vignan Group of Institutions.",
 };

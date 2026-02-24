@@ -5,6 +5,9 @@ import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import { FileText, Download } from "lucide-react";
 
+
+
+
 export default function AcademicRegulationsPage() {
     const regulations = [
         {

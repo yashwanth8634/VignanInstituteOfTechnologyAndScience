@@ -37,6 +37,7 @@ const sidebarItems = [
   { id: "hod", label: "HOD's Desk", icon: User },
   { id: "faculty", label: "Faculty", icon: Users },
   { id: "labs", label: "Laboratories", icon: FlaskConical },
+  { id: "course-outcomes", label: "Course Outcomes", icon: BookMarked },
   { id: "course-materials", label: "Course Materials", icon: Book },
 
   { id: "research-projects", label: "Research / Consultancy Projects", icon: Briefcase },
@@ -874,12 +875,157 @@ export default function DepartmentPage() {
                   </>
                 )}
 
+                {activeSection === "seminars" && (
+                  <>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                      Seminars / Workshops / Conferences
+                    </h2>
+                    <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
+
+                    {dept.seminars && dept.seminars.length > 0 ? (
+                      <div className="overflow-x-auto rounded-xl border border-gray-200">
+                        <table className="w-full border-collapse bg-white">
+                          <thead>
+                            <tr className="bg-vignan-purple text-white">
+                              <th className="p-3 text-left border border-white/20 w-16">S.No</th>
+                              {dept.seminars[0].name ? (
+                                <>
+                                  <th className="p-3 text-left border border-white/20">Year</th>
+                                  <th className="p-3 text-left border border-white/20">Name of the workshop/ seminar/ conference</th>
+                                  <th className="p-3 text-left border border-white/20">Number of Participants</th>
+                                  <th className="p-3 text-left border border-white/20">Date</th>
+                                </>
+                              ) : (
+                                <>
+                                  <th className="p-3 text-left border border-white/20">Academic Year</th>
+                                  <th className="p-3 text-left border border-white/20">Document</th>
+                                </>
+                              )}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {dept.seminars.map((item, index) => (
+                              <tr key={index} className="even:bg-gray-50 border-b border-gray-100 last:border-0 hover:bg-vignan-purple/5 transition-colors">
+                                <td className="p-4 border-r border-gray-100 text-center font-medium text-gray-500">{index + 1}</td>
+                                {item.name ? (
+                                  <>
+                                    <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{item.year}</td>
+                                    <td className="p-4 border-r border-gray-100 text-gray-700">{item.name}</td>
+                                    <td className="p-4 border-r border-gray-100 text-gray-700 text-center">{item.participants}</td>
+                                    <td className="p-4 text-gray-600">{item.date}</td>
+                                  </>
+                                ) : (
+                                  <>
+                                    <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{item.AcademicYear}</td>
+                                    <td className="p-4 text-vignan-blue font-medium hover:underline cursor-pointer">
+                                      <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                        <Presentation className="w-4 h-4" /> View Document
+                                      </a>
+                                    </td>
+                                  </>
+                                )}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">Information will be updated soon.</p>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {activeSection === "course-outcomes" && (
+                  <>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                      Course Outcomes
+                    </h2>
+                    <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
+
+                    {dept.courseOutcomes && dept.courseOutcomes.length > 0 ? (
+                      <div className="overflow-x-auto rounded-xl border border-gray-200">
+                        <table className="w-full border-collapse bg-white">
+                          <thead>
+                            <tr className="bg-vignan-purple text-white">
+                              <th className="p-3 text-left border border-white/20 w-16">S.No</th>
+                              <th className="p-3 text-left border border-white/20">Academic Year</th>
+                              <th className="p-3 text-left border border-white/20">Document</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {dept.courseOutcomes.map((item, index) => (
+                              <tr key={index} className="even:bg-gray-50 border-b border-gray-100 last:border-0 hover:bg-vignan-purple/5 transition-colors">
+                                <td className="p-4 border-r border-gray-100 text-center font-medium text-gray-500">{index + 1}</td>
+                                <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{item.AcademicYear}</td>
+                                <td className="p-4 text-vignan-blue font-medium hover:underline cursor-pointer">
+                                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                    <BookMarked className="w-4 h-4" /> View Document
+                                  </a>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">Information will be updated soon.</p>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {activeSection === "professional-bodies" && (
+                  <>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+                      Professional Bodies
+                    </h2>
+                    <div className="w-24 h-1 bg-vignan-purple mt-4 mb-8 rounded-full" />
+
+                    {dept.professionalBodies && dept.professionalBodies.length > 0 ? (
+                      <div className="space-y-8">
+                        {dept.professionalBodies.map((body, index) => (
+                          <div key={index} className="bg-gray-50 rounded-2xl border border-gray-100 p-6 md:p-8">
+                            <h3 className="text-xl font-bold text-vignan-blue mb-4 flex items-center gap-3">
+                              <Award className="w-6 h-6 text-vignan-purple" />
+                              {body.name}
+                            </h3>
+                            {body.description && (
+                              <p className="text-gray-700 leading-relaxed text-justify mb-6 whitespace-pre-line">
+                                {body.description}
+                              </p>
+                            )}
+                            {body.activities && body.activities.length > 0 && (
+                              <div>
+                                <h4 className="text-lg font-semibold text-gray-900 mb-4">Key Activities:</h4>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                  {body.activities.map((activity, idx) => (
+                                    <div key={idx} className="flex items-start gap-3 bg-white p-3 rounded-xl border border-gray-200">
+                                      <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-vignan-purple shrink-0" />
+                                      <span className="text-gray-700 text-sm leading-relaxed">{activity}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">Information will be updated soon.</p>
+                      </div>
+                    )}
+                  </>
+                )}
+
                 {/* Dynamic Sections with Placeholder Content */}
                 {(
                   activeSection === "syllabus" ||
                   activeSection === "academic-calendars" ||
                   activeSection === "course-materials" ||
-                  activeSection === "seminars" ||
                   activeSection === "clubs") && (
                     <>
                       <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 capitalize">

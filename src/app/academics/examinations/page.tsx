@@ -4,8 +4,8 @@ import Link from "next/link";
 import { FileText, Award, Calendar, ExternalLink } from "lucide-react";
 
 export const metadata = {
-    title: "Examinations | Vignan Institute of Technology and Science",
-    description: "Information about examinations, evaluation, and results at Vignan Institute of Technology and Science.",
+    title: "Examinations | VITS",
+    description: "Information about examinations, evaluation, and results at VITS.",
 };
 
 const resultsLinks = [

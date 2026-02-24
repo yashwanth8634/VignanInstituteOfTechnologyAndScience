@@ -30,6 +30,20 @@ export interface DepartmentData {
   consultancyProjects?: { faculty: string; title: string; fundingAgency: string; reference?: string; date: string; amountInLakhs?: number; duration?: string; }[];
   researchProjects?: { faculty: string[]; title: string; fundingAgency: string; sanctionDate: string; duration: string; }[];
   mous?: { name: string; duration: string; activities: string; }[];
+  seminars?: { 
+    AcademicYear?: string; 
+    url?: string;
+    year?: string;
+    name?: string;
+    participants?: number | string;
+    date?: string;
+  }[];
+  courseOutcomes?: { AcademicYear: string; url: string }[];
+  professionalBodies?: { 
+    name: string; 
+    description?: string; 
+    activities?: string[];
+  }[];
 }
 
 export interface FacultyMember {
@@ -103,11 +117,11 @@ export const departments: Record<string, DepartmentData> = {
       },
       {
         AcademicYear:"2020-2021",
-        url:"https://vignanits.ac.in/wp-content/uploads/2021/10/CSE_AY2020-2021.pdf"
+        url:"/Pdfs/Publications/CSE/CSE_AY2020-2021.pdf"
       },
       {
         AcademicYear:"2019-2020",
-        url:"https://vignanits.ac.in/wp-content/uploads/2021/10/CSE_AY2019-2020.pdf"
+        url:"/Pdfs/Publications/CSE/CSE_AY2019-2020.pdf"
       },
       {
         AcademicYear:"2018-2019",
@@ -121,6 +135,30 @@ export const departments: Record<string, DepartmentData> = {
         AcademicYear:"2016-2017",
         url:"/Pdfs/Publications/CSE/CSE_AY2016-2017.pdf"
       },
+    ],
+    seminars: [
+      {
+        AcademicYear: "2022-2023",
+        url: "https://drive.google.com/file/d/11EI0ljxczTiUa3Oe0AGtx4ajpMIA74rV/view"
+      },
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/1iplfb7mnpm7XgqAMrRvV992WyCt9xL3X/view"
+      },
+      {
+        AcademicYear: "2016-2020",
+        url: "https://drive.google.com/file/d/1IbIitJJsd5A4wowZzXLEXQkZq1pn8BuL/view"
+      }
+    ],
+    courseOutcomes: [
+      {
+        AcademicYear: "2023-2024",
+        url: "#"
+      },
+      {
+        AcademicYear: "2022-2023",
+        url: "#"
+      }
     ],
 
     consultancyProjects: [
@@ -597,6 +635,24 @@ departmentCommittee: [
       "Software Engineering Lab"
     ],
 
+    publications: [
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/15I-Pb8Z78zGJzw2mObRE0y7uw21KB-7A/view"
+      }
+    ],
+
+    seminars: [
+      {
+        AcademicYear: "2022-2023",
+        url: "https://drive.google.com/file/d/1eEFVl-xTukvjkhexWxt-ElpPRSX6UQIG/view"
+      },
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/15Y9CVZj16gDu0JjnGTVgMFmkQUEjoOqL/view"
+      }
+    ],
+
     faculty: [
       { sno: 1, name: "VENKATESHWARLA CHOWDARY BASINENI", registrationNumber: "08150407-181138", designation: "ASSISTANT PROFESSOR" },
       { sno: 2, name: "Dr. NAVEEN KUMAR BASAVA", registrationNumber: "3446-150419-095020", designation: "ASSISTANT PROFESSOR" },
@@ -866,6 +922,34 @@ departmentCommittee: [
     courseMaterials: [],
     clubs: [],
 
+    publications:[
+      {
+        AcademicYear: "2019-2020",
+        url: "/Pdfs/Publications/EIE/EIEAY2019-2020.pdf"
+      },
+      {
+        AcademicYear: "2017-2018",
+        url: "/Pdfs/Publications/EIE/EIEAY2017-2018.pdf"
+      }
+    ],
+    seminars: [
+      { year: "2020-21", name: "Workshop on Recent trends in Sensor applications", participants: 150, date: "05-04-2021 to 07-04-2021" },
+      { year: "2020-21", name: "FinTECH", participants: 70, date: "24-06-2021" },
+      { year: "2020-21", name: "SalesForce", participants: 70, date: "24-04-2021" },
+      { year: "2020-21", name: "Power Conditioning and Management Systems in Electric Vehicles", participants: 134, date: "26-06-2021" },
+      { year: "2018-19", name: "Workshop on Industrial Automation", participants: 6, date: "26.11.2018 to 28.11.2018" },
+      { year: "2018-19", name: "Workshop on IoT using arduino", participants: 17, date: "08.11.2018 to 10.11.2018" },
+      { year: "2018-19", name: "Guest Lecture on An introduction of Testing Tools in software", participants: 89, date: "08.08.18" },
+      { year: "2017-18", name: "Workshop on Advanced automation using PLC, SCADA and OPC", participants: 15, date: "29.01.2018 to 03.02.2018" },
+      { year: "2017-18", name: "Workshop on Robotics and automation", participants: 18, date: "20.06.2018 to 22.06.2018" },
+      { year: "2017-18", name: "Guest Lecture on “Block Chain Technology”", participants: 73, date: "24.02.2018" },
+      { year: "2017-18", name: "A Guest lecture on ” An overview of user Interface and user Experience”", participants: 73, date: "24.02.2018" },
+      { year: "2016-17", name: "Workshop on Embedded systems and applications", participants: 18, date: "16.06.2016 to 20.06.2016" },
+      { year: "2016-17", name: "Workshop on VLSI Technologies", participants: 17, date: "05.01.2017 to 10.01.2017" },
+      { year: "2016-17", name: "Workshop on LAB VIEW used in multi diciplinary", participants: 15, date: "25.06.2017 to 30.06.2017" },
+      { year: "2016-17", name: "Guest Lecture on “Overview of biologically inspired Robotics”", participants: 59, date: "11.07.2016" }
+    ],
+
     hod: {
       name: "Dr. M.Vasu Babu",
       designation: "Associate Professor & HOD",
@@ -982,23 +1066,7 @@ departmentCommittee: [
       "Co-curricular activities in collaboration with industries, R&D centers and professional bodies and also extra-curricular activities enable the students to acquire organizing abilities, team & competitive spirit, communication & management skills and knowledge of emerging technologies."
     ],
 
-    achievements: [
-      "Workshop on Recent trends in Sensor applications: 150 participants",
-      "FinTECH: 70 participants",
-      "SalesForce: 70 participants",
-      "Power Conditioning and Management Systems in Electric Vehicles: 134 participants",
-      "Workshop on Industrial Automation: 6 participants",
-      "Workshop on IoT using arduino: 17 participants",
-      "Guest Lecture on An introduction of Testing Tools in software: 89 participants",
-      "Workshop on Advanced automation using PLC, SCADA and OPC: 15 participants",
-      "Workshop on Robotics and automation: 18 participants",
-      "Guest Lecture on “Block Chain Technology”: 73 participants",
-      "A Guest lecture on ” An overview of user Interface and user Experience”: 73 participants",
-      "Workshop on Embedded systems and applications: 18 participants",
-      "Workshop on VLSI Technologies: 17 participants",
-      "Workshop on LAB VIEW used in multi diciplinary: 15 participants",
-      "Guest Lecture on “Overview of biologically inspired Robotics”: 59 participants"
-    ]
+    achievements: []
   },
 
   // ─────────────────────────────────────────────────────────────────────────────
@@ -1076,6 +1144,17 @@ departmentCommittee: [
       { sno: 34, name: "SHANKAR SOMU", registrationNumber: "2386-231021-190649", designation: "Assistant Professor" }
     ],
 
+    publications: [
+      {
+        AcademicYear: "2018-2019",
+        url: "/Pdfs/Publications/ECE/ECE_AY2018-2019.pdf"
+      },
+      {
+        AcademicYear: "2016-2017",
+        url: "/Pdfs/Publications/ECE/ECE_AY2016-2017.pdf"
+      }
+    ],
+
     achievements: [
       "Students qualified for GATE with top ranks in Electronics and Communication Engineering.",
       "Research papers published in IEEE and Springer journals by faculty members.",
@@ -1137,6 +1216,33 @@ departmentCommittee: [
     academicCalendars: [],
     courseMaterials: [],
     clubs: [],
+
+    publications:[
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/1zL_n_Q40IRDV57JGXTTXEOHjRFwRraQa/view"
+      },
+      {
+        AcademicYear: "2020-2021",
+        url: "/Pdfs/Publications/EEE/EEE_AY2020-2021.pdf"
+      },
+      {
+        AcademicYear: "2019-2020",
+        url: "/Pdfs/Publications/EEE/EEE_AY2019-2020.pdf"
+      },
+      {
+        AcademicYear: "2018-2019",
+        url: "/Pdfs/Publications/EEE/EEE_AY2018-2019.pdf"
+      },
+      {
+        AcademicYear: "2017-2018",
+        url: "/Pdfs/Publications/EEE/EEE_AY2017-2018.pdf"
+      },
+      {
+        AcademicYear: "2016-2017",
+        url: "/Pdfs/Publications/EEE/AY2016-2017.pdf"
+      }
+    ],
 
     hod: {
       name: "Dr. T. Rama Subba Reddy",
@@ -1323,6 +1429,48 @@ departmentCommittee: [
     academicCalendars: [],
     courseMaterials: [],
     clubs: [],
+
+    publications:[
+      {
+        AcademicYear: "2022-2023",
+        url: "https://drive.google.com/file/d/1wj5EVEEl66X9wNQk2CsgoHYI_aPG5uqF/view"
+      },
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/10DXq6fz_S3kY2bz1Dx8C6YVsPPVmg-0g/view"
+      },
+      {
+        AcademicYear: "2020-2021",
+        url: "/Pdfs/Publications/MECH/AY2020-2021.pdf"
+      },
+      {
+        AcademicYear: "2019-2020",
+        url: "/Pdfs/Publications/MECH/AY2019-2020.pdf"
+      },
+      {
+        AcademicYear: "2018-2019",
+        url: "/Pdfs/Publications/MECH/AY2018-2019.pdf"
+      },
+      {
+        AcademicYear: "2017-2018",
+        url: "/Pdfs/Publications/MECH/AY2017-2018.pdf"
+      },
+      {
+        AcademicYear: "2016-2017",
+        url: "/Pdfs/Publications/MECH/AY2016-2017.pdf"
+      }
+    ],
+
+    seminars:[
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/1mBcEaRwHlAc6D0TZc0l128pDSu6HytY_/view"
+      },
+      {
+        AcademicYear: "2020-2021",
+        url: "https://drive.google.com/file/d/1msdbmj-K_oQRLQfWGt6FLry0ZzbK9F3s/view"
+      },
+    ],
 
     hod: {
       name: "Dr. B. Singaravel",
@@ -1565,6 +1713,41 @@ departmentCommittee: [
       image: "/DepartmentPage/HodProfiles/CIVIL.jpg",
       message: "The Civil Engineering department is dedicated to producing skilled civil engineers who can contribute to the nation's infrastructure development. We provide students with a strong foundation in structural analysis, geotechnical engineering, and environmental engineering.",
     },
+
+    publications:[
+      {
+        AcademicYear: "2022-2023",
+        url: "https://drive.google.com/file/d/1FIbvHTKvC0DZQQvDt6ijkoYdq6a3cmzf/view"
+      },
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/1TJ8yoE9tfInHQRMCAx2B3x46ZmobFoyO/view"
+      },
+      {
+        AcademicYear: "2020-2021",
+        url: "/Pdfs/Publications/CIVIL/AY2020-2021.pdf"
+      },
+      {
+        AcademicYear: "2019-2020",
+        url: "/Pdfs/Publications/CIVIL/AY2019-2020.pdf"
+      },
+      {
+        AcademicYear: "2017-2018",
+        url: "/Pdfs/Publications/EEE/AY2017-2018.pdf"
+      },
+      {
+        AcademicYear: "2016-2017",
+        url: "/Pdfs/Publications/EEE/AY2016-2017.pdf"
+      }
+    ],
+
+    seminars:[
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/1zizMt6mPdGPUfCfnM0eV64OWWT_c89pi/view"
+      },
+    ],
+
     laboratories: [
       "Surveying",
       "Soil Testing",
@@ -1665,6 +1848,30 @@ departmentCommittee: [
     academicCalendars: [],
     courseMaterials: [],
     clubs: [],
+
+    publications: [
+      {
+        AcademicYear: "2022-2023",
+        url: "https://drive.google.com/file/d/1nW_pnGyMmhLcxunjqUfrNaIpw_bohqRL/view"
+      },
+      {
+        AcademicYear: "2021-2022",
+        url: "https://drive.google.com/file/d/1F4QpBCgr9T-1HphHEIbZc_QdSuRFLATa/view"
+      },
+      {
+        AcademicYear: "2019-2020",
+        url: "/Pdfs/Publications/BS&H/AY2019-2020.pdf"
+      },
+      {
+        AcademicYear: "2017-2018",
+        url: "/Pdfs/Publications/BS&H/AY2017-2018.pdf"
+      },
+      {
+        AcademicYear: "2016-2017",
+        url: "/Pdfs/Publications/BS&H/AY2016-2017.pdf"
+      }
+    ],
+    seminars: [],
 
     hod: {
       name: "Dr. R. Balaji",

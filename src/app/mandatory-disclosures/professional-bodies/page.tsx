@@ -6,6 +6,9 @@ import Footer from "@/components/HomePage/Footer";
 import { Award, ExternalLink, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
+
+
+
 interface Member {
   sno: number | string;
   name: string;

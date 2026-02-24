@@ -4,21 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import { Handshake, MessageSquareQuote, Award } from "lucide-react";
 
 const placementHighlights = [
-  { company: "TCS", package: "8 LPA", year: "2024" },
-  { company: "Infosys", package: "6.5 LPA", year: "2024" },
-  { company: "Wipro", package: "6 LPA", year: "2024" },
-  { company: "Cognizant", package: "5.5 LPA", year: "2024" },
-  { company: "HCL Technologies", package: "5 LPA", year: "2024" },
-  { company: "Tech Mahindra", package: "4.5 LPA", year: "2024" },
+  { company: "TCS", package: "8 LPA", year: "2024", logo: "/PlacementPage/Logos/tcs.webp" },
+  { company: "Infosys", package: "6.5 LPA", year: "2024", logo: "/PlacementPage/Logos/infosys.webp" },
+  { company: "Wipro", package: "6 LPA", year: "2024", logo: "/PlacementPage/Logos/wipro.png" },
+  { company: "Cognizant", package: "5.5 LPA", year: "2024", logo: "/PlacementPage/Logos/cognizant.png" },
+  { company: "HCL Technologies", package: "5 LPA", year: "2024", logo: "/PlacementPage/Logos/hcl.svg" },
+  { company: "Tech Mahindra", package: "4.5 LPA", year: "2024", logo: "/PlacementPage/Logos/techmahindra.png" },
 ];
 
 const mous = [
-  "Microsoft",
-  "AWS Academy",
-  "NASSCOM",
-  "APSSDC",
-  "ICT Academy",
-  "Spoken Tutorial (IIT Bombay)",
+  { name: "Cisco Networking Academy", logo: "/HomePage/MouLogos/cisco.png" },
+  { name: "IBM Academy", logo: "/HomePage/MouLogos/ibm.png" },
+  { name: "IIIT Hyderabad", logo: "/HomePage/MouLogos/iiit.png" },
+  { name: "IME (Israel)", logo: "/HomePage/MouLogos/ime.png" },
+  { name: "Infosys Springboard", logo: "/HomePage/MouLogos/infosys.webp" },
+  { name: "TAAPMA", logo: "/HomePage/MouLogos/taapma.png" },
 ];
 
 const testimonials = [
@@ -84,15 +84,22 @@ export default function Placements() {
             {placementHighlights.map((p, i) => (
               <div
                 key={i}
-                className="text-center p-4 rounded-xl bg-gradient-to-br from-vignan-purple/5 to-vignan-purple/10 border border-vignan-purple/10 hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col items-center p-6 rounded-2xl bg-white border border-vignan-purple/10 hover:border-vignan-purple/30 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 text-center"
               >
-                <p className="font-bold text-vignan-blue text-sm">
-                  {p.company}
-                </p>
-                <p className="text-vignan-purple font-semibold text-lg mt-1">
-                  {p.package}
-                </p>
-                <p className="text-xs text-gray-400 mt-1">{p.year}</p>
+                <div className="h-16 w-full flex items-center justify-center mb-4 grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <img src={p.logo} alt={p.company} className="max-h-full max-w-[80%] object-contain" />
+                </div>
+                <div className="w-full pt-4 border-t border-gray-100">
+                  <p className="font-bold text-vignan-blue text-sm mb-1">
+                    {p.company}
+                  </p>
+                  <p className="text-vignan-purple font-extrabold text-lg">
+                    {p.package}
+                  </p>
+                  <p className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold mt-1">
+                    Class of {p.year}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -112,13 +119,18 @@ export default function Placements() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {mous.map((m) => (
               <div
-                key={m}
-                className="px-6 py-3 bg-vignan-blue/5 rounded-full text-vignan-blue font-medium text-sm border border-vignan-blue/10 hover:bg-vignan-purple/10 hover:text-vignan-purple hover:border-vignan-purple/20 transition-all duration-300"
+                key={m.name}
+                className="group flex flex-col items-center p-10 rounded-3xl bg-white border border-gray-100 hover:border-vignan-purple/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 text-center"
               >
-                {m}
+                <div className="h-24 w-full flex items-center justify-center mb-6 grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <img src={m.logo} alt={m.name} className="max-h-full max-w-[85%] object-contain" />
+                </div>
+                <p className="text-vignan-blue font-bold text-sm group-hover:text-vignan-purple transition-colors duration-300">
+                  {m.name}
+                </p>
               </div>
             ))}
           </div>

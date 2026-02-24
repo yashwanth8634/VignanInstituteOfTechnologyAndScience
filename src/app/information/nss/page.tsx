@@ -1,1085 +1,361 @@
+"use client"; // Required for useState/useEffect
 
+import Navbar from "@/components/HomePage/Navbar";
+import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Image from "next/image";
+import { Users2, Target, Trophy, Calendar, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Award } from "lucide-react";
+
+
+
+
+// --- DATA CONSTANTS ---
+
+const objectives = [
+    "Understand the community in which they work",
+    "Understand themselves in relation to their community",
+    "Identify the needs and problems of the community and involve them in problem-solving",
+    "Develop among them a sense of social and civic responsibility",
+    "Utilize their knowledge in finding practical solutions to individual and community problems",
+    "Develop competence required for group-living and sharing of responsibilities",
+    "Gain skills in mobilizing community participation",
+    "Acquire leadership qualities and democratic attitudes",
+    "Develop capacity to meet emergencies and natural disasters",
+    "Practice national integration and social harmony"
+];
+
+// Slider Images
+const sliderImages = [
+    {
+        src: "https://vignanits.ac.in/wp-content/uploads/2020/07/nss.jpg",
+        alt: "NSS Volunteers Group Photo",
+        caption: "VITS NSS Unit Volunteers"
+    },
+    {
+        src: "https://vignanits.ac.in/wp-content/uploads/2020/07/event-2.jpg", // Example placeholder, using existing domain structure
+        alt: "Tree Plantation Drive",
+        caption: "Tree Plantation Drive - Green Campus"
+    },
+    {
+        src: "https://vignanits.ac.in/wp-content/uploads/2020/07/event-3.jpg", // Example placeholder
+        alt: "Blood Donation Camp",
+        caption: "Annual Blood Donation Camp"
+    }
+];
+
+// Consolidated Data for Accordions
+const academicData = [
+    {
+        id: "2021-2022",
+        title: "Academic Year 2021-2022 Events",
+        type: "events",
+        headers: ["S.No", "Title of the Programme", "Date & Duration"],
+        data: [
+            { col1: 1, col2: "Rashtriya Ektha Diwas", col3: "31st Oct 2021 (1 Day)" },
+            { col1: 2, col2: "Azadi ka Amrit Mahotsav", col3: "25th Nov 2021 (1 Day)" },
+            { col1: 3, col2: "Constitutional day Clebration", col3: "26th Nov 2021 (1 Day)" },
+            { col1: 4, col2: "Blood Donation Camp", col3: "24th Dec 2021 (1 Day)" },
+            { col1: 5, col2: "World Water Day", col3: "22nd March 2022 (1 Day)" },
+            { col1: 6, col2: "Ambedkar Jayanthi", col3: "14th April 2022 (1 Day)" },
+            { col1: 7, col2: "World Earth Day", col3: "22nd April 2022 (1 Day)" }
+        ]
+    },
+    {
+        id: "2020-2021",
+        title: "Academic Year 2020-2021 Achievements",
+        type: "awards",
+        headers: ["Name of the Activity", "Award / Recognition", "Awarding Body"],
+        data: [
+            { col1: "NIRF Ranking", col2: "Appreciation", col3: "Commissionerate, Collegiate Education" },
+            { col1: "Inclusion of ATAL Academy FDP", col2: "World Book of Records-London", col3: "ATAL Academy" },
+            { col1: "Awareness on Pandemic Disease", col2: "Certificate of Service Excellence", col3: "Panchayat, Kawadipally Village" },
+            { col1: "Online Telemedicine IOT Medical Kit", col2: "Certificate of Appreciation", col3: "Anaadha Vidyarthi Griha" },
+            { col1: "Online Telemedicine IOT Medical Kit", col2: "Certificate of Appreciation", col3: "Panchayat, Balijaguda Village" },
+            { col1: "Online Teaching Learning Process", col2: "Green Campus Award", col3: "VMeduLife" },
+            { col1: "Plastic Free Campus", col2: "Certificate of Achievement", col3: "Senergy" },
+            { col1: "Blood Donation Camp", col2: "Certificate of organizing excellence", col3: "NTR TRUST" },
+            { col1: "IEEE SIGHT/HAC Covid-19 Project", col2: "Certificate of Appreciation", col3: "IEEE Region 10 SIGHT/HAC" },
+            { col1: "Hands on workshop on IOT Training", col2: "Certificate of Appreciation", col3: "IEEE CSS Outreach" },
+            { col1: "Chatra Vishwakarma Award 2020", col2: "Shortlisted for second round", col3: "AICTE" }
+        ]
+    },
+    {
+        id: "2019-2020",
+        title: "Academic Year 2019-2020 Achievements",
+        type: "awards",
+        headers: ["Name of the Activity", "Award / Recognition", "Awarding Body"],
+        data: [
+            { col1: "Online Teaching Learning Process", col2: "Green Campus Award", col3: "VMeduLife" },
+            { col1: "Sanitation & Hygiene, Waste Management", col2: "Certificate of Recognized Social Entrepreneurship", col3: "MGNCRE-MHRD, Govt of India" },
+            { col1: "Blood Donation Camp", col2: "Certificate of organizing excellence", col3: "NTR TRUST" },
+            { col1: "Dental Check up Camp", col2: "Certificate of Service Excellence", col3: "Panchayat, Kawadipally Village" },
+            { col1: "Swachh Bharat Abhiyan", col2: "Certificate of Recognition", col3: "Panchayat, Deshmukhi Village" },
+            { col1: "Health Camp", col2: "Certificate of Recognition", col3: "Panchayat, Bilajaguda Village" },
+            { col1: "National youth Day", col2: "Certificate of organizing excellence", col3: "NTR TRUST" },
+            { col1: "Green Initiative", col2: "Certificate of Appreciation", col3: "Eco Action" },
+            { col1: "Plastic Free Campus", col2: "Certificate of Achievement", col3: "Senergy" },
+            { col1: "NSS Activities", col2: "Best NSS unit Award", col3: "Kranataka Educational Awards" },
+            { col1: "E-Waste", col2: "Certificate of Appreciation", col3: "Anand Computer Systems" },
+            { col1: "Harithaharam", col2: "Certificate for excellence", col3: "Panchayat, Kawadipally Village" }
+        ]
+    },
+    {
+        id: "2018-2019",
+        title: "Academic Year 2018-2019 Achievements",
+        type: "awards",
+        headers: ["Name of the Activity", "Award / Recognition", "Awarding Body"],
+        data: [
+            { col1: "Popularization of Rice Machinery", col2: "Certificate of Appreciation", col3: "KSNM Marketing, Tamil nadu" },
+            { col1: "Best Academic Education institute", col2: "Best Academic Education institute Award", col3: "Trinity college Durbin" },
+            { col1: "Best Performing Academy", col2: "Best Performing Academy Award", col3: "TASK, Govt. of Telangana" },
+            { col1: "Blood Donation Camp", col2: "Certificate of organizing excellence", col3: "NTR TRUST" },
+            { col1: "Dental Check up Camp", col2: "Certificate of Service Excellence", col3: "Panchayat, Kawadipally Village" },
+            { col1: "Swachh Bharat Abhiyan", col2: "Public Service excellence award", col3: "Panchayat, Kawadipally Village" },
+            { col1: "Academy Years of Service", col2: "Academy Years of Service Award", col3: "CISCO Networking Academy" },
+            { col1: "IEEE EPICS Project implementation", col2: "Certificate of Recognition", col3: "IEEE Hyderabad Section" }
+        ]
+    }
+];
 
 export default function Page() {
-  return (
-    <div className="container mx-auto py-12 px-4 max-w-7xl">
-      <nav className="text-sm text-purple-200 mb-3">
-      <Link href="/" className="hover:text-white transition-colors">Home</Link>
-      <span className="mx-2">/</span>
-      <Link href="/information" className="hover:text-white transition-colors">Information</Link>
-      <span className="mx-2">/</span>
-      <span className="text-white font-medium">Nss</span>
-      </nav>
+    // Slider State
+    const [currentSlide, setCurrentSlide] = useState(0);
 
-      <h1 className="text-4xl font-bold mb-8 text-[#003666] border-b-2 border-gray-200 pb-4">VITS–NSS</h1>
-      <div 
-        className="prose prose-lg max-w-none text-[#333333] leading-relaxed prose-headings:text-[#003666] prose-a:text-[#003666] prose-img:rounded-lg prose-img:shadow-md"
-        dangerouslySetInnerHTML={{ __html: `><div   data-gdlr-animation="fadeInUp" data-gdlr-animation-duration="600ms" data-gdlr-animation-offset="0.8"  ><a class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" class="text-[#003666] font-medium hover:underline transition-colors" target="_blank" rel="noopener noreferrer" href="https://vignanits.ac.in/wp-content/uploads/2020/07/nss.jpg"><img class="max-w-full h-auto rounded-lg shadow-md my-6 block mx-auto" src="https://vignanits.ac.in/wp-content/uploads/2020/07/nss.jpg" alt=""   title="nss" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload"  /><span   ><i   ></i></span></a><div   data-gdlr-animation="fadeInLeft" data-gdlr-animation-duration="600ms" data-gdlr-animation-offset="0.8"  ><h2   >National Service Scheme:</h2><p class="mb-4 text-gray-700 leading-relaxed">
-National Service Scheme, under the Ministry of Youth Affairs &amp; Sports Govt. of India, popularly known as NSS was launched in Gandhiji&#8217;s Birth Centenary Year 1969, in 37 Universities involving 40,000 students with primary focus on the development of personality of students through community service. Today, NSS has more than 3.2 million student volunteers on its roll spread over 298 Universities and 42 (+2) Senior Secondary Councils and Directorate of Vocational Education all over the country. From its inception, more than 3.75 cores students from Universities, Colleges and Institutions of higher learning have benefited from The NSS activities, as student volunteers.</p>
-<div   data-gdlr-animation="fadeInRight" data-gdlr-animation-duration="600ms" data-gdlr-animation-offset="0.8"  ><h2   >The main objectives of National Service Scheme (NSS) are:</h2><ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-<li class="pl-1">Understand the community in which they work</li>
-<li class="pl-1">Understand themselves in relation to their community</li>
-<li class="pl-1">Identify the needs and problems of the community and involve them in problem-solving</li>
-<li class="pl-1">Develop among them a sense of social and civic responsibility</li>
-<li class="pl-1">Utilize their knowledge in finding practical solutions to individual and community problems</li>
-<li class="pl-1">Develop competence required for group-living and sharing of responsibilities</li>
-<li class="pl-1">Gain skills in mobilizing community participation</li>
-<li class="pl-1">Acquire leadership qualities and democratic attitudes</li>
-<li class="pl-1">Develop capacity to meet emergencies and natural disasters and</li>
-<li class="pl-1">Practice national integration and social harmony</li>
-</ul>
-</div></div></div><div   data-gdlr-animation="fadeInUp" data-gdlr-animation-duration="600ms" data-gdlr-animation-offset="0.8"  ><h2   >Coverage:</h2><p class="mb-4 text-gray-700 leading-relaxed">Started initially in 37 universities involving 40,000 volunteers, the scheme has grown over the years and it is implemented today with an involvement of more than 2.6 million volunteers spread over in 200 Universities, Polytechnics and +2 Systems. The efforts of NSS volunteers have been widely acclaimed by the community, universities, colleges and general public as the NSS volunteers have been rendering selfless service to the community.</p>
-<h2   >Motto:</h2><p class="mb-4 text-gray-700 leading-relaxed">The Motto of NSS &#8220;Not Me but You&#8221;, reflects the essence of democratic living and upholds the need for self-less service. NSS helps the students develop appreciation to other person&#8217;s point of view and also show consideration to &#8216;/other living beings. The philosophy of the NSS is well doctrined in this motto, which underlines/on the belief that the welfare of an individual is ultimately dependent on the welfare of the society on the whole and therefore, the NSS volunteers shall strive for the well-being of the society.</p>
-<h2   >Symbol:</h2><p class="mb-4 text-gray-700 leading-relaxed">The symbol for the NSS has been based on the giant Rath Wheel of the world famous Konark Sun Temple (The Black Pagoda) situated in Orissa, India. The wheel portrays the cycle of creation, preservation and release and signifies the movement in life across time and space, the symbol thus stands for continuity as well as change and implies the continuous striving of NSS for social change.</p>
-<h2   >Symbol:</h2><p class="mb-4 text-gray-700 leading-relaxed">The symbol for the NSS has been based on the giant Rath Wheel of the world famous Konark Sun Temple (The Black Pagoda) situated in Orissa, India. The wheel portrays the cycle of creation, preservation and release and signifies the movement in life across time and space, the symbol thus stands for continuity as well as change and implies the continuous striving of NSS for social change.</p>
-</div><div   data-gdlr-animation="fadeInUp" data-gdlr-animation-duration="600ms" data-gdlr-animation-offset="0.8"  ><h2   >VGNT-NSS Events</h2><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"    >Academic Year 2021-2022</h3><div class="overflow-x-auto my-8 border border-gray-200 rounded-lg"><table class="min-w-full divide-y divide-gray-200" >
-<tbody>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>S. No.</strong></p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Year</strong></p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Title of the Programme</strong></p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Date &amp; Duration(From-to)</strong></p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">1</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">2021-22</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Rashtriya Ektha Diwas</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">31<sup>st</sup> Oct 2021 (1 Day)</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">2</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">2021-22</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Azadi ka Amrit Mahotsav</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">25<sup>th</sup> Nov 2021 (1 Day)</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">3</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">2021-22</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Constitutional day Clebration</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">26<sup>th</sup> Nov 2021 (1 Day)</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">4</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">2021-22</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Blood Donation Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">24<sup>th</sup> Dec 2021 (1 Day)</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">5</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">2021-22</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">World Water Day</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">22<sup>nd</sup> March 2022 (1 Day)</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">6</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">2021-22</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Ambedkar Jayanthi</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">14<sup>th</sup> April 2022 (1 Day)</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">7</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">2021-22</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">World Earth Day</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">22<sup>nd</sup> April 2022 (1 Day)</p>
-</td>
-</tr>
-</tbody>
-</table>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"    >Academic Year 2020-2021</h3><div class="overflow-x-auto my-8 border border-gray-200 rounded-lg"><table class="min-w-full divide-y divide-gray-200" >
-<tbody>
-<tr>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the activity</strong></p>
-</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Award/ recognition for Institution for the Institution</strong></p>
-</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Awarding government/ government recognised bodies</strong></p>
-</th>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NIRF Ranking</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Commissionerate, Collegiate Education and Technical Education Department, Govt. of Telangana and Institute for Academic Excellence</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Inclusion of ATAL Academy FDP</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">World Book of Records-London</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">ATAL Academy</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Awareness on Pandemic Disease</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Service Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Telemedicine IOT Medical Kit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Anaadha Vidyarthi Griha</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Telemedicine IOT Medical Kit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat,Balijaguda Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Telemedicine IOT Medical Kit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Abdullapurmet Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Telemedicine IOT Medical Kit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Taramatipet Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Telemedicine IOT Medical Kit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Deshmukhi Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Telemedicine IOT Medical Kit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Teaching Learning Process</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Green Campus Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">VMeduLife</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Plastic Free Campus</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Achievement</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Senergy</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Blood Donation Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE SIGHT/HAC Covid-19 Project</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE Region 10 SIGHT/HAC</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Orphangae Donation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Asha Kuteer Orphanage, Uppal, Hyderabad</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Hands on workshop on IOT Training: Exposing Rural Students to Opportunities in STEM </p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE CSS Outreach</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE SIGHT/HAC Covid-19 Project</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE Hyderabad Section</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Chatra Vishwakarma Award 2020</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Shortlisted for second round</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">AICTE</p>
-</td>
-</tr>
-</tbody>
-</table>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"    >Academic Year 2019-2020</h3><div class="overflow-x-auto my-8 border border-gray-200 rounded-lg"><table class="min-w-full divide-y divide-gray-200" >
-<tbody>
-<tr>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the activity</strong></p>
-</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Award/ recognition for Institution for the Institution</strong></p>
-</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Awarding government/ government recognised bodies</strong></p>
-</th>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Teaching Learning Process</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Green Campus Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">VMeduLife</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Sanitation &amp; Hygiene, Waste Management, Water Management, Energy Conservation &amp; Greenery</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognized Social Entrepreneurship, Swachhta &amp; Rural Engangement Cell</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">MGNCRE-MHRD, Government of India</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Blood Donation Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Dental Check up Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Service Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Swachh Bharat Abhiyan</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Deshmukhi Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Health Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Bilajaguda Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Global Worming</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Service Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Plantation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Youth for Environment</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Digital Learning</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Project expo program</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">National youth Day</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Green Initiative</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Eco Action</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Plastic Free Campus</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Achievement</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Senergy</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Orphanage Visit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Anaadha Vidyarthi Griha</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Campus connect Program</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Infosys</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NSS Activities</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Best NSS unit Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kranataka Educational Awards</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">E-Waste</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Anand Computer Systems</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Solar Energy Technology</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Solar Institute of Sustainable Energy</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Harithaharam</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate for excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Dental Check up Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate for excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Sarpanch, Kawadipally Village</p>
-</td>
-</tr>
-</tbody>
-</table>
-<h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"    >Academic Year 2018-2019</h3><div class="overflow-x-auto my-8 border border-gray-200 rounded-lg"><table class="min-w-full divide-y divide-gray-200" >
-<tbody>
-<tr>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the activity</strong></p>
-</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Award/ recognition for Institution for the Institution</strong></p>
-</th>
-<th class="px-6 py-3 bg-gray-50 text-left text-xs font-bold text-[#003666] uppercase tracking-wider border-b border-gray-200 border-r last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Awarding government/ government recognised bodies</strong></p>
-</th>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Popularization and commercialization of Rice Machinery</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Appreciation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">KSNM Marketing, Tamil nadu</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Online Teaching Learning Process</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Green Campus Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">VMeduLife</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Best Academic Education institute</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Best Academic Education institute Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Trinity college Durbin and Education Matters</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Best Performing Academy</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Best Performing Academy Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IT Essentials from TASK, Govt. of Telangana</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Blood Donation Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Dental Check up Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Service Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Swachh Bharat Abhiyan</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Public Service excellence award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Health Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Global Worming</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Service Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Plantation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Youth for Environment</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Digital Learning</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Project expo program</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">National youth Day</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Academy Years of Service</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Academy Years of Service Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">CISCO Networking Academy</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Orphanage Visit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Anaadha Vidyarthi Griha</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE EPICS Project implementation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE Hyderabad Section</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Engineering Educators Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Engineering Educators Award for exemplary commitment &amp; impactful positive contribution to the education sector</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">University of Bradford &amp; Education Matters</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Saving Trees</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Award of Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">WOW</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Health Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate for excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Sarpanch, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Harithaharam</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate for excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Sarpanch, Kawadipally Village</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"    >Academic Year 2017-2018</h3><div class="overflow-x-auto my-8 border border-gray-200 rounded-lg"><table class="min-w-full divide-y divide-gray-200" >
-<tbody>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the activity</strong></p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Award/ recognition for Institution for the Institution</strong></p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Awarding government/ government recognised bodies</strong></p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Harithaharam</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate for excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Blood donation camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Award of outstanding contribution</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Project expo program</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">kawadipally Schooll</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Digital learning</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Orphanage Visit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Anaadha Vidyarthi Griha</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">National youth Day</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of organizing excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Social Awarness Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Trinity college Dublin</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Trinity college Dublin</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Vibrant Student Branch</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of merit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE Activities</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Best IEEE Student Branch Award</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE Hyderabad Section</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">IEEE EPICS Project implementation</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Center for Social Service, Hayathnagar</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div></div><h3 class="text-xl font-bold text-[#003666] mt-8 mb-4 border-b pb-2"    >Academic Year 2016-2017</h3><div class="overflow-x-auto my-8 border border-gray-200 rounded-lg"><table class="min-w-full divide-y divide-gray-200" >
-<tbody>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the activity</strong></p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Award/ recognition for Institution for the Institution</strong></p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"><strong>Name of the Awarding government/ government recognised bodies</strong></p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Blood Donation Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of Recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Orphanage Visit</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Certificate of Excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Anaadha Vidyarthi Griha</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Swacch Bharath</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate for excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">youth For Environment</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of social service</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">youth For Environment</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">kawadipally School</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Digital India Campaign</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate for excellence</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Blood Donation Camp</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of Service</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">NTR TRUST</p>
-</td>
-</tr>
-<tr>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed"> HEALTH CAMP</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">certificate of recognition</p>
-</td>
-<td class="px-6 py-4 whitespace-normal text-sm text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0">
-<p class="mb-4 text-gray-700 leading-relaxed">Panchayat, Kawadipally Village</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div></div></div></div><h3   >NSS Program Officer </h3></div></div></div><p class="mb-4 text-gray-700 leading-relaxed" ><strong>Mr. Surappa</strong></p>
-<p class="mb-4 text-gray-700 leading-relaxed" ><strong>Assistant Professor</strong></p>
-<p class="mb-4 text-gray-700 leading-relaxed" ><strong>Department of </strong><strong>Mechanical Engineering </strong></p>
-<p class="mb-4 text-gray-700 leading-relaxed" ><strong>Mis. Navya Ananthula</strong></p>
-<p class="mb-4 text-gray-700 leading-relaxed" ><strong>Assistant Professor</strong></p>
-<p class="mb-4 text-gray-700 leading-relaxed" ><strong>Department of ECE</strong></p>
-</div></div></div></div></div>` }} 
-      />
-    </div>
-  );
+    // Accordion State
+    const [openYear, setOpenYear] = useState<string | null>("2021-2022"); // Default open
+
+    // Auto-play Slider
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const nextSlide = () => {
+        setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentSlide((prev) => (prev === 0 ? sliderImages.length - 1 : prev - 1));
+    };
+
+    const toggleAccordion = (id: string) => {
+        setOpenYear(openYear === id ? null : id);
+    };
+
+    return (
+        <div className="flex flex-col min-h-screen bg-gray-50">
+            <Navbar variant="solid" />
+
+            {/* Page Header */}
+            <section className="bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 backdrop-blur-md shadow-lg pt-32 pb-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <nav className="text-sm text-purple-200 mb-6 flex items-center space-x-2">
+                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                        <span>/</span>
+                        <Link href="/information" className="hover:text-white transition-colors">Information</Link>
+                        <span>/</span>
+                        <span className="text-white font-medium">NSS</span>
+                    </nav>
+
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">National Service Scheme (NSS)</h1>
+                    <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
+                        "Not Me but You" - Developing the personality of students through community service.
+                    </p>
+                </div>
+            </section>
+
+            {/* Main Content */}
+            <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full space-y-16">
+
+                {/* Intro Section with Slider */}
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50 text-vignan-purple rounded-full font-medium text-sm border border-purple-100">
+                            <Users2 className="w-5 h-5" />
+                            About NSS at VITS
+                        </div>
+                        <h2 className="text-3xl font-bold text-gray-900 leading-tight">
+                            More than 3.2 million student volunteers nationwide.
+                        </h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            National Service Scheme, under the Ministry of Youth Affairs & Sports Govt. of India,
+                            was launched in Gandhiji's Birth Centenary Year 1969. The primary focus is on the
+                            development of the personality of students through community service.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            From its inception, more than 3.75 crore students from Universities, Colleges
+                            and Institutions of higher learning have benefited from NSS activities as student volunteers.
+                        </p>
+                    </div>
+
+                    {/* Image Slider Component */}
+                    <div className="relative h-[300px] md:h-[400px] rounded-3xl overflow-hidden shadow-2xl group">
+                        {sliderImages.map((img, index) => (
+                            <div
+                                key={index}
+                                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"
+                                    }`}
+                            >
+                                <Image
+                                    src={img.src}
+                                    alt={img.alt}
+                                    fill
+                                    className="object-cover"
+                                    unoptimized // Remove if using optimized external images config
+                                />
+                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">
+                                    <p className="font-medium text-center">{img.caption}</p>
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* Slider Controls */}
+                        <button
+                            onClick={prevSlide}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-sm p-2 rounded-full text-white transition-all opacity-0 group-hover:opacity-100"
+                        >
+                            <ChevronLeft className="w-6 h-6" />
+                        </button>
+                        <button
+                            onClick={nextSlide}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 backdrop-blur-sm p-2 rounded-full text-white transition-all opacity-0 group-hover:opacity-100"
+                        >
+                            <ChevronRight className="w-6 h-6" />
+                        </button>
+
+                        {/* Dots */}
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                            {sliderImages.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setCurrentSlide(idx)}
+                                    className={`w-2 h-2 rounded-full transition-all ${idx === currentSlide ? "bg-white w-4" : "bg-white/50"}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Characteristics Grid */}
+                <div className="grid md:grid-cols-3 gap-6">
+                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                            <Target className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Coverage</h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                            Started in 37 universities with 40,000 volunteers, now exceeding 2.6 million volunteers across 200 Universities and Polytechnics.
+                        </p>
+                    </div>
+                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div className="w-12 h-12 bg-purple-50 text-vignan-purple rounded-xl flex items-center justify-center mb-4">
+                            <Trophy className="w-6 h-6" />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Motto</h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                            "Not Me but You" - reflects the essence of democratic living and upholds the need for self-less service and appreciation of others.
+                        </p>
+                    </div>
+                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div className="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center mb-4">
+                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" /></svg>
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">Symbol</h3>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                            Based on the giant Rath Wheel of the Konark Sun Temple. It portrays creation, preservation, release, and continuous striving for social change.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Objectives */}
+                <div className="bg-vignan-blue rounded-3xl p-10 text-white relative overflow-hidden shadow-xl">
+                    <div className="relative z-10">
+                        <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+                            <Target className="w-6 h-6 text-purple-300" />
+                            Main Objectives
+                        </h2>
+                        <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+                            {objectives.map((obj, i) => (
+                                <div key={i} className="flex items-start gap-3">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 shrink-0" />
+                                    <span className="text-blue-50 text-sm leading-relaxed">{obj}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Dropdown / Accordion Section for Events & Achievements */}
+                <div className="space-y-6">
+                    <div className="flex items-center gap-3 mb-8 border-b pb-4">
+                        <Award className="w-8 h-8 text-vignan-purple" />
+                        <h2 className="text-3xl font-bold text-gray-900 uppercase">Events & Achievements</h2>
+                    </div>
+
+                    {academicData.map((year, index) => (
+                        <div key={year.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                            {/* Accordion Header */}
+                            <button
+                                onClick={() => toggleAccordion(year.id)}
+                                className="w-full flex items-center justify-between p-6 bg-white hover:bg-gray-50 transition-colors text-left"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className={`p-2 rounded-lg ${openYear === year.id ? 'bg-vignan-purple text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                        <Calendar className="w-5 h-5" />
+                                    </div>
+                                    <h3 className={`text-lg font-bold ${openYear === year.id ? 'text-vignan-purple' : 'text-gray-800'}`}>
+                                        {year.title}
+                                    </h3>
+                                </div>
+                                {openYear === year.id ? (
+                                    <ChevronUp className="w-5 h-5 text-gray-400" />
+                                ) : (
+                                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                                )}
+                            </button>
+
+                            {/* Accordion Body */}
+                            <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openYear === year.id ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}`}>
+                                <div className="p-6 pt-0 border-t border-gray-100">
+                                    <div className="overflow-x-auto mt-4">
+                                        <table className="min-w-full divide-y divide-gray-200">
+                                            <thead className="bg-vignan-purple">
+                                                <tr>
+                                                    {year.headers.map((header, idx) => (
+                                                        <th key={idx} className="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                                                            {header}
+                                                        </th>
+                                                    ))}
+                                                </tr>
+                                            </thead>
+                                            <tbody className="bg-white divide-y divide-gray-200">
+                                                {year.data.map((row, rIdx) => (
+                                                    <tr key={rIdx} className="hover:bg-gray-50 transition-colors">
+                                                        <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                                                            {row.col1}
+                                                        </td>
+                                                        <td className="px-6 py-4 text-sm text-gray-600">
+                                                            {row.col2}
+                                                        </td>
+                                                        <td className="px-6 py-4 text-sm text-gray-500">
+                                                            {row.col3}
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <Footer />
+        </div>
+    );
 }

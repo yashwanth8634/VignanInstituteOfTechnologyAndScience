@@ -8,6 +8,12 @@ import Placements from "@/components/HomePage/Placements";
 import CTA from "@/components/HomePage/CTA";
 import Footer from "@/components/HomePage/Footer";
 
+
+export const metadata = {
+    title: "Vignan Institue of Technology and Science",
+    description: "Information about Home at VITS.",
+};
+
 export default function Home() {
   return (
     <main>

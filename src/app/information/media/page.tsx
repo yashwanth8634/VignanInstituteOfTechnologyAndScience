@@ -2,6 +2,12 @@
 import Link from "next/link";
 import React from 'react';
 
+
+export const metadata = {
+    title: "Media | VITS",
+    description: "Information about Media at VITS.",
+};
+
 export default function Page() {
   return (
     <div className="container mx-auto py-12 px-4 max-w-7xl">

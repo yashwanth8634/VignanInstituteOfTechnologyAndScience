@@ -3,9 +3,9 @@ import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Organogram | Vignan Institute of Technology and Science",
+    title: "Organogram | VITS",
     description:
-        "Organizational structure of Vignan Institute of Technology and Science.",
+        "Organizational structure of VITS.",
 };
 
 const orgStructure = [
@@ -71,7 +71,7 @@ export default function OrganogramPage() {
                         Organizational Structure
                     </h2>
                     <p className="text-gray-500 text-sm sm:text-base text-center mb-10 md:mb-12">
-                        Vignan Institute of Technology and Science
+                        VITS
                     </p>
 
                     <div className="space-y-6">
