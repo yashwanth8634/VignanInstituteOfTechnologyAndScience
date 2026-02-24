@@ -1,5 +1,4 @@
 
-import { redirect } from 'next/navigation';
 
 
 export const metadata = {
@@ -7,6 +6,13 @@ export const metadata = {
     description: "Information about IT Policy at VITS.",
 };
 
-export default function Page() {
-  redirect('/Pdfs/ITPolicy/ITPolicy.pdf');
+export default function ITPolicy() {
+  return (
+    <div className="w-full h-screen">
+      <iframe
+        src="/Pdfs/ITPolicy/ITPolicy.pdf"
+        className="w-full h-full"
+      />
+    </div>
+  );
 }
