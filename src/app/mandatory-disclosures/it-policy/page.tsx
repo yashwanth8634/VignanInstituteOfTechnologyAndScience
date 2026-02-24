@@ -1,6 +1,7 @@
 
 
 
+
 export const metadata = {
     title: "IT Policy | VITS",
     description: "Information about IT Policy at VITS.",

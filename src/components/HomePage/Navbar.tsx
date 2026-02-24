@@ -221,7 +221,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                   )}
 
                   {/* Animated Underline */}
-                  <span className="absolute left-0 -bottom-2 h-[3px] w-0 bg-vignan-purple transition-all duration-150 group-hover:w-full rounded-full"></span>
+                  <span className="absolute left-0 -bottom-2 h-[3px] w-0 bg-vignan-purple transition-all duration-500 group-hover:w-full rounded-full"></span>
                 </Link>
 
                 {/* Dropdown */}
