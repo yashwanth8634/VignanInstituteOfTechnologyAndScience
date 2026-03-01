@@ -15,13 +15,15 @@ export function middleware(request: NextRequest) {
   const csp = [
     "default-src 'self'",
 
-    // Nonce allows Next.js hydration scripts + GTM. 'strict-dynamic'
-    // trusts scripts loaded by trusted scripts (removes need for CDN allow-list).
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval'`,
+    // Nonce allows Next.js hydration scripts. 'strict-dynamic' trusts
+    // scripts loaded by already-trusted scripts.
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
 
-    // Styles: nonce for Next.js-injected styles; keep unsafe-inline for
-    // Tailwind CSS utility classes (inline styles) until migrated to CSS vars.
-    `style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://fonts.googleapis.com`,
+    // Styles: 'unsafe-inline' is required for React inline style props and
+    // Tailwind. NOTE: do NOT add a nonce here — per the CSP spec, when a
+    // nonce is present in style-src, browsers IGNORE 'unsafe-inline',
+    // which blocks all React style={{}} attributes.
+    `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
 
     "font-src 'self' https://fonts.gstatic.com data:",
 
@@ -44,7 +46,8 @@ export function middleware(request: NextRequest) {
       "https://res.cloudinary.com",
     ].join(" "),
 
-    "frame-src 'none'",
+    // Allow Google Drive embeds (PDFs linked from the site open in Drive)
+    "frame-src 'self' https://drive.google.com https://www.google.com",
     "frame-ancestors 'none'",
     "object-src 'none'",
     "base-uri 'self'",
