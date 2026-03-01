@@ -1,5 +1,5 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
 import React from 'react';
 import { Leaf, Droplets, Recycle, Accessibility, FileCheck, Star, ArrowRight, ExternalLink } from "lucide-react";

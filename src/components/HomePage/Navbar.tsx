@@ -90,7 +90,7 @@ const navLinks: NavLink[] = [
       { label: "Cafeteria", href: "/facilities/cafeteria" },
       { label: "Transportation", href: "/facilities/transportation" },
       { label: "Hostel", href: "/facilities/hostel" },
-      { label: "Vignan IT Maintenance System", href: "/FacilitiesPage/VignanITManagement.pdf", external: true },
+      { label: "Vignan IT Maintenance System", href: "https://drive.google.com/file/d/1WdUDbhtlxtr_BKL6l0U3mRbaS2C6KXVB/view", external: true },
     ],
   },
   {
@@ -293,7 +293,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
           {/* Right Buttons */}
           <div className="hidden xl:flex items-center gap-5">
             <Link
-              href="/Pdfs/NIRF/NIRF2025.pdf"
+              href="https://drive.google.com/file/d/1aFtNssDWFHPDVV_eZbwTvVvEOISyL-BL/view"
               className="px-7 py-3 bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 
             backdrop-blur-md shadow-lg text-white text-sm font-semibold rounded-full hover:bg-vignan-purple-dark transition-all duration-150 shadow-md hover:shadow-xl hover:scale-105"
             >

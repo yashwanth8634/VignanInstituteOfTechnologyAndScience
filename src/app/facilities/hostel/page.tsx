@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import { Building } from "lucide-react";
 import Image from "next/image";
 
@@ -45,7 +45,7 @@ export default function HostelPage() {
             {/* Image Section */}
             <div className="relative h-64 sm:h-80 md:h-96 w-full lg:h-auto min-h-[300px] overflow-hidden group">
               <Image
-                src="/FacilitiesPage/Hostel.webp"
+                src="/FacilitiesPage/Images/Hostel.webp"
                 alt="Hostel Building"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

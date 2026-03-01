@@ -1,5 +1,5 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
 import React from 'react';
 import { MapPin, Navigation, Bus, Train } from "lucide-react";

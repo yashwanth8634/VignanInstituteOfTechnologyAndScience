@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from 'react';
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import { Target, Download, FileText } from "lucide-react";
 
 export const metadata = {

@@ -1,7 +1,7 @@
 "use client";
 
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
 import React, { useState } from 'react';
 import { Trophy, Star, Award, GraduationCap, Medal, FileText, ChevronDown, ChevronUp } from "lucide-react";

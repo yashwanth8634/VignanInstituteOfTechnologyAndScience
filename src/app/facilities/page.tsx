@@ -1,5 +1,5 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../components/HomePage/Navbar";
+import Footer from "../../components/HomePage/Footer";
 import Link from "next/link";
 import {
     Waves,
@@ -71,7 +71,7 @@ const facilityLinks = [
     {
         title: "IT Maintenance",
         description: "Comprehensive IT management and maintenance system ensuring seamless operation of campus digital services.",
-        href: "/FacilitiesPage/VignanITManagement.pdf",
+        href: "https://drive.google.com/file/d/1WdUDbhtlxtr_BKL6l0U3mRbaS2C6KXVB/view",
         icon: <Settings className="w-8 h-8 text-vignan-purple" />,
         external: true
     }

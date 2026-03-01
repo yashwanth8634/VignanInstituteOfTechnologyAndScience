@@ -117,23 +117,23 @@ export const departments: Record<string, DepartmentData> = {
       },
       {
         AcademicYear:"2020-2021",
-        url:"/Pdfs/Publications/CSE/CSE_AY2020-2021.pdf"
+        url:"https://drive.google.com/file/d/1FPLPFNpaaD4WCBNgK5nH6yAntWpt5WKf/view"
       },
       {
         AcademicYear:"2019-2020",
-        url:"/Pdfs/Publications/CSE/CSE_AY2019-2020.pdf"
+        url:"https://drive.google.com/file/d/124mjZ2nLeHDou4ibRIgoCFEcDRh22cBE/view"
       },
       {
         AcademicYear:"2018-2019",
-        url:"/Pdfs/Publications/CSE/CSE_AY2018-2019.pdf"
+        url:"https://drive.google.com/file/d/1k3X29yOfcFzHI289BUypc7d8RZApwB_S/view"
       },
       {
         AcademicYear:"2017-2018",
-        url:"/Pdfs/Publications/CSE/CSE_AY2017-2018.pdf"
+        url:"https://drive.google.com/file/d/103-zGjBmyfz75wVSMq4q9imuTtS-rrYy/view"
       },
       {
         AcademicYear:"2016-2017",
-        url:"/Pdfs/Publications/CSE/CSE_AY2016-2017.pdf"
+        url:"https://drive.google.com/file/d/1yS1lfxXbw1UMwoQwXUEJ0ZOetP63onI8/view"
       },
     ],
     seminars: [
@@ -925,11 +925,11 @@ departmentCommittee: [
     publications:[
       {
         AcademicYear: "2019-2020",
-        url: "/Pdfs/Publications/EIE/EIEAY2019-2020.pdf"
+        url: "https://drive.google.com/file/d/1xdgNasTzA-dCSY54Ang48v37AheqrA7X/view"
       },
       {
         AcademicYear: "2017-2018",
-        url: "/Pdfs/Publications/EIE/EIEAY2017-2018.pdf"
+        url: "https://drive.google.com/file/d/1MrhQjdCTy36KNN48Cj1OjUr6n_G7vDxy/view"
       }
     ],
     seminars: [
@@ -1147,11 +1147,11 @@ departmentCommittee: [
     publications: [
       {
         AcademicYear: "2018-2019",
-        url: "/Pdfs/Publications/ECE/ECE_AY2018-2019.pdf"
+        url: "https://drive.google.com/file/d/1idW13nLyy5lBIUVBTGRsehsj6hqYbiF1/view"
       },
       {
         AcademicYear: "2016-2017",
-        url: "/Pdfs/Publications/ECE/ECE_AY2016-2017.pdf"
+        url: "https://drive.google.com/file/d/1iY7EQshb6i95rPAwcufXm_ex8zrnWBtK/view"
       }
     ],
 
@@ -1224,23 +1224,23 @@ departmentCommittee: [
       },
       {
         AcademicYear: "2020-2021",
-        url: "/Pdfs/Publications/EEE/EEE_AY2020-2021.pdf"
+        url: "https://drive.google.com/file/d/1bNEN2A1xOlxwSIlg8N7g00wMz0-kT_A0/view"
       },
       {
         AcademicYear: "2019-2020",
-        url: "/Pdfs/Publications/EEE/EEE_AY2019-2020.pdf"
+        url: "https://drive.google.com/file/d/1Xt-J_BPAMadIb13nZYLjPTA1Bt0dCxW3/view"
       },
       {
         AcademicYear: "2018-2019",
-        url: "/Pdfs/Publications/EEE/EEE_AY2018-2019.pdf"
+        url: "https://drive.google.com/file/d/1B8qD1RCRM-MyT_FcQWZHbv-7CVukJYGL/view"
       },
       {
         AcademicYear: "2017-2018",
-        url: "/Pdfs/Publications/EEE/EEE_AY2017-2018.pdf"
+        url: "https://drive.google.com/file/d/1C2ZL74WrQiNjhWded9wfCoa4UACmootT/view"
       },
       {
         AcademicYear: "2016-2017",
-        url: "/Pdfs/Publications/EEE/AY2016-2017.pdf"
+        url: "https://drive.google.com/file/d/1QUbmYzvnMA-z-Wxja-F6jSsgqnOenirv/view"
       }
     ],
 
@@ -1441,23 +1441,23 @@ departmentCommittee: [
       },
       {
         AcademicYear: "2020-2021",
-        url: "/Pdfs/Publications/MECH/AY2020-2021.pdf"
+        url: "https://drive.google.com/file/d/19OOKLZZXB5QR0zh3McJ9-j5cGgRGz7UY/view"
       },
       {
         AcademicYear: "2019-2020",
-        url: "/Pdfs/Publications/MECH/AY2019-2020.pdf"
+        url: "https://drive.google.com/file/d/18j8g5WkTYVkzBLeVVvoXXKYPjlzrFMl6/view"
       },
       {
         AcademicYear: "2018-2019",
-        url: "/Pdfs/Publications/MECH/AY2018-2019.pdf"
+        url: "https://drive.google.com/file/d/1yPrlvhtpIu6xVj6ildtwcpC0trKnwoi0/view"
       },
       {
         AcademicYear: "2017-2018",
-        url: "/Pdfs/Publications/MECH/AY2017-2018.pdf"
+        url: "https://drive.google.com/file/d/105Fj4r2ozrVf8ePen0in3WLQcVtqUTGn/view"
       },
       {
         AcademicYear: "2016-2017",
-        url: "/Pdfs/Publications/MECH/AY2016-2017.pdf"
+        url: "https://drive.google.com/file/d/1ScgXN8XiW5RJdE3PhnumOAoUXCshalqv/view"
       }
     ],
 
@@ -1725,19 +1725,19 @@ departmentCommittee: [
       },
       {
         AcademicYear: "2020-2021",
-        url: "/Pdfs/Publications/CIVIL/AY2020-2021.pdf"
+        url: "https://drive.google.com/file/d/1lRaJyDkBiobxzRpzKdePUfo1unSQDhpM/view"
       },
       {
         AcademicYear: "2019-2020",
-        url: "/Pdfs/Publications/CIVIL/AY2019-2020.pdf"
+        url: "https://drive.google.com/file/d/1aRLGT1Xsd4ZQW-t2X0mzsgtcW9Cel1NS/view"
       },
       {
         AcademicYear: "2017-2018",
-        url: "/Pdfs/Publications/EEE/AY2017-2018.pdf"
+        url: "https://drive.google.com/file/d/1tIbgJtc4YPIrqp4eS15KS81JUeFWc6q9/view"
       },
       {
         AcademicYear: "2016-2017",
-        url: "/Pdfs/Publications/EEE/AY2016-2017.pdf"
+        url: "https://drive.google.com/file/d/1jhi-agV2i55DQjfi1FVIGvsITuaXEiF2/viewf"
       }
     ],
 
@@ -1860,15 +1860,15 @@ departmentCommittee: [
       },
       {
         AcademicYear: "2019-2020",
-        url: "/Pdfs/Publications/BS&H/AY2019-2020.pdf"
+        url: "https://drive.google.com/file/d/13HqMOci5hKZ91XaJwlaWLV5BMcxr2FTj/view"
       },
       {
         AcademicYear: "2017-2018",
-        url: "/Pdfs/Publications/BS&H/AY2017-2018.pdf"
+        url: "https://drive.google.com/file/d/1YPHrJau0zq5TmtQjVco-vIGXfWw11cMG/view"
       },
       {
         AcademicYear: "2016-2017",
-        url: "/Pdfs/Publications/BS&H/AY2016-2017.pdf"
+        url: "https://drive.google.com/file/d/1q0y8uXYqgS4hpAVzZnwzc9dH3savha7i/view"
       }
     ],
     seminars: [],

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import { Monitor, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
@@ -15,7 +15,7 @@ import "swiper/css/effect-creative";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/utils";
 
 
 

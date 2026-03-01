@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useParams, notFound } from "next/navigation";
 import NextImage from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
-import { departments } from "@/data/departments";
+import Navbar from "../../../../components/HomePage/Navbar";
+import Footer from "../../../../components/HomePage/Footer";
+import { departments } from "../../../../data/departments";
 import {
   BookOpen,
   User,

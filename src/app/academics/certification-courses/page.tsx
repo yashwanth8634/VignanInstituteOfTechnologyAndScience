@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import { Award, ExternalLink } from "lucide-react";
 
 export const metadata = {

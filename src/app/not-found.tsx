@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Home, ArrowLeft, TriangleAlert } from 'lucide-react';
-import Navbar from '@/components/HomePage/Navbar';
-import Footer from '@/components/HomePage/Footer';
+import Navbar from '../components/HomePage/Navbar';
+import Footer from '../components/HomePage/Footer';
 
 export const metadata = {
     title: 'Page Not Found | Vignan Institute of Technology and Science',

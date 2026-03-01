@@ -1,4 +1,4 @@
-import { departments } from "@/data/departments";
+import { departments } from "../../../../data/departments";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {

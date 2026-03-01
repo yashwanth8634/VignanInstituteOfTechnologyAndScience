@@ -1,5 +1,5 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
 import React from 'react';
 import { Network, Server, Cpu, Database, Wrench, Lightbulb, CheckCircle2 } from "lucide-react";
@@ -105,7 +105,7 @@ export default function Page() {
 
             {/* Main Content */}
             <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-                
+
                 {/* Facilities Grid */}
                 <div className="space-y-12 mb-16">
                     {facilities.map((facility, index) => {
@@ -149,7 +149,7 @@ export default function Page() {
                 <div className="bg-[#003666] rounded-3xl p-8 md:p-10 text-white relative overflow-hidden shadow-xl">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mt-32 -mr-32 blur-3xl" />
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full -mb-32 -ml-32 blur-3xl" />
-                    
+
                     <div className="relative z-10">
                         <div className="flex items-center gap-4 mb-8">
                             <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20 backdrop-blur-sm shrink-0">

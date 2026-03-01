@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import React from 'react';
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Image from "next/image";
 import { BookOpen, Library, Clock, Users, Monitor, BookMarked, Globe } from "lucide-react";
 
@@ -93,7 +93,7 @@ export default function VignanaDharaPage() {
         <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div className="relative h-56 sm:h-72 lg:h-80 w-full overflow-hidden rounded-xl border border-gray-100 group">
             <Image
-              src="/FacilitiesPage/VignanDhara.webp"
+              src="/FacilitiesPage/Images/VignanDhara.webp"
               alt="Vignana Dhara Library"
               fill
               className="object-cover transition-transform duration-700 ease-in-out scale-110 group-hover:scale-100"

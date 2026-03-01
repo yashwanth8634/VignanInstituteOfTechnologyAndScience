@@ -8,5 +8,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  redirect('/Pdfs/MaintenancePolicy/Maintenance-policy.pdf');
+  redirect('https://drive.google.com/file/d/1-3kJ4gQRJfwCf-VBJdM8cNYb1A3nbV2T/view');
 }

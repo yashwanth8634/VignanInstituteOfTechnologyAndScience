@@ -3,8 +3,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../components/HomePage/Navbar";
+import Footer from "../../components/HomePage/Footer";
 import Image from "next/image";
 import { Briefcase, Building2, BookOpen, User, Phone, Mail, Award, ChevronDown } from "lucide-react";
 
@@ -110,11 +110,11 @@ export default function PlacementsPage() {
     ];
 
     const infrastructure = [
-        { title: "Seminar Hall", desc: "Air-conditioned Hall with a seating capacity of 200 members", image: "/PlacementPage/SeminarHall.jpg", color: "bg-purple-100" },
-        { title: "Interview Rooms", desc: "Separate air-conditioned rooms to accommodate 8 – 10 Panels for conducting interviews simultaneously", image: "/PlacementPage/InterviewRoom.jpg", color: "bg-blue-100" },
-        { title: "Open Air Auditorium", desc: "Capacity 2000", image: "/PlacementPage/OpenAirAuditorium.jpg", color: "bg-green-100" },
-        { title: "Computer Systems", desc: "1050 systems with internet and UPS backup facilities", image: "/PlacementPage/ComputerSystems.jpg", color: "bg-orange-100" },
-        { title: "GD rooms", desc: "3 Separate air-conditioned rooms furnished with round table and chairs to conduct GDs with 20 – 25 members", image: "/PlacementPage/GDRooms.jpg", color: "bg-red-100" },
+        { title: "Seminar Hall", desc: "Air-conditioned Hall with a seating capacity of 200 members", image: "/PlacementPage/Images/SeminarHall.jpg", color: "bg-purple-100" },
+        { title: "Interview Rooms", desc: "Separate air-conditioned rooms to accommodate 8 – 10 Panels for conducting interviews simultaneously", image: "/PlacementPage/Images/InterviewRoom.jpg", color: "bg-blue-100" },
+        { title: "Open Air Auditorium", desc: "Capacity 2000", image: "/PlacementPage/Images/OpenAirAuditorium.jpg", color: "bg-green-100" },
+        { title: "Computer Systems", desc: "1050 systems with internet and UPS backup facilities", image: "/PlacementPage/Images/ComputerSystems.jpg", color: "bg-orange-100" },
+        { title: "GD rooms", desc: "3 Separate air-conditioned rooms furnished with round table and chairs to conduct GDs with 20 – 25 members", image: "/PlacementPage/Images/GDRooms.jpg", color: "bg-red-100" },
     ];
 
     return (
@@ -337,7 +337,7 @@ export default function PlacementsPage() {
                         {/* Coordinator 2 */}
                         <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
                             <div className="w-25 h-25 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-vignan-purple">
-                                <Image src="/PlacementPage/DeanTraining.png" alt="CH V B Aditya Kumar" width={100} height={100} className="w-25 h-25 text-gray-400/50 group-hover:scale-110 transition-transform duration-500 rounded-full" />
+                                <Image src="/PlacementPage/Images/DeanTraining.png" alt="CH V B Aditya Kumar" width={100} height={100} className="w-25 h-25 text-gray-400/50 group-hover:scale-110 transition-transform duration-500 rounded-full" />
                             </div>
                             <h3 className="text-xl font-bold text-gray-900">CH V B Aditya Kumar</h3>
                             <p className="text-gray-500 font-medium mb-4">Dean Training & Corporate Relations</p>

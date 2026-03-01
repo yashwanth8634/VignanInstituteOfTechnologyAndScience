@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import { Award, ExternalLink, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -203,8 +203,8 @@ function BodyCard({ body }: { body: ProfessionalBody }) {
       <button
         onClick={() => setOpen((o) => !o)}
         className={`w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-200 ${open
-            ? "bg-gradient-to-r from-purple-700 to-indigo-600 text-white"
-            : "bg-white hover:bg-purple-50 text-gray-800"
+          ? "bg-gradient-to-r from-purple-700 to-indigo-600 text-white"
+          : "bg-white hover:bg-purple-50 text-gray-800"
           }`}
         aria-expanded={open}
       >

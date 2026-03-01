@@ -2,8 +2,8 @@
 "use client";
 
 import Link from "next/link";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../components/HomePage/Navbar";
+import Footer from "../../components/HomePage/Footer";
 import { CheckCircle2, Phone, Mail, GraduationCap, IndianRupee, MapPin } from "lucide-react";
 
 

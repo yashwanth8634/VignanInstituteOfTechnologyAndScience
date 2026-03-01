@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import React from 'react';
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import { Trophy, Activity, Dumbbell, Map, Medal, Users, HeartPulse, ShieldCheck, Smile } from "lucide-react";
 
 

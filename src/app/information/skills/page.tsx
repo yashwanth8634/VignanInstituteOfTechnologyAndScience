@@ -1,7 +1,6 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
-import React from 'react';
 import { Download, FileText, Cpu, MessageCircle, HeartHandshake, MapPin, ExternalLink } from "lucide-react";
 
 export const metadata = {
@@ -18,11 +17,11 @@ const skillCategories = [
         bgColor: "bg-pink-50",
         borderColor: "border-pink-100",
         documents: [
-            { year: "2020-2021", link: "/Pdfs/SkillEnhancement/SoftSkills/2020-21.pdf" },
-            { year: "2019-2020", link: "/Pdfs/SkillEnhancement/SoftSkills/2019-20.pdf" },
-            { year: "2018-2019", link: "/Pdfs/SkillEnhancement/SoftSkills/2018-19.pdf" },
-            { year: "2017-2018", link: "/Pdfs/SkillEnhancement/SoftSkills/2017-18.pdf" },
-            { year: "2016-2017", link: "/Pdfs/SkillEnhancement/SoftSkills/2016-17.pdf" },
+            { year: "2020-2021", link: "https://drive.google.com/file/d/1X2rqi_8Awq6HF0limHafkQTeAlqjTTZW/view" },
+            { year: "2019-2020", link: "https://drive.google.com/file/d/1fkWzYiEiby4qE7VWAGXZRZKOMfOs1rdN/view" },
+            { year: "2018-2019", link: "https://drive.google.com/file/d/1TTBHDfFCVo-3PIIZ6OGZiZmhdDlnGdX6/view" },
+            { year: "2017-2018", link: "https://drive.google.com/file/d/1_bgyv60CFkSaNN6uPUIInECk6ontBnL4/view" },
+            { year: "2016-2017", link: "https://drive.google.com/file/d/1H_sEJ-l8Yq24uwA1Q8-nonepk-5g8aNq/view" },
         ],
         geoTagLink: "/Pdfs/SkillEnhancement/SoftSkills/images.pdf"
     },
@@ -34,11 +33,11 @@ const skillCategories = [
         bgColor: "bg-blue-50",
         borderColor: "border-blue-100",
         documents: [
-            { year: "2020-2021", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2020-21.pdf" },
-            { year: "2019-2020", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2019-20.pdf" },
-            { year: "2018-2019", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2018-19.pdf" },
-            { year: "2017-2018", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2017-18.pdf" },
-            { year: "2016-2017", link: "/Pdfs/SkillEnhancement/Language&CommunicationSkills/2016-17.pdf" },
+            { year: "2020-2021", link: "https://drive.google.com/file/d/1cGDYLwMiK3uR3KBraD81H_-b1Ka0gqtE/view" },
+            { year: "2019-2020", link: "https://drive.google.com/file/d/1QIKLmb4oOKA_K_BG0LZuHsRKALiyoZWK/view" },
+            { year: "2018-2019", link: "https://drive.google.com/file/d/1-LwciLGnfd66gWCDPaoeWvNR3CsiZCvu/view" },
+            { year: "2017-2018", link: "https://drive.google.com/file/d/16NMOkSpPk3UMQjJEDAF6uEgZUaYCIiPZ/view" },
+            { year: "2016-2017", link: "https://drive.google.com/file/d/1jt7K6Ju_mAR8FlzGUh9BnLl4tkfLjovI/view" },
         ],
         geoTagLink: "http://ENGLISH%20LANGUAGE%20COMMUNICATION.pdf" // Note: Link preserved from source, though appears incomplete
     },
@@ -72,7 +71,7 @@ const skillCategories = [
             { year: "2017-2018", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2017-18.pdf" },
             { year: "2016-2017", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2016-17.pdf" },
         ],
-        geoTagLink: "/Pdfs/SkillEnhancement/ICTComputingSkills/images.pdf"
+        geoTagLink: "https://drive.google.com/file/d/1bvD02_j244AVk9h7PPipnrR0OTvXailF/view"
     },
 ];
 
@@ -101,7 +100,7 @@ export default function Page() {
 
             {/* Main Content */}
             <div className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-                
+
                 <div className="grid md:grid-cols-2 gap-8">
                     {skillCategories.map((category, index) => {
                         const Icon = category.icon;
@@ -122,10 +121,10 @@ export default function Page() {
                                 <div className="space-y-3 flex-grow">
                                     <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-2">Annual Reports</h3>
                                     {category.documents.map((doc, idx) => (
-                                        <a 
+                                        <a
                                             key={idx}
                                             href={doc.link}
-                                            target="_blank" 
+                                            target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-100 transition-colors group"
                                         >
@@ -138,9 +137,9 @@ export default function Page() {
                                 </div>
 
                                 <div className="mt-8 pt-6 border-t border-gray-100">
-                                    <a 
+                                    <a
                                         href={category.geoTagLink}
-                                        target="_blank" 
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                         className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold transition-colors ${category.bgColor} ${category.color} hover:brightness-95`}
                                     >

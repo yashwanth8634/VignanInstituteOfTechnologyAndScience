@@ -11,9 +11,11 @@ export default function Hero() {
         muted
         loop
         playsInline
+        preload="metadata"
+        poster="/HomePage/HeroSection/Hero.png"
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/HomePage/HeroSection/vignanvideo.mp4" type="video/mp4" />
+        <source src="/HomePage/HeroSection/output.mp4" type="video/mp4" />
       </video>
 
       {/* Dark Overlay */}

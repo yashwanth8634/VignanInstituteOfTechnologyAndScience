@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import { FileText, Download } from "lucide-react";
 
 
@@ -14,7 +14,7 @@ export default function AcademicRegulationsPage() {
             name: "B.Tech VR25",
             description: "Outlines curriculum, academic rules, and evaluation criteria.",
             tags: ["B.Tech", "VR25", "Regulations"],
-            href: "/Pdfs/AcademicRegulations/BTech/BTechVR25.pdf",
+            href: "https://drive.google.com/file/d/1_RO1fzXpSz7A4QtjabufCnYSa9H_YCzh/view",
             bgClass: "bg-[#e8f4fc]", // Light Blue
             textClass: "text-[#1d4ed8]", // tailwind blue-700
             tagBg: "bg-blue-100/70",
@@ -25,7 +25,7 @@ export default function AcademicRegulationsPage() {
             name: "M.Tech VR25",
             description: "Detailed framework for postgraduate M.Tech programs.",
             tags: ["M.Tech", "VR25", "Regulations"],
-            href: "/Pdfs/AcademicRegulations/MTech/MTechVR25.pdf",
+            href: "https://drive.google.com/file/d/1SMS_S9-8QTGOY64a13KP6X9mZ3hHg8kw/view",
             bgClass: "bg-[#ffefe5]", // Light Orange/Peach
             textClass: "text-[#c2410c]", // tailwind orange-700
             tagBg: "bg-orange-100/70",
@@ -36,7 +36,7 @@ export default function AcademicRegulationsPage() {
             name: "B.Tech VR23",
             description: "Prior syllabus structure and examination guidelines.",
             tags: ["B.Tech", "VR23", "Historical"],
-            href: "/Pdfs/AcademicRegulations/BTech/BTechVR23.pdf",
+            href: "https://drive.google.com/file/d/1Dpo9wymz-WRGNus6LB0NmzSoPrriVKKi/view",
             bgClass: "bg-[#f2e8fc]", // Light Purple 
             textClass: "text-[#6d28d9]", // tailwind purple-700
             tagBg: "bg-purple-100/70",
@@ -58,7 +58,7 @@ export default function AcademicRegulationsPage() {
             name: "M.Tech VR23",
             description: "Standards and protocols for the 2023 postgraduate batches.",
             tags: ["M.Tech", "VR23", "Historical"],
-            href: "/Pdfs/AcademicRegulations/MTech/MTechVR23.pdf",
+            href: "https://drive.google.com/file/d/1Asrhq4bfm2l3x45uvyL2N4Al2xpjaHWl/view",
             bgClass: "bg-[#e5f7f1]", // Light Mint/Teal
             textClass: "text-[#0f766e]", // tailwind teal-700
             tagBg: "bg-teal-100/70",

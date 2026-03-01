@@ -1,5 +1,5 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
 import { FileText, Award, Calendar, ExternalLink } from "lucide-react";
 
@@ -36,8 +36,8 @@ const staffList = [
 ];
 
 const downloadLinks = [
-    { label: "Leave Policy for Examination Duties", href: "/Pdfs/Examinations/LEAVE-POLICY-OF-EXAMINATION-BRANCH.pdf" },
-    { label: "Choice Based Credit System University Guide Lines", href: "/Pdfs/Examinations/CBCS.pdf" },
+    { label: "Leave Policy for Examination Duties", href: "https://drive.google.com/file/d/16Q8u0J8ScyXYz_aKjm0EDfd2ZRTBc5ci/view" },
+    { label: "Choice Based Credit System University Guide Lines", href: "https://drive.google.com/file/d/16Rx4EFdzHN1CXQJre9o01uGNmxLS7xwL/view" },
 ];
 
 const certificationCourses = [

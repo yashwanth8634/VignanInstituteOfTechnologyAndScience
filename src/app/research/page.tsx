@@ -1,5 +1,5 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../components/HomePage/Navbar";
+import Footer from "../../components/HomePage/Footer";
 import Link from "next/link";
 import { Users, Calendar } from "lucide-react";
 
@@ -148,8 +148,8 @@ export default function ResearchPage() {
                                 <div className="p-7">
                                     {/* Type Badge */}
                                     <span className={`inline-block text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-4 ${conf.type === "International"
-                                            ? "bg-vignan-purple/10 text-vignan-purple"
-                                            : "bg-blue-100 text-blue-700"
+                                        ? "bg-vignan-purple/10 text-vignan-purple"
+                                        : "bg-blue-100 text-blue-700"
                                         }`}>
                                         {conf.type} Conference
                                     </span>

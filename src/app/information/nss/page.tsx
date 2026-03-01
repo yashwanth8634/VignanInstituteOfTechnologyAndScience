@@ -1,7 +1,7 @@
 "use client"; // Required for useState/useEffect
 
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";

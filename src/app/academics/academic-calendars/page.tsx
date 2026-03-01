@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import { Calendar, Download, ChevronDown } from "lucide-react";
 
 
@@ -24,15 +24,15 @@ export default function AcademicCalendarsPage() {
             },
             {
                 name: "B.Tech I Year",
-                href: "/Pdfs/AcademicCalendars/2025-2026/B.Tech-I-Year-2025-26-VR25.pdf",
+                href: "https://drive.google.com/file/d/107470PijdN0mzfZ4P7-9hZtJey-xRART/view",
             },
             {
                 name: "B.Tech II Year",
-                href: "/Pdfs/AcademicCalendars/2025-2026/B.Tech-II-Year-2025-26.pdf",
+                href: "https://drive.google.com/file/d/1q4xtEEzbdDuQqOb1a0ZPuwCY0U6n8Phx/view",
             },
             {
                 name: "B.Tech III Year",
-                href: "/Pdfs/AcademicCalendars/2025-2026/B.Tech-III-Year-2025-26.pdf",
+                href: "https://drive.google.com/file/d/1_QAOITE_9qSTZqhFMK1c8c_b98cPtRSR/view",
             },
             {
                 name: "B.Tech IV Year",
@@ -42,25 +42,25 @@ export default function AcademicCalendarsPage() {
         "2024-2025": [
             {
                 name: "M.Tech I Year",
-                href: "/Pdfs/AcademicCalendars/2024-2025/M.Tech-I-Year-2024-25-VR23.pdf",
+                href: "https://drive.google.com/file/d/1TQ4l5OnFsNsPcX1vZds9-eczWii43ngl/view",
             },
             {
                 name: "M.Tech II Year",
-                href: "/Pdfs/AcademicCalendars/2024-2025/M.Tech-II-Year-2024-25-VR23.pdf",
+                href: "https://drive.google.com/file/d/1Uj-uHZ87BtJjTlst1dZ4r36HhhhOERFi/view",
             },
             {
                 name: "B.Tech I Year",
-                href: "/Pdfs/AcademicCalendars/2024-2025/B.Tech-I-Year-2024-25-VR23.pdf",
+                href: "https://drive.google.com/file/d/1U4kYZVIbUY0FaB8NdKyEQ0jBLTl4NmIm/view",
             },
             {
                 name: "B.Tech II Year",
-                href: "/Pdfs/AcademicCalendars/2024-2025/B.Tech-II-2024-25-Year.pdf",
+                href: "https://drive.google.com/file/d/19tYYta8r1XQXe6R9L8nSQjR1N8aLqOur/view",
             },
         ],
         "2023-2024": [
             {
                 name: "M.Tech I Year & B.Tech I Year",
-                href: "/Pdfs/AcademicCalendars/2023-2024/B.Tech_M.Tech-I-Year-2023-24.pdf",
+                href: "https://drive.google.com/file/d/1kASf26JdRBOiwPUezNg04GtaUx4Iau6_/view",
             },
         ]
     };

@@ -1,5 +1,5 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
 import React from 'react';
 import { Target, Flag, Lightbulb, Users, Calendar, Award, Rocket, CheckCircle2 } from "lucide-react";

@@ -1,5 +1,5 @@
-import Navbar from "@/components/HomePage/Navbar";
-import Footer from "@/components/HomePage/Footer";
+import Navbar from "../../../components/HomePage/Navbar";
+import Footer from "../../../components/HomePage/Footer";
 import Link from "next/link";
 import React from 'react';
 import Image from 'next/image';
@@ -88,9 +88,9 @@ export default function Page() {
                         </div>
                     </div>
                     <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden shadow-lg group">
-                        <Image 
-                            src="/InformationPage/GreenInitiatives/1.jpg" 
-                            alt="Green Campus" 
+                        <Image
+                            src="/InformationPage/GreenInitiatives/1.jpg"
+                            alt="Green Campus"
                             fill
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                             sizes="50vw"
@@ -122,10 +122,10 @@ export default function Page() {
                 <section>
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="order-2 lg:order-1">
-                             <div className="rounded-3xl overflow-hidden shadow-lg border border-gray-100">
-                                <Image 
-                                    src="/InformationPage/GreenInitiatives/2.jpg" 
-                                    alt="Solid Waste Management" 
+                            <div className="rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                                <Image
+                                    src="/InformationPage/GreenInitiatives/2.jpg"
+                                    alt="Solid Waste Management"
                                     width={800}
                                     height={600}
                                     className="w-full h-auto object-cover"
@@ -138,9 +138,9 @@ export default function Page() {
                                 <Recycle className="w-8 h-8 text-green-600" />
                                 <h2 className="text-3xl font-bold text-gray-900">Solid Waste Management</h2>
                             </div>
-                            
+
                             {/* Diagram Trigger: Visualizing waste segregation helps students understand the process better */}
-                            
+
 
                             <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                                 <ul className="space-y-4">
@@ -171,9 +171,9 @@ export default function Page() {
                             </div>
                         </div>
                         <div className="relative h-64 lg:h-auto">
-                            <Image 
-                                src="/InformationPage/GreenInitiatives/3.jpg" 
-                                alt="Liquid Waste Management" 
+                            <Image
+                                src="/InformationPage/GreenInitiatives/3.jpg"
+                                alt="Liquid Waste Management"
                                 fill
                                 className="object-cover"
                                 sizes="50vw"
