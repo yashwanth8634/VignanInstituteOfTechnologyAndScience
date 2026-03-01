@@ -5,6 +5,7 @@ import BundleAnalyzer from "@next/bundle-analyzer";
 // Usage: ANALYZE=true npm run build
 const withBundleAnalyzer = BundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
+  openAnalyzer: true,
 });
 
 // ─── Security Headers ────────────────────────────────────────────────────────
