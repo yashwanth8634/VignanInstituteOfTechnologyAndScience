@@ -465,31 +465,42 @@ export default function DepartmentPage() {
 
                     {/* Mobile View (Cards) */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
-                      {dept.faculty?.map((member) => (
-                        <div
-                          key={member.sno}
-                          onClick={() => setSelectedFaculty(member)}
-                          className="bg-white p-5 rounded-xl shadow-sm border border-gray-200 flex flex-col gap-3 cursor-pointer hover:border-vignan-purple transition-all duration-200 active:scale-[0.98]"
-                        >
-                          <div className="flex justify-between items-start gap-4">
-                            <h3 className="font-bold text-gray-900 text-lg leading-tight group-hover:text-vignan-purple">
-                              {member.name}
-                            </h3>
-                            <span className="shrink-0 text-xs font-mono font-medium text-gray-400 bg-gray-100 px-2 py-1 rounded-md">
-                              #{member.sno}
-                            </span>
-                          </div>
+                      {dept.faculty?.map((member, index) => {
+                        const borderColors = [
+                          "border-l-vignan-purple",
+                          "border-l-blue-500",
+                          "border-l-pink-500",
+                          "border-l-indigo-500",
+                          "border-l-purple-400"
+                        ];
+                        const borderColor = borderColors[index % borderColors.length];
 
-                          <div className="flex flex-col gap-1">
-                            <p className="text-vignan-blue font-semibold text-sm">
-                              {member.designation}
-                            </p>
-                            <p className="text-xs text-gray-500 font-mono bg-gray-50 px-2 py-1.5 rounded-lg border border-gray-100 w-fit mt-1">
-                              {member.registrationNumber}
-                            </p>
+                        return (
+                          <div
+                            key={member.sno}
+                            onClick={() => setSelectedFaculty(member)}
+                            className={`bg-white p-5 rounded-xl shadow-sm border border-gray-200 border-l-4 ${borderColor} flex flex-col gap-3 cursor-pointer hover:shadow-md transition-all duration-200 active:scale-[0.98]`}
+                          >
+                            <div className="flex justify-between items-start gap-4">
+                              <h3 className="font-bold text-gray-900 text-[15px] leading-tight group-hover:text-vignan-purple">
+                                {member.name}
+                              </h3>
+                              <span className="shrink-0 text-xs font-bold text-gray-700 bg-gray-100/80 px-2 py-1 rounded-md border border-gray-200">
+                                S.No: {member.sno}
+                              </span>
+                            </div>
+
+                            <div className="flex flex-col gap-1.5">
+                              <span className="inline-flex items-center self-start px-2.5 py-1 rounded-full text-[11px] font-bold border bg-purple-50 text-vignan-purple border-purple-200">
+                                {member.designation}
+                              </span>
+                              <p className="text-[11px] text-gray-500 font-mono bg-gray-50 px-2.5 py-1.5 rounded-lg border border-gray-100 w-fit mt-1">
+                                ID: {member.registrationNumber}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
 
 
@@ -877,7 +888,7 @@ export default function DepartmentPage() {
                                 <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{item.AcademicYear}</td>
                                 <td className="p-4 text-vignan-blue font-medium hover:underline cursor-pointer">
                                   <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                                    <BookOpen className="w-4 h-4" /> View Document
+                                    <BookOpen className="w-4 h-4" /> <span className="hidden sm:inline">View Document</span><span className="sm:hidden">View</span>
                                   </a>
                                 </td>
                               </tr>
@@ -937,7 +948,7 @@ export default function DepartmentPage() {
                                     <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{item.AcademicYear}</td>
                                     <td className="p-4 text-vignan-blue font-medium hover:underline cursor-pointer">
                                       <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                                        <Presentation className="w-4 h-4" /> View Document
+                                        <Presentation className="w-4 h-4" /> <span className="hidden sm:inline">View Document</span><span className="sm:hidden">View</span>
                                       </a>
                                     </td>
                                   </>
@@ -979,7 +990,7 @@ export default function DepartmentPage() {
                                 <td className="p-4 border-r border-gray-100 font-semibold text-gray-800">{item.AcademicYear}</td>
                                 <td className="p-4 text-vignan-blue font-medium hover:underline cursor-pointer">
                                   <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                                    <BookMarked className="w-4 h-4" /> View Document
+                                    <BookMarked className="w-4 h-4" /> <span className="hidden sm:inline">View Document</span><span className="sm:hidden">View</span>
                                   </a>
                                 </td>
                               </tr>

@@ -160,8 +160,8 @@ export default function SportsPage() {
                             Outdoor Game Facilities
                         </h2>
                         <div className="overflow-x-auto">
-                            <table className="w-full border-collapse">
-                                <thead>
+                            <table className="w-full border-collapse block md:table">
+                                <thead className="hidden md:table-header-group">
                                     <tr className="bg-green-600 text-white text-left whitespace-nowrap">
                                         <th className="px-4 py-3 rounded-tl-lg text-sm font-semibold">S.No</th>
                                         <th className="px-4 py-3 text-sm font-semibold">Play Ground</th>
@@ -169,13 +169,25 @@ export default function SportsPage() {
                                         <th className="px-4 py-3 rounded-tr-lg text-sm font-semibold text-right">Sq. Meters</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-gray-100 border border-gray-100 rounded-b-lg">
+                                <tbody className="block md:table-row-group divide-y-4 md:divide-y md:divide-gray-100 divide-gray-100 border border-gray-100 rounded-b-lg">
                                     {outdoorFacilities.map((item) => (
-                                        <tr key={item.sno} className="hover:bg-gray-50">
-                                            <td className="px-4 py-3 text-sm text-gray-600">{item.sno}</td>
-                                            <td className="px-4 py-3 text-sm font-medium text-gray-900">{item.name}</td>
-                                            <td className="px-4 py-3 text-sm font-bold text-green-700 text-center">{item.courts}</td>
-                                            <td className="px-4 py-3 text-sm text-gray-700 text-right">{item.area}</td>
+                                        <tr key={item.sno} className="block md:table-row hover:bg-gray-50 p-3 md:p-0">
+                                            <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-600 border-b border-gray-50 md:border-none">
+                                                <span className="md:hidden font-bold text-gray-800">S.No</span>
+                                                {item.sno}
+                                            </td>
+                                            <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm font-medium text-gray-900 border-b border-gray-50 md:border-none">
+                                                <span className="md:hidden font-bold text-gray-800">Play Ground</span>
+                                                <span className="text-right md:text-left">{item.name}</span>
+                                            </td>
+                                            <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm font-bold text-green-700 md:text-center border-b border-gray-50 md:border-none">
+                                                <span className="md:hidden font-bold text-gray-800">Courts</span>
+                                                {item.courts}
+                                            </td>
+                                            <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-700 md:text-right">
+                                                <span className="md:hidden font-bold text-gray-800">Sq. Meters</span>
+                                                {item.area}
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -191,20 +203,29 @@ export default function SportsPage() {
                                 Indoor Game Facilities
                             </h2>
                             <div className="overflow-x-auto">
-                                <table className="w-full border-collapse">
-                                    <thead>
+                                <table className="w-full border-collapse block md:table">
+                                    <thead className="hidden md:table-header-group">
                                         <tr className="bg-vignan-blue text-white text-left whitespace-nowrap">
                                             <th className="px-4 py-3 rounded-tl-lg text-sm font-semibold">S.No</th>
                                             <th className="px-4 py-3 text-sm font-semibold">Name</th>
                                             <th className="px-4 py-3 rounded-tr-lg text-sm font-semibold text-right">No. of Instruments</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-gray-100 border border-gray-100 rounded-b-lg">
+                                    <tbody className="block md:table-row-group divide-y-4 md:divide-y md:divide-gray-100 divide-gray-100 border border-gray-100 rounded-b-lg">
                                         {indoorFacilities.map((item, index) => (
-                                            <tr key={index} className="hover:bg-gray-50">
-                                                <td className="px-4 py-3 text-sm text-gray-600">{item.sno}</td>
-                                                <td className="px-4 py-3 text-sm font-medium text-gray-900">{item.name}</td>
-                                                <td className="px-4 py-3 text-sm font-medium text-vignan-blue text-right">{item.instruments}</td>
+                                            <tr key={index} className="block md:table-row hover:bg-gray-50 p-3 md:p-0">
+                                                <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-600 border-b border-gray-50 md:border-none">
+                                                    <span className="md:hidden font-bold text-gray-800">S.No</span>
+                                                    {item.sno}
+                                                </td>
+                                                <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm font-medium text-gray-900 border-b border-gray-50 md:border-none">
+                                                    <span className="md:hidden font-bold text-gray-800">Name</span>
+                                                    <span className="text-right md:text-left">{item.name}</span>
+                                                </td>
+                                                <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm font-medium text-vignan-blue md:text-right">
+                                                    <span className="md:hidden font-bold text-gray-800">No. of Instruments</span>
+                                                    <span className="text-right">{item.instruments}</span>
+                                                </td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -219,20 +240,29 @@ export default function SportsPage() {
                                 Physical Education Staff
                             </h2>
                             <div className="overflow-x-auto">
-                                <table className="w-full border-collapse">
-                                    <thead>
+                                <table className="w-full border-collapse block md:table">
+                                    <thead className="hidden md:table-header-group">
                                         <tr className="bg-vignan-purple text-white text-left whitespace-nowrap">
                                             <th className="px-4 py-3 rounded-tl-lg text-sm font-semibold">S.No</th>
                                             <th className="px-4 py-3 text-sm font-semibold">Name</th>
                                             <th className="px-4 py-3 rounded-tr-lg text-sm font-semibold">Designation</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-gray-100 border border-gray-100 rounded-b-lg">
+                                    <tbody className="block md:table-row-group divide-y-4 md:divide-y md:divide-gray-100 divide-gray-100 border border-gray-100 rounded-b-lg">
                                         {staffData.map((item) => (
-                                            <tr key={item.sno} className="hover:bg-gray-50">
-                                                <td className="px-4 py-3 text-sm text-gray-600">{item.sno}</td>
-                                                <td className="px-4 py-3 text-sm font-medium text-gray-900">{item.name}</td>
-                                                <td className="px-4 py-3 text-sm text-gray-600">{item.designation}</td>
+                                            <tr key={item.sno} className="block md:table-row hover:bg-gray-50 p-3 md:p-0">
+                                                <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-600 border-b border-gray-50 md:border-none">
+                                                    <span className="md:hidden font-bold text-gray-800">S.No</span>
+                                                    {item.sno}
+                                                </td>
+                                                <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm font-medium text-gray-900 border-b border-gray-50 md:border-none">
+                                                    <span className="md:hidden font-bold text-gray-800">Name</span>
+                                                    <span className="text-right md:text-left">{item.name}</span>
+                                                </td>
+                                                <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-600">
+                                                    <span className="md:hidden font-bold text-gray-800">Designation</span>
+                                                    <span className="text-right md:text-left">{item.designation}</span>
+                                                </td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -249,8 +279,8 @@ export default function SportsPage() {
                         Health & Wellness Programs
                     </h2>
                     <div className="overflow-x-auto">
-                        <table className="w-full border-collapse">
-                            <thead>
+                        <table className="w-full border-collapse block md:table">
+                            <thead className="hidden md:table-header-group">
                                 <tr className="bg-vignan-purple text-white text-left">
                                     <th className="px-4 py-3 rounded-tl-lg text-sm font-semibold">S.No</th>
                                     <th className="px-4 py-3 text-sm font-semibold">Programme</th>
@@ -258,13 +288,25 @@ export default function SportsPage() {
                                     <th className="px-4 py-3 rounded-tr-lg text-sm font-semibold text-center">No. of Programmes Conducted</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-100 border border-gray-100 rounded-b-lg">
+                            <tbody className="block md:table-row-group divide-y-4 md:divide-y md:divide-gray-100 divide-gray-100 border border-gray-100 rounded-b-lg">
                                 {yogaPrograms.map((item) => (
-                                    <tr key={item.sno} className="hover:bg-gray-50">
-                                        <td className="px-4 py-3 text-sm text-gray-600">{item.sno}</td>
-                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">{item.programme}</td>
-                                        <td className="px-4 py-3 text-sm text-gray-700 text-center">{item.year}</td>
-                                        <td className="px-4 py-3 text-sm font-bold text-vignan-purple text-center">{item.conducted}</td>
+                                    <tr key={item.sno} className="block md:table-row hover:bg-gray-50 p-3 md:p-0">
+                                        <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-600 border-b border-gray-50 md:border-none">
+                                            <span className="md:hidden font-bold text-gray-800">S.No</span>
+                                            {item.sno}
+                                        </td>
+                                        <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm font-medium text-gray-900 border-b border-gray-50 md:border-none">
+                                            <span className="md:hidden font-bold text-gray-800">Programme</span>
+                                            <span className="text-right md:text-left">{item.programme}</span>
+                                        </td>
+                                        <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-700 md:text-center border-b border-gray-50 md:border-none">
+                                            <span className="md:hidden font-bold text-gray-800">Academic Year</span>
+                                            {item.year}
+                                        </td>
+                                        <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm font-bold text-vignan-purple md:text-center">
+                                            <span className="md:hidden font-bold text-gray-800 w-1/2">No. of Programmes Conducted</span>
+                                            <span className="text-right md:text-center">{item.conducted}</span>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

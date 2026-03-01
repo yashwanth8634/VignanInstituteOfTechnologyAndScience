@@ -261,29 +261,48 @@ function AccordionItem({ committee }: { committee: Committee }) {
 
           {/* Members Table */}
           {committee.members && committee.members.length > 0 && (
-            <div className="overflow-x-auto rounded-lg border border-gray-200">
-              <table className="min-w-full divide-y divide-gray-200 text-sm">
-                <thead>
-                  <tr className="bg-vignan-purple">
-                    <th className="px-4 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">S.No</th>
-                    <th className="px-4 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">Name</th>
-                    <th className="px-4 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">Designation</th>
-                    <th className="px-4 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">Position</th>
+            <div className="w-full rounded-xl border border-purple-200 overflow-hidden bg-white">
+              <table className="w-full border-collapse block md:table">
+                <thead className="hidden md:table-header-group">
+                  <tr className="bg-vignan-purple text-white text-left">
+                    <th className="px-4 py-3 text-sm font-semibold">S.No</th>
+                    <th className="px-4 py-3 text-sm font-semibold">Name</th>
+                    <th className="px-4 py-3 text-sm font-semibold">Designation</th>
+                    <th className="px-4 py-3 text-sm font-semibold">Position</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-100">
+                <tbody className="block md:table-row-group divide-y-4 md:divide-y md:divide-purple-100 divide-purple-100">
                   {committee.members.map((m, i) => (
-                    <tr key={i} className="hover:bg-purple-50 transition-colors">
-                      <td className="px-4 py-3 text-gray-700 font-medium">{m.sno}</td>
-                      <td className="px-4 py-3 text-gray-800 font-medium">{m.name}</td>
-                      <td className="px-4 py-3 text-gray-600">{m.designation}</td>
-                      <td className="px-4 py-3 text-gray-600">{m.position}</td>
+                    <tr key={i} className="block md:table-row hover:bg-purple-50 p-2 md:p-0 transition-colors">
+                      <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-600 border-b border-purple-50 md:border-none">
+                        <span className="md:hidden font-bold text-gray-800">S.No</span>
+                        <span className="text-right md:text-left">{m.sno}</span>
+                      </td>
+                      <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm font-medium text-gray-900 border-b border-purple-50 md:border-none">
+                        <span className="md:hidden font-bold text-gray-800">Name</span>
+                        <span className="text-right md:text-left">{m.name}</span>
+                      </td>
+                      <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-600 border-b border-purple-50 md:border-none">
+                        <span className="md:hidden font-bold text-gray-800">Designation</span>
+                        <span className="text-right md:text-left">{m.designation}</span>
+                      </td>
+                      <td className="flex justify-between md:table-cell px-4 py-2 md:py-3 text-sm text-gray-600">
+                        <span className="md:hidden font-bold text-gray-800">Position</span>
+                        <span className="text-right md:text-left">
+                          {m.position && (
+                            <span className="inline-block px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-xs font-semibold">
+                              {m.position}
+                            </span>
+                          )}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           )}
+
         </div>
       </div>
     </div>

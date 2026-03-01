@@ -231,20 +231,20 @@ export default function PlacementsPage() {
                     </h2>
                     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                         <div className="overflow-x-auto">
-                            <table className="w-full">
+                            <table className="w-full table-fixed">
                                 <thead>
-                                    <tr className="bg-vignan-purple text-white text-left">
-                                        <th className="px-6 py-4 font-semibold text-sm">SEMESTER</th>
-                                        <th className="px-6 py-4 font-semibold text-sm">TRAINING STREAM</th>
-                                        <th className="px-6 py-4 font-semibold text-sm text-right">NO OF HOURS</th>
+                                    <tr className="bg-vignan-purple text-white text-center">
+                                        <th className="w-24 px-3 py-4 font-semibold text-sm">SEMESTER</th>
+                                        <th className="px-4 py-4 font-semibold text-sm">TRAINING STREAM</th>
+                                        <th className="w-28 px-3 py-4 font-semibold text-sm">NO OF HOURS</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-100 text-gray-700">
                                     {syllabus.map((item, index) => (
-                                        <tr key={index} className="hover:bg-gray-50 transition-colors">
-                                            <td className="px-6 py-4 font-medium">{item.sem}</td>
-                                            <td className="px-6 py-4">{item.stream}</td>
-                                            <td className="px-6 py-4 text-right font-medium">{item.hours}</td>
+                                        <tr key={index} className="hover:bg-gray-50 transition-colors text-center">
+                                            <td className="w-24 px-3 py-4 font-medium text-sm">{item.sem}</td>
+                                            <td className="px-4 py-4 text-sm text-left">{item.stream}</td>
+                                            <td className="w-28 px-3 py-4 font-medium text-sm">{item.hours}</td>
                                         </tr>
                                     ))}
                                 </tbody>

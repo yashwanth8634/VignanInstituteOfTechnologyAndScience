@@ -158,7 +158,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-150 ${scrolled
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-150 ${scrolled || mobileOpen
         ? "bg-white shadow-md border-b border-gray-100 py-3"
         : "bg-transparent py-4"
         }`}
@@ -181,7 +181,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                 />
               </div>
               <span
-                className={`text-4xl md:text-6xl font-bold tracking-tight leading-none transition-colors duration-150 ${scrolled
+                className={`text-4xl md:text-6xl font-bold tracking-tight leading-none transition-colors duration-150 ${scrolled || mobileOpen
                   ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/HomePage/NavSection/NavTextImage.webp')]"
                   : "text-[#ecf4e5]"
                   }`}
@@ -189,7 +189,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                 VIGNAN
               </span>
             </div>
-            <span className={` text-[12px] md:text-[19px] font-medium tracking-tighter leading-tight transition-colors duration-150 ml-2 ${scrolled ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/HomePage/NavSection/NavTextImage.webp')]" : "text-[#ecf4e5]"
+            <span className={` text-[12px] md:text-[19px] font-medium tracking-tighter leading-tight transition-colors duration-150 ml-2 ${scrolled || mobileOpen ? "text-transparent bg-clip-text bg-center bg-cover bg-[url('/HomePage/NavSection/NavTextImage.webp')]" : "text-[#ecf4e5]"
               }`}>
               Institute of Technology and Science
             </span>
@@ -322,7 +322,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
               onClick={() => setMobileOpen(!mobileOpen)}
             >
               {mobileOpen ? (
-                <X className={`w-6 h-6 ${scrolled || variant === "solid" ? "text-gray-800" : "text-white"}`} />
+                <X className="w-6 h-6 text-gray-800" />
               ) : (
                 <Menu className={`w-6 h-6 ${scrolled || variant === "solid" ? "text-gray-800" : "text-white"}`} />
               )}
@@ -353,12 +353,18 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                     >
                       {link.label}
                       <ChevronDown
-                        className={`w-5 h-5 transition-transform ${activeDropdown === link.label ? "rotate-180" : ""
+                        className={`w-5 h-5 transition-transform duration-300 ${activeDropdown === link.label ? "rotate-180" : ""
                           }`}
                       />
                     </button>
 
-                    {activeDropdown === link.label && (
+                    {/* Animated dropdown */}
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${activeDropdown === link.label
+                        ? "max-h-[600px] opacity-100"
+                        : "max-h-0 opacity-0"
+                        }`}
+                    >
                       <div className="pl-4 space-y-3 mt-2 bg-gray-50 p-4 rounded-lg">
                         {link.dropdown?.map((item) => (
                           <div key={item.label}>
@@ -376,14 +382,20 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                                 >
                                   {item.label}
                                   <ChevronDown
-                                    className={`w-4 h-4 transition-transform ${activeSubmenu === item.label
+                                    className={`w-4 h-4 transition-transform duration-300 ${activeSubmenu === item.label
                                       ? "rotate-180"
                                       : ""
                                       }`}
                                   />
                                 </button>
 
-                                {activeSubmenu === item.label && (
+                                {/* Animated submenu */}
+                                <div
+                                  className={`overflow-hidden transition-all duration-300 ease-in-out ${activeSubmenu === item.label
+                                    ? "max-h-[500px] opacity-100"
+                                    : "max-h-0 opacity-0"
+                                    }`}
+                                >
                                   <div className="pl-2 space-y-2 border-l-2 border-vignan-purple/50">
                                     {item.submenu?.map((sub) => (
                                       <Link
@@ -396,7 +408,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                                       </Link>
                                     ))}
                                   </div>
-                                )}
+                                </div>
                               </div>
                             ) : (
                               <Link
@@ -412,7 +424,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                           </div>
                         ))}
                       </div>
-                    )}
+                    </div>
                   </div>
                 ) : (
                   <Link

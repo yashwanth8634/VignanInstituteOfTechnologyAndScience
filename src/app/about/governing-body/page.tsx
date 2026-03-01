@@ -90,20 +90,40 @@ export default function GoverningBodyPage() {
                     </div>
 
                     {/* Mobile card list */}
-                    <div className="sm:hidden divide-y divide-gray-100">
-                        {governingBodyMembers.map((member, index) => (
-                            <div key={member.sno} className={`p-4 ${index % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
-                                <div className="flex items-start justify-between gap-2">
-                                    <div>
-                                        <p className="font-semibold text-gray-900 text-sm">{member.name}</p>
-                                        <p className="text-gray-500 text-xs mt-0.5">{member.category}</p>
+                    <div className="sm:hidden flex flex-col gap-4 p-4 bg-gray-50/50">
+                        {governingBodyMembers.map((member, index) => {
+                            const borderColors = [
+                                "border-l-vignan-purple",
+                                "border-l-blue-500",
+                                "border-l-pink-500",
+                                "border-l-indigo-500",
+                                "border-l-purple-400"
+                            ];
+                            const badgeColors = [
+                                "bg-purple-50 text-vignan-purple border-purple-200",
+                                "bg-blue-50 text-blue-700 border-blue-200",
+                                "bg-pink-50 text-pink-700 border-pink-200",
+                                "bg-indigo-50 text-indigo-700 border-indigo-200",
+                                "bg-purple-100 text-purple-700 border-purple-200"
+                            ];
+
+                            const borderColor = borderColors[index % borderColors.length];
+                            const badgeColor = badgeColors[index % badgeColors.length];
+
+                            return (
+                                <div key={member.sno} className={`bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-l-4 ${borderColor} hover:shadow-md transition-shadow`}>
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex flex-col gap-2">
+                                            <p className="font-bold text-gray-900 text-[15px]">{member.name}</p>
+                                            <span className={`inline-flex items-center self-start px-2.5 py-1 rounded-full text-[11px] font-bold border ${badgeColor}`}>
+                                                {member.designation}
+                                            </span>
+                                        </div>
+                                        <p className="text-gray-600 text-xs leading-relaxed mt-1">{member.category}</p>
                                     </div>
-                                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-vignan-purple/10 text-vignan-purple flex-shrink-0">
-                                        {member.designation}
-                                    </span>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </div>

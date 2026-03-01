@@ -23,7 +23,7 @@ const accreditations = [
         title: "NAAC Accreditation",
         description:
             "National Assessment and Accreditation Council — Vignan ITS has been accredited by NAAC, recognizing the institution's commitment to quality education.",
-        logo: "/MouLogos/NAAC.png",
+        logo: "/HomePage/MouLogos/NAAC.png",
         badge: null,
         color: null,
     },
@@ -31,7 +31,7 @@ const accreditations = [
         title: "NBA Accreditation",
         description:
             "National Board of Accreditation — Multiple programs at VGNT are NBA accredited, ensuring they meet the highest standards of technical education.",
-        logo: "/MouLogos/nba.png",
+        logo: "/HomePage/MouLogos/nba.png",
         badge: null,
         color: null,
     },
@@ -39,7 +39,7 @@ const accreditations = [
         title: "ISO 9001:2015",
         description:
             "The institution is ISO 9001:2015 certified, demonstrating its commitment to quality management systems and continuous improvement.",
-        logo: "/MouLogos/iso.png",
+        logo: "/HomePage/MouLogos/iso.png",
         badge: "ISO",
         color: "bg-green-600",
     },
@@ -47,7 +47,7 @@ const accreditations = [
         title: "NIRF Ranking",
         description:
             "Vignan ITS participates in the National Institutional Ranking Framework (NIRF), reflecting transparency and accountability in institutional performance.",
-        logo: "/MouLogos/nirf.png",
+        logo: "/HomePage/MouLogos/nirf.png",
         badge: null,
         color: null,
     },

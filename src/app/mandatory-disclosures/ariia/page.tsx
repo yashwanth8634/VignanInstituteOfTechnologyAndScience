@@ -8,5 +8,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  redirect('/Pdfs/ARIIA/ARI-C-19678-Report.pdf');
+  redirect("https://drive.google.com/file/d/1QBwjTtOyOkRIl6mOvbYG5sCWIXekZTxK/view");
 }

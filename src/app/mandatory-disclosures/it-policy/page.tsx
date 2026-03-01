@@ -1,4 +1,5 @@
 
+import { redirect } from "next/navigation";
 
 
 
@@ -8,12 +9,5 @@ export const metadata = {
 };
 
 export default function ITPolicy() {
-  return (
-    <div className="w-full h-screen">
-      <iframe
-        src="/Pdfs/ITPolicy/ITPolicy.pdf"
-        className="w-full h-full"
-      />
-    </div>
-  );
+    redirect("https://drive.google.com/file/d/1SxzeNmuKAHQLziEXuUa50zwOxqwhE5eh/view");
 }
