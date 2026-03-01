@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import { Monitor, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
@@ -239,10 +240,12 @@ export default function ICTFacilitiesPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-8">
               {/* Image */}
               <div className="relative h-64 sm:h-80 md:h-100 w-full lg:h-auto min-h-[420px] overflow-hidden group">
-                <img
+                <Image
                   src="/FacilitiesPage/WIFI.png"
                   alt="Student using Wi-Fi Campus"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out scale-110 group-hover:scale-100"
+                  fill
+                  className="object-cover transition-transform duration-700 ease-in-out scale-110 group-hover:scale-100"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
               {/* Content */}
@@ -263,7 +266,7 @@ export default function ICTFacilitiesPage() {
           </div>
 
           {/* Computer Center */}
-         
+
 
         </div>
 

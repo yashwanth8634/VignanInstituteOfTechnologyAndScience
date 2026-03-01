@@ -1,6 +1,7 @@
 import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import React from 'react';
 import { Users, Calendar, Download, ExternalLink, User, Building, Award } from "lucide-react";
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useParams, notFound } from "next/navigation";
+import NextImage from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
@@ -350,11 +351,21 @@ export default function DepartmentPage() {
 
                     <div className="flex flex-col md:flex-row gap-8 items-start">
                       {/* Placeholder for HOD Image - can be added to data later */}
-                      <div className="w-full md:w-1/3 aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden shrink-0">
-                        <img src={dept.hod.image} alt={dept.hod.name} className="w-full h-full object-cover" />
-                        <div className="w-full h-full flex items-center justify-center text-gray-400">
-                          <User className="w-20 h-20" />
-                        </div>
+                      <div className="w-full md:w-1/3 aspect-[3/4] bg-gray-200 rounded-xl overflow-hidden shrink-0 relative">
+                        {dept.hod.image ? (
+                          <NextImage
+                            src={dept.hod.image}
+                            alt={dept.hod.name}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            unoptimized
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-gray-400">
+                            <User className="w-20 h-20" />
+                          </div>
+                        )}
                       </div>
 
                       <div className="flex-1">
@@ -493,9 +504,16 @@ export default function DepartmentPage() {
                           {/* Modal Header */}
                           <div className="bg-vignan-purple p-6 text-white flex justify-between items-start">
                             <div className="flex gap-4">
-                              <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 rounded-full flex items-center justify-center shrink-0 border-2 border-white/20">
+                              <div className="w-16 h-16 md:w-20 md:h-20 bg-white/10 rounded-full flex items-center justify-center shrink-0 border-2 border-white/20 relative overflow-hidden">
                                 {selectedFaculty.image ? (
-                                  <img src={selectedFaculty.image} alt={selectedFaculty.name} className="w-full h-full object-cover rounded-full" />
+                                  <NextImage
+                                    src={selectedFaculty.image}
+                                    alt={selectedFaculty.name}
+                                    fill
+                                    className="object-cover rounded-full"
+                                    sizes="80px"
+                                    unoptimized
+                                  />
                                 ) : (
                                   <User className="w-8 h-8 md:w-10 md:h-10 text-white/80" />
                                 )}

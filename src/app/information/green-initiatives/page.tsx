@@ -2,6 +2,7 @@ import Navbar from "@/components/HomePage/Navbar";
 import Footer from "@/components/HomePage/Footer";
 import Link from "next/link";
 import React from 'react';
+import Image from 'next/image';
 import { Leaf, Recycle, Droplets, Users, CheckCircle2, ClipboardCheck, ArrowRight } from "lucide-react";
 
 export const metadata = {
@@ -87,10 +88,12 @@ export default function Page() {
                         </div>
                     </div>
                     <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden shadow-lg group">
-                        <img 
+                        <Image 
                             src="/InformationPage/GreenInitiatives/1.jpg" 
                             alt="Green Campus" 
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            sizes="50vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-8">
@@ -120,10 +123,13 @@ export default function Page() {
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div className="order-2 lg:order-1">
                              <div className="rounded-3xl overflow-hidden shadow-lg border border-gray-100">
-                                <img 
+                                <Image 
                                     src="/InformationPage/GreenInitiatives/2.jpg" 
                                     alt="Solid Waste Management" 
+                                    width={800}
+                                    height={600}
                                     className="w-full h-auto object-cover"
+                                    sizes="(max-width: 1024px) 100vw, 50vw"
                                 />
                             </div>
                         </div>
@@ -165,10 +171,12 @@ export default function Page() {
                             </div>
                         </div>
                         <div className="relative h-64 lg:h-auto">
-                            <img 
+                            <Image 
                                 src="/InformationPage/GreenInitiatives/3.jpg" 
                                 alt="Liquid Waste Management" 
-                                className="absolute inset-0 w-full h-full object-cover"
+                                fill
+                                className="object-cover"
+                                sizes="50vw"
                             />
                         </div>
                     </div>

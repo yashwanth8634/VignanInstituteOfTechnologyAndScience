@@ -184,6 +184,13 @@ const nextConfig: NextConfig = {
 
   // Compression – Vercel handles this at the edge, but enable for self-hosted
   compress: true,
+
+  // Strip console.log/warn from production builds (keep console.error)
+  // This prevents internal stack traces / paths from leaking via DevTools
+  compiler: {
+    removeConsole:
+      process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+  },
 };
 
 export default nextConfig;
