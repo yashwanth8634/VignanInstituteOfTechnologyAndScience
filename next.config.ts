@@ -1,75 +1,36 @@
 import type { NextConfig } from "next";
+import BundleAnalyzer from "@next/bundle-analyzer";
 
-// ─── CSP Nonce Alternative: using strict-dynamic + nonce is ideal,
-// but for a static/SSG site a hash-based or allowlist CSP is practical.
-// For Vercel static deployments, we define it here via headers().
+// ─── Bundle Analyzer ────────────────────────────────────────────────────────
+// Usage: ANALYZE=true npm run build
+const withBundleAnalyzer = BundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
-const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval'
-    https://www.googletagmanager.com
-    https://www.google-analytics.com
-    https://cdn.jsdelivr.net;
-  style-src 'self' 'unsafe-inline'
-    https://fonts.googleapis.com
-    https://cdn.jsdelivr.net;
-  font-src 'self'
-    https://fonts.gstatic.com
-    data:;
-  img-src 'self' data: blob:
-    https://images.unsplash.com
-    https://vignanits.ac.in
-    https://srivasaviengg.ac.in
-    https://i.pinimg.com
-    https://res.cloudinary.com
-    https://lh3.googleusercontent.com;
-  media-src 'self'
-    https://res.cloudinary.com;
-  connect-src 'self'
-    https://www.google-analytics.com
-    https://vitals.vercel-insights.com
-    https://res.cloudinary.com;
-  frame-src 'none';
-  frame-ancestors 'none';
-  object-src 'none';
-  base-uri 'self';
-  form-action 'self';
-  upgrade-insecure-requests;
-`
-  .replace(/\s{2,}/g, " ")
-  .trim();
-
+// ─── Security Headers ────────────────────────────────────────────────────────
+// NOTE: Content-Security-Policy is set dynamically per-request in
+// src/middleware.ts using a cryptographic nonce.
+// All other headers are static and set here.
 const securityHeaders = [
-  // ── 1. Content-Security-Policy ──────────────────────────────────────────
-  {
-    key: "Content-Security-Policy",
-    value: ContentSecurityPolicy,
-  },
-
-  // ── 2. X-Frame-Options (legacy clickjacking protection) ─────────────────
-  // Redundant with CSP frame-ancestors but needed for older browsers.
+  // ── 1. X-Frame-Options (legacy clickjacking protection) ──────────────────
   {
     key: "X-Frame-Options",
     value: "DENY",
   },
 
-  // ── 3. X-Content-Type-Options ───────────────────────────────────────────
-  // Prevents browsers from MIME-sniffing a response away from the declared type.
+  // ── 2. X-Content-Type-Options ─────────────────────────────────────────────
   {
     key: "X-Content-Type-Options",
     value: "nosniff",
   },
 
-  // ── 4. Referrer-Policy ──────────────────────────────────────────────────
-  // Sends full URL within same origin, only origin to HTTPS cross-origin,
-  // and nothing for HTTP destinations.
+  // ── 3. Referrer-Policy ────────────────────────────────────────────────────
   {
     key: "Referrer-Policy",
     value: "strict-origin-when-cross-origin",
   },
 
-  // ── 5. Permissions-Policy ───────────────────────────────────────────────
-  // Disable powerful features not needed by an informational site.
+  // ── 4. Permissions-Policy ─────────────────────────────────────────────────
   {
     key: "Permissions-Policy",
     value: [
@@ -87,42 +48,35 @@ const securityHeaders = [
       "picture-in-picture=()",
       "display-capture=()",
       "screen-wake-lock=()",
-      "interest-cohort=()", // disable FLoC
+      "interest-cohort=()",
     ].join(", "),
   },
 
-  // ── 6. Cross-Origin-Opener-Policy ───────────────────────────────────────
-  // Isolates the browsing context group to mitigate Spectre/cross-origin leaks.
+  // ── 5. Cross-Origin-Opener-Policy ─────────────────────────────────────────
   {
     key: "Cross-Origin-Opener-Policy",
     value: "same-origin",
   },
 
-  // ── 7. Cross-Origin-Resource-Policy ─────────────────────────────────────
-  // Prevents other origins from reading your resources (images, fonts, etc.)
+  // ── 6. Cross-Origin-Resource-Policy ──────────────────────────────────────
   {
     key: "Cross-Origin-Resource-Policy",
     value: "same-site",
   },
 
-  // ── 8. Strict-Transport-Security ────────────────────────────────────────
-  // Already set by Vercel, but explicit here for completeness.
-  // 2-year max-age with includeSubDomains + preload.
+  // ── 7. Strict-Transport-Security ─────────────────────────────────────────
   {
     key: "Strict-Transport-Security",
     value: "max-age=63072000; includeSubDomains; preload",
   },
 
-  // ── 9. X-DNS-Prefetch-Control ───────────────────────────────────────────
-  // Controls DNS prefetching (performance vs. privacy trade-off).
+  // ── 8. X-DNS-Prefetch-Control ─────────────────────────────────────────────
   {
     key: "X-DNS-Prefetch-Control",
     value: "on",
   },
 
-  // ── 10. X-XSS-Protection ────────────────────────────────────────────────
-  // Legacy header for very old browsers. Modern browsers ignore it since
-  // CSP is sufficient, but it doesn't hurt to include it.
+  // ── 9. X-XSS-Protection ───────────────────────────────────────────────────
   {
     key: "X-XSS-Protection",
     value: "1; mode=block",
@@ -130,67 +84,42 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // ── Image Optimisation ──────────────────────────────────────────────────
+  // ── Image Optimisation ────────────────────────────────────────────────────
   images: {
-    // Use the modern formats for better compression (saves bandwidth)
     formats: ["image/avif", "image/webp"],
-    // Allowed external image sources
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "vignanits.ac.in",
-      },
-      {
-        protocol: "https",
-        hostname: "srivasaviengg.ac.in",
-      },
-      {
-        protocol: "https",
-        hostname: "i.pinimg.com",
-      },
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "vignanits.ac.in" },
+      { protocol: "https", hostname: "srivasaviengg.ac.in" },
+      { protocol: "https", hostname: "i.pinimg.com" },
+      { protocol: "https", hostname: "res.cloudinary.com" },
     ],
-    // Limit image sizes to avoid serving unnecessarily large variants
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    // Minimize layout shifts
     minimumCacheTTL: 60 * 60 * 24 * 7, // 7 days
   },
 
-  // ── HTTP Security Headers ───────────────────────────────────────────────
+  // ── HTTP Security Headers ─────────────────────────────────────────────────
+  // CSP is set per-request in src/middleware.ts (nonce-based).
   async headers() {
     return [
       {
-        // Apply to all routes
         source: "/(.*)",
         headers: securityHeaders,
       },
     ];
   },
 
-  // ── Production Hardening ────────────────────────────────────────────────
-  // Suppress the X-Powered-By: Next.js response header
+  // ── Production Hardening ──────────────────────────────────────────────────
   poweredByHeader: false,
-
-  // Enable React strict mode for better error detection in dev
   reactStrictMode: true,
-
-  // Compression – Vercel handles this at the edge, but enable for self-hosted
   compress: true,
 
-  // Strip console.log/warn from production builds (keep console.error)
-  // This prevents internal stack traces / paths from leaking via DevTools
+  // Strip console.log/warn in production builds (keep console.error)
   compiler: {
     removeConsole:
       process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);
