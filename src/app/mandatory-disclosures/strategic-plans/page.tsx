@@ -11,9 +11,9 @@ export const metadata = {
 
 const plans = [
 
-  { title: "Strategic Plan for 2014-2019", link: "/Pdfs/StrategicPlans/2014-2019.pdf" },
-  { title: "Strategic Plan for 2020-2024", link: "/Pdfs/StrategicPlans/2020-2024.pdf" },
-  { title: "Strategic Plan for 2025-2029", link: "/Pdfs/StrategicPlans/2025-2029.pdf" }
+  { title: "Strategic Plan for 2014-2019", link: "https://drive.google.com/file/d/1-NRA9H-oIXwyxTTgwisbZ4ML3i9PQJr0/view" },
+  { title: "Strategic Plan for 2020-2024", link: "https://drive.google.com/file/d/1qW6LgrrdPTxXJjofTb1ImLzEtmk6Y9zk/view" },
+  { title: "Strategic Plan for 2025-2029", link: "https://drive.google.com/file/d/1YOJdq1moPFQVzmj2tp3a39GcnzKfoeA6/view" }
 ];
 
 export default function StrategicPlansPage() {

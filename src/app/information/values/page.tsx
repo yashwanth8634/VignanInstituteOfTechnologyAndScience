@@ -157,7 +157,7 @@ const sections: Section[] = [
                     { title: "Sign Boards", src: "/InformationPage/ValuesPage/Images/16.jpg" }
                 ],
                 links: [
-                    { text: "Assistive Technology used in VGNT (PDF)", url: "/Pdfs/ValuesPage/AssistiveTech.pdf" }
+                    { text: "Assistive Technology used in VGNT (PDF)", url: "https://drive.google.com/file/d/1W3hT-43fWf0WRd1pheE0gbo58CSEjyCV/view" }
                 ]
             }
         ]
@@ -177,7 +177,7 @@ const sections: Section[] = [
                     "Environmental Promotional Activities"
                 ],
                 links: [
-                    { text: "View Green Audit Report 2021", url: "/Pdfs/ValuesPage/green-audit2021.pdf" }
+                    { text: "View Green Audit Report 2021", url: "https://drive.google.com/file/d/1Vy5HALFeTgE5rd8TpPj-WPpUbHv3yJs5/view" }
                 ]
             }
         ]
@@ -190,9 +190,9 @@ const sections: Section[] = [
             {
                 description: "Our institution follows distinct best practices to ensure holistic development.",
                 links: [
-                    { text: "Best Practice - 1 (PDF)", url: "/Pdfs/ValuesPage/BestPractice-1.pdf" },
-                    { text: "Best Practice - 2 (PDF)", url: "/Pdfs/ValuesPage/BestPractice-2.pdf" },
-                    { text: "Institutional Distinctiveness (PDF)", url: "/Pdfs/ValuesPage/InstitutionalDistinstivness.pdf" }
+                    { text: "Best Practice - 1 (PDF)", url: "https://drive.google.com/file/d/1ednbwHYdDO9LuKnSNyh6_rKNF0PdsqQv/view" },
+                    { text: "Best Practice - 2 (PDF)", url: "https://drive.google.com/file/d/1WVMPwsdclWvk5brBhTfC4LG6M1-q3X5a/view" },
+                    { text: "Institutional Distinctiveness (PDF)", url: "https://drive.google.com/file/d/1pZbSdBmL7ZQhADbcanWS-I5zwu2F66yb/view" }
                 ]
             }
         ]

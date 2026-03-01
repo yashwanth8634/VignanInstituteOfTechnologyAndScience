@@ -1147,7 +1147,7 @@ departmentCommittee: [
     publications: [
       {
         AcademicYear: "2018-2019",
-        url: "https://drive.google.com/file/d/1idW13nLyy5lBIUVBTGRsehsj6hqYbiF1/view"
+        url: "https://drive.google.com/file/d/1idW13nLyy5lBIUVBTGRsehsj6hqYbi/view"
       },
       {
         AcademicYear: "2016-2017",

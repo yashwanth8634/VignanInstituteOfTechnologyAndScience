@@ -99,7 +99,7 @@ export default function RightToInformationPage() {
 
             <div className="mt-8">
               <a
-                href="/Pdfs/RTI/RTI-Applications.pdf"
+                href="https://drive.google.com/file/d/1uI8fDIFoAiIKAiXuYHk0tPX-y46D77qp/view"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 shadow-sm rounded-lg text-[#003666] font-semibold hover:shadow-md hover:border-vignan-purple transition-all"

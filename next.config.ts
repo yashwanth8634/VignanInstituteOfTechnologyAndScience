@@ -37,7 +37,6 @@ const securityHeaders = [
     value: [
       "camera=()",
       "microphone=()",
-      "geolocation=()",
       "payment=()",
       "usb=()",
       "magnetometer=()",

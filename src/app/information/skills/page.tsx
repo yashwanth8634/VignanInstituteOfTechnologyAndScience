@@ -23,7 +23,7 @@ const skillCategories = [
             { year: "2017-2018", link: "https://drive.google.com/file/d/1_bgyv60CFkSaNN6uPUIInECk6ontBnL4/view" },
             { year: "2016-2017", link: "https://drive.google.com/file/d/1H_sEJ-l8Yq24uwA1Q8-nonepk-5g8aNq/view" },
         ],
-        geoTagLink: "/Pdfs/SkillEnhancement/SoftSkills/images.pdf"
+        geoTagLink: "https://drive.google.com/file/d/1ulwb_CFGvedX4mx_Pfv3PbWXoRy35GQ6/view"
     },
     {
         title: "Language & Communication Skills",
@@ -49,13 +49,13 @@ const skillCategories = [
         bgColor: "bg-green-50",
         borderColor: "border-green-100",
         documents: [
-            { year: "2020-2021", link: "/Pdfs/SkillEnhancement/LifeSkills/2020-21.pdf" },
-            { year: "2019-2020", link: "/Pdfs/SkillEnhancement/LifeSkills/2019-20.pdf" },
-            { year: "2018-2019", link: "/Pdfs/SkillEnhancement/LifeSkills/2018-19.pdf" },
-            { year: "2017-2018", link: "/Pdfs/SkillEnhancement/LifeSkills/2017-18.pdf" },
-            { year: "2016-2017", link: "/Pdfs/SkillEnhancement/LifeSkills/2016-17.pdf" },
+            { year: "2020-2021", link: "https://drive.google.com/file/d/1QQQJ-CX7rXMDcswZiKXUHlWWbv-wPJCc/view" },
+            { year: "2019-2020", link: "https://drive.google.com/file/d/1r5deNBjJ37sbMO0gprvVUY0dtHkC7mkG/view" },
+            { year: "2018-2019", link: "https://drive.google.com/file/d/1L18_BJFGMF2W9wmsJnnw5qdkgLEXwx1J/view" },
+            { year: "2017-2018", link: "https://drive.google.com/file/d/1-FRkJqCofcZTkSyo3RNtKRsEtQ4h_Rto/view" },
+            { year: "2016-2017", link: "https://drive.google.com/file/d/1UWBj5w4xd2-9-KQ_FhnjaiJ6I9gCceMj/view" },
         ],
-        geoTagLink: "/Pdfs/SkillEnhancement/LifeSkills/images.pdf"
+        geoTagLink: "https://drive.google.com/file/d/1V3LiB5IkNax6D1ADd-1WD84KBnaqzbum/view"
     },
     {
         title: "ICT / Computing Skills",
@@ -65,11 +65,11 @@ const skillCategories = [
         bgColor: "bg-purple-50",
         borderColor: "border-purple-100",
         documents: [
-            { year: "2020-2021", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2020-21.pdf" },
-            { year: "2019-2020", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2019-20.pdf" },
-            { year: "2018-2019", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2018-19.pdf" },
-            { year: "2017-2018", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2017-18.pdf" },
-            { year: "2016-2017", link: "/Pdfs/SkillEnhancement/ICTComputingSkills/2016-17.pdf" },
+            { year: "2020-2021", link: "https://drive.google.com/file/d/1X2rqi_8Awq6HF0limHafkQTeAlqjTTZW/view" },
+            { year: "2019-2020", link: "https://drive.google.com/file/d/1fkWzYiEiby4qE7VWAGXZRZKOMfOs1rdN/view" },
+            { year: "2018-2019", link: "https://drive.google.com/file/d/1TTBHDfFCVo-3PIIZ6OGZiZmhdDlnGdX6/view" },
+            { year: "2017-2018", link: "https://drive.google.com/file/d/1_bgyv60CFkSaNN6uPUIInECk6ontBnL4/view" },
+            { year: "2016-2017", link: "https://drive.google.com/file/d/1H_sEJ-l8Yq24uwA1Q8-nonepk-5g8aNq/view" },
         ],
         geoTagLink: "https://drive.google.com/file/d/1bvD02_j244AVk9h7PPipnrR0OTvXailF/view"
     },

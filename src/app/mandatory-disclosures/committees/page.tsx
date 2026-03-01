@@ -32,14 +32,14 @@ const committees: Committee[] = [
   {
     name: "Governing Body",
     links: [
-      { label: "Governing Body Members", href: "https://vignanits.ac.in/committee/new/GOB%20MEM.pdf" },
-      { label: "Governing Body Minutes of Meeting", href: "https://vignanits.ac.in/committee/new/GOB_MOM.pdf" },
+      { label: "Governing Body Members", href: "https://drive.google.com/file/d/1Xjw3NsF7kbfRt5hhWc1yekc1EBajcqMl/view" },
+      { label: "Governing Body Minutes of Meeting", href: "https://drive.google.com/file/d/1mo5yk2naWTcevZVJCo904ML3WJfM6ukb/view" },
     ],
   },
   {
     name: "IQAC Composition",
     links: [
-      { label: "IQAC Composition Document", href: "https://vignanits.ac.in/committee/iqac.pdf" },
+      { label: "IQAC Composition Document", href: "https://drive.google.com/file/d/1QZni8niJcgQRCxpc0BD9dLTTuDLyxJiv/view" },
     ],
     members: [
       { sno: 1, name: "Dr. G. Durga Sukumar", designation: "Principal", position: "Chairman" },
@@ -69,25 +69,25 @@ const committees: Committee[] = [
   {
     name: "Examination Committee",
     links: [
-      { label: "Examination Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Examination%20Committee_MoM_2022-23.pdf" },
+      { label: "Examination Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1lLd4EvtsDm5GiWuyTnu22htDJUH4wSTf/view" },
     ],
   },
   {
     name: "Training & Placements Committee",
     links: [
-      { label: "Training & Placements Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/T%26P%20Committee_MoM_2022-23.pdf" },
+      { label: "Training & Placements Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1-SbKq8c3R5BkyQFbqezC5H3cBVyBvuw2/view" },
     ],
   },
   {
     name: "Entrepreneurship & Development Committee",
     links: [
-      { label: "Entrepreneurship & Development Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/EDC%20Committee_MoM_2022-23.pdf" },
+      { label: "Entrepreneurship & Development Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1j4MiEhgNDbeovnC2UGmPCFuHQqnes3Nu/view" },
     ],
   },
   {
     name: "Library Committee",
     links: [
-      { label: "Library Committee Document", href: "https://vignanits.ac.in/committee/LIBRARAY_2022-23.pdf" },
+      { label: "Library Committee Document", href: "https://drive.google.com/file/d/1SSBBlJuFgpyNi3PiJIjnCR4183hf_NPb/view" },
     ],
   },
   {
@@ -98,31 +98,31 @@ const committees: Committee[] = [
     name: "Research & Development Committee",
     links: [
       { label: "R&D Committee Document", href: "https://drive.google.com/file/d/1D3J6iuH-_nke5uK089rl6zKMPmL4MQAL/view?usp=share_link" },
-      { label: "R&D Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/R%26D%20Committee_MoM_2022-23.pdf" },
+      { label: "R&D Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1bPG3OtivUW_LNcbVPclc18JggkRjW5mW/view" },
     ],
   },
   {
     name: "Industry Institute Interaction Committee",
     links: [
-      { label: "Industry Institute Interaction Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/IIC%20Committee_MoM_2022-23.pdf" },
+      { label: "Industry Institute Interaction Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1q9GUB71mMgin-eSTVBfoGbWVOxhBeVB4/view" },
     ],
   },
   {
     name: "Minority Committee",
     links: [
-      { label: "Minority Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Minority%20Committee_MoM_2022-23.pdf" },
+      { label: "Minority Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1xZtP_RhsAnUDTl9143E-tBdgeCqOBoP2/view" },
     ],
   },
   {
     name: "SC/ST Committee",
     links: [
-      { label: "SC/ST Committee Document", href: "https://vignanits.ac.in/committee/SC_ST_2022-23.pdf" },
+      { label: "SC/ST Committee Document", href: "https://drive.google.com/file/d/1UQcUU_IbOlw2g56sUVOGwjLxBuaCuR41/view" },
     ],
   },
   {
     name: "Internal Complaint Committee (Women Protection Cell)",
     links: [
-      { label: "Women Protection Cell – Minutes of Meeting", href: "https://vignanits.ac.in/committee/WPC%20Committee_MoM_2022-23.pdf" },
+      { label: "Women Protection Cell – Minutes of Meeting", href: "https://drive.google.com/file/d/1HlHQObZU2a9jCJajydJroP4eIDob9ovC/view" },
     ],
   },
   {
@@ -132,55 +132,55 @@ const committees: Committee[] = [
   {
     name: "Canteen Committee",
     links: [
-      { label: "Canteen Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Canteen%20Committee_MoM_2022-23.pdf" },
+      { label: "Canteen Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1PbRfYmjc-fK3_jAowuKZRo0k47w3hYor/view" },
     ],
   },
   {
     name: "Sports Committee",
     links: [
-      { label: "Sports Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Sports%20Committee_MoM_2022-23.pdf" },
+      { label: "Sports Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1rq0fJCvaxNbMOJ-hEeOtslznXK_w4o0-/view" },
     ],
   },
   {
     name: "Admission Committee",
     links: [
-      { label: "Admission Committee Document", href: "https://vignanits.ac.in/committee/admn_2022-23.pdf" },
+      { label: "Admission Committee Document", href: "https://drive.google.com/file/d/19HcBb6EVoMGE-ojuzd7uvNrbN8n-TSDV/view" },
     ],
   },
   {
     name: "Cultural Committee",
     links: [
-      { label: "Cultural Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Cultural%20Committee_MoM_2022-23.pdf" },
+      { label: "Cultural Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/15zTkkENJn4F65QRYSbAQhIv7lNaxIT0Z/view" },
     ],
   },
   {
     name: "Finance Committee",
     links: [
-      { label: "Finance Committee – Minutes of Meeting", href: "https://vignanits.ac.in/committee/Finance%20Committee_MoM_2022-23.pdf" },
+      { label: "Finance Committee – Minutes of Meeting", href: "https://drive.google.com/file/d/1KBt-cVB5wAoFGOFc95gFZmqxVVe2y9aD/view" },
     ],
   },
   {
     name: "NSS Committee",
     links: [
-      { label: "NSS Committee Document", href: "https://vignanits.ac.in/committee/NSS_22-23.pdf" },
+      { label: "NSS Committee Document", href: "https://drive.google.com/file/d/19_esDDZ4vh3dMNeDh2T20A0vPyLJBj4w/view" },
     ],
   },
   {
     name: "Transport Committee",
     links: [
-      { label: "Transport Committee Document", href: "https://vignanits.ac.in/committee/new/TRANSPORT.pdf" },
+      { label: "Transport Committee Document", href: "https://drive.google.com/file/d/1yYwFgrd1R4xRb2BvIJgynZdl60ygYTB_/view" },
     ],
   },
   {
     name: "Other Backward Class (OBC) Committee",
     links: [
-      { label: "OBC Committee Document", href: "https://vignanits.ac.in/committee/new/OBC.pdf" },
+      { label: "OBC Committee Document", href: "https://drive.google.com/file/d/1BhF29_9MOkGBXsz0EN0lLSRS_hzCemWU/view" },
     ],
   },
   {
     name: "Hostel Committee",
     links: [
-      { label: "Hostel Committee Document", href: "https://vignanits.ac.in/committee/new/HOSTAL%20COMMITTEE.pdf" },
+      { label: "Hostel Committee Document", href: "https://drive.google.com/file/d/15NenEdEGVNJHbrqhgv6QzNkhtELkRSgf/view" },
     ],
   },
   {
@@ -194,8 +194,8 @@ const committees: Committee[] = [
   {
     name: "Academic Audit",
     links: [
-      { label: "Academic Audit – I Semester", href: "https://vignanits.ac.in/committee/Academic%20Audit%20I%20Sem.pdf" },
-      { label: "Academic Audit – II Semester", href: "https://vignanits.ac.in/committee/Academic%20Audit%20II%20Sem.pdf" },
+      { label: "Academic Audit – I Semester", href: "https://drive.google.com/file/d/1vWeT5lifL893bQEqItrniTZaI1OuySFg/view" },
+      { label: "Academic Audit – II Semester", href: "https://drive.google.com/file/d/1bVhnG2N917aPN_Yn7mvChZEzKnyuwm8e/view" },
     ],
   },
 ];
