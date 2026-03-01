@@ -87,8 +87,8 @@ export default function Placements() {
                 key={i}
                 className="group flex flex-col items-center p-6 rounded-2xl bg-white border border-vignan-purple/10 hover:border-vignan-purple/30 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 text-center"
               >
-                <div className="h-16 w-full flex items-center justify-center mb-4 grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-500">
-                  <Image src={p.logo} alt={p.company} width={120} height={64} className="max-h-full max-w-[80%] object-contain" unoptimized />
+                <div className="relative h-16 w-4/5 mx-auto mb-4 grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <Image src={p.logo} alt={p.company} fill sizes="120px" className="object-contain" unoptimized />
                 </div>
                 <div className="w-full pt-4 border-t border-gray-100">
                   <p className="font-bold text-vignan-blue text-sm mb-1">
@@ -126,8 +126,8 @@ export default function Placements() {
                 key={m.name}
                 className="group flex flex-col items-center p-10 rounded-3xl bg-white border border-gray-100 hover:border-vignan-purple/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 text-center"
               >
-                <div className="h-24 w-full flex items-center justify-center mb-6 grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-500">
-                  <Image src={m.logo} alt={m.name} width={160} height={96} className="max-h-full max-w-[85%] object-contain" unoptimized />
+                <div className="relative h-24 w-4/5 mx-auto mb-6 grayscale-0 md:grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <Image src={m.logo} alt={m.name} fill sizes="160px" className="object-contain" unoptimized />
                 </div>
                 <p className="text-vignan-blue font-bold text-sm group-hover:text-vignan-purple transition-colors duration-300">
                   {m.name}

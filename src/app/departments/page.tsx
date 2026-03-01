@@ -171,7 +171,7 @@ export default function DepartmentsPage() {
                     {departments.map((dept) => (
                         <Link
                             key={dept.id}
-                            href={`/departments/${dept.id}`}
+                            href={`/academics/departments/${dept.id}`}
                             className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 overflow-hidden"
                         >
                             <div className="h-1.5 w-full bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600" />

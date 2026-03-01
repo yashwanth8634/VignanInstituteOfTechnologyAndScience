@@ -20,7 +20,8 @@ export function middleware(request: NextRequest) {
 
     // Next.js injects <script src="/_next/..."> tags without nonces,
     // so 'self' + 'unsafe-inline' are both required for the app to function.
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    // https://vercel.live is needed for Vercel preview deployment feedback widget.
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live",
 
     // React inline style props (style={{}}) and Tailwind require unsafe-inline.
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",

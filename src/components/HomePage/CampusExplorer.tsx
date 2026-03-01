@@ -85,11 +85,10 @@ export default function CampusExplorer() {
             <Link
               key={card.title}
               href={card.href}
-              className={`group relative overflow-hidden rounded-3xl transition-all duration-500 ${
-                isVisible
+              className={`group relative overflow-hidden rounded-3xl transition-all duration-500 ${isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
-              }`}
+                }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
 
@@ -100,6 +99,7 @@ export default function CampusExplorer() {
                   src={card.image}
                   alt={card.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 

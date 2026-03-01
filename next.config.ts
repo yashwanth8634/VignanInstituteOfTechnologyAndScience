@@ -43,13 +43,11 @@ const securityHeaders = [
       "magnetometer=()",
       "gyroscope=()",
       "accelerometer=()",
-      "ambient-light-sensor=()",
       "autoplay=(self)",
       "fullscreen=(self)",
       "picture-in-picture=()",
       "display-capture=()",
       "screen-wake-lock=()",
-      "interest-cohort=()",
     ].join(", "),
   },
 

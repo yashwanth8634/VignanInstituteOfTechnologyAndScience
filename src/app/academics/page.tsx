@@ -17,6 +17,12 @@ export const metadata = {
 
 const academicLinks = [
     {
+        title: "Departments",
+        description: "Explore our 12 engineering and science departments, each led by expert faculty and equipped with modern labs.",
+        href: "/academics/departments",
+        icon: <BookOpen className="w-8 h-8 text-vignan-purple" />,
+    },
+    {
         title: "Academic Calendars",
         description: "Stay updated with the important dates, holidays, and academic schedules for all semesters.",
         href: "/academics/academic-calendars",

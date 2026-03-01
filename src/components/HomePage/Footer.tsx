@@ -42,6 +42,7 @@ export default function Footer() {
                     src="/Logo.png"
                     alt="VGNT Logo"
                     fill
+                    sizes="56px"
                     className="object-contain"
                     priority
                   />

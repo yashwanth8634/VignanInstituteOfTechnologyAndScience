@@ -241,7 +241,7 @@ export default function ICTFacilitiesPage() {
               {/* Image */}
               <div className="relative h-64 sm:h-80 md:h-100 w-full lg:h-auto min-h-[420px] overflow-hidden group">
                 <Image
-                  src="/FacilitiesPage/WIFI.png"
+                  src="/FacilitiesPage/Images/WIFI.png"
                   alt="Student using Wi-Fi Campus"
                   fill
                   className="object-cover transition-transform duration-700 ease-in-out scale-110 group-hover:scale-100"

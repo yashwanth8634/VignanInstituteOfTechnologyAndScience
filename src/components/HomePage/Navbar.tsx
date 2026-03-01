@@ -51,20 +51,21 @@ const navLinks: NavLink[] = [
 
       {
         label: "Departments",
+        href: "/academics/departments",
         hasSubmenu: true,
         submenu: [
-          { label: "Computer Science And Engineering", href: "/academics/departments/cse" },
-          { label: "CSE(Artificial Intelligence And Machine Learning)", href: "/academics/departments/cse-aiml" },
-          { label: "CSE(Data Science)", href: "/academics/departments/cse-ds" },
-          { label: "CSE(Information Technology)", href: "/academics/departments/cse-it" },
-          { label: "Artificial Intelligence And Machine Learning", href: "/academics/departments/aiml" },
-          { label: "Artificial Intelligence And Data Science", href: "/academics/departments/aids" },
-          { label: "Electronics Instrumental And Engineering", href: "/academics/departments/eie" },
-          { label: "Electronics And Communication Engineering", href: "/academics/departments/ece" },
-          { label: "Electrical And Electronics Engineering", href: "/academics/departments/eee" },
+          { label: "Computer Science & Engineering", href: "/academics/departments/cse" },
+          { label: "CSE (AI & ML)", href: "/academics/departments/cse-aiml" },
+          { label: "CSE (Data Science)", href: "/academics/departments/cse-ds" },
+          { label: "CSE (Information Technology)", href: "/academics/departments/cse-it" },
+          { label: "AI & ML", href: "/academics/departments/aiml" },
+          { label: "AI & Data Science", href: "/academics/departments/aids" },
+          { label: "Electronics & Instrumentation Engg.", href: "/academics/departments/eie" },
+          { label: "Electronics & Communication Engg.", href: "/academics/departments/ece" },
+          { label: "Electrical & Electronics Engg.", href: "/academics/departments/eee" },
           { label: "Mechanical Engineering", href: "/academics/departments/mech" },
           { label: "Civil Engineering", href: "/academics/departments/civil" },
-          { label: "Basic Sciences And Humanities", href: "/academics/departments/bsh" },
+          { label: "Basic Sciences & Humanities", href: "/academics/departments/bsh" },
         ],
       },
       { label: "Academic Regulations", href: "/academics/academic-regulations" },
@@ -174,6 +175,7 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                   src="/Logo.png"
                   alt="VGNT Logo"
                   fill
+                  sizes="48px"
                   className="object-contain"
                   priority
                 />
@@ -249,10 +251,20 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
                       >
                         {item.hasSubmenu ? (
                           <>
-                            <div className="flex items-center justify-between px-5 py-2.5 text-base text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple cursor-pointer transition-colors">
-                              {item.label}
-                              <ChevronDown className="w-4 h-4 -rotate-90" />
-                            </div>
+                            {item.href ? (
+                              <Link
+                                href={item.href}
+                                className="flex items-center justify-between px-5 py-2.5 text-base text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple transition-colors"
+                              >
+                                {item.label}
+                                <ChevronDown className="w-4 h-4 -rotate-90" />
+                              </Link>
+                            ) : (
+                              <div className="flex items-center justify-between px-5 py-2.5 text-base text-gray-700 hover:bg-vignan-purple/5 hover:text-vignan-purple cursor-pointer transition-colors">
+                                {item.label}
+                                <ChevronDown className="w-4 h-4 -rotate-90" />
+                              </div>
+                            )}
 
                             {/* Submenu */}
                             <div
@@ -294,6 +306,8 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
           <div className="hidden xl:flex items-center gap-5">
             <Link
               href="https://drive.google.com/file/d/1aFtNssDWFHPDVV_eZbwTvVvEOISyL-BL/view"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-7 py-3 bg-gradient-to-r from-purple-800 via-indigo-600 to-blue-600 
             backdrop-blur-md shadow-lg text-white text-sm font-semibold rounded-full hover:bg-vignan-purple-dark transition-all duration-150 shadow-md hover:shadow-xl hover:scale-105"
             >
@@ -414,7 +428,9 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
 
             <div className="pt-4 flex flex-col gap-3">
               <Link
-                href="/nirf"
+                href="https://drive.google.com/file/d/1aFtNssDWFHPDVV_eZbwTvVvEOISyL-BL/view"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
                 className="w-full text-center px-6 py-3 bg-vignan-purple text-white text-base font-semibold rounded-lg shadow-md"
               >
