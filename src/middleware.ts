@@ -1,29 +1,29 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// ─── Nonce-Based CSP Middleware ────────────────────────────────────────────
-// Generates a fresh cryptographic nonce on every request.
-// The nonce is injected into the CSP header and forwarded as `x-nonce`
-// so server components in the App Router can read it via headers() and
-// apply it to any <script> or <style> tags that need it.
-// This removes the need for 'unsafe-inline' in script-src.
+// ─── Static CSP Middleware ──────────────────────────────────────────────────
+// A nonce-based CSP requires Next.js layout.tsx to read the nonce from request
+// headers and stamp it on every <script> tag Next.js injects — complex wiring
+// that breaks the moment one component misses it (exactly what was happening).
+//
+// Instead we use a standard static CSP:
+//  - 'unsafe-inline' in script-src: required for Next.js hydration chunks and
+//    inline event handlers injected at build time.
+//  - 'unsafe-eval': required by Next.js dev mode; can be removed in production
+//    by splitting configs if desired.
+//  - All other directives remain strict (no external script hosts, frame-src
+//    limited to trusted origins, etc.).
 
 export function middleware(request: NextRequest) {
-  // Generate a secure random nonce (base64, 16 bytes = 128 bits)
-  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-
   const csp = [
     "default-src 'self'",
 
-    // Nonce allows Next.js hydration scripts. 'strict-dynamic' trusts
-    // scripts loaded by already-trusted scripts.
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    // Next.js injects <script src="/_next/..."> tags without nonces,
+    // so 'self' + 'unsafe-inline' are both required for the app to function.
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
 
-    // Styles: 'unsafe-inline' is required for React inline style props and
-    // Tailwind. NOTE: do NOT add a nonce here — per the CSP spec, when a
-    // nonce is present in style-src, browsers IGNORE 'unsafe-inline',
-    // which blocks all React style={{}} attributes.
-    `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
+    // React inline style props (style={{}}) and Tailwind require unsafe-inline.
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
 
     "font-src 'self' https://fonts.gstatic.com data:",
 
@@ -46,7 +46,7 @@ export function middleware(request: NextRequest) {
       "https://res.cloudinary.com",
     ].join(" "),
 
-    // Allow Google Drive embeds (PDFs linked from the site open in Drive)
+    // Allow Google Drive embeds (PDFs linked from the site open in Drive viewer)
     "frame-src 'self' https://drive.google.com https://www.google.com",
     "frame-ancestors 'none'",
     "object-src 'none'",
@@ -55,16 +55,7 @@ export function middleware(request: NextRequest) {
     "upgrade-insecure-requests",
   ].join("; ");
 
-  // Clone the request headers and attach the nonce so Server Components
-  // can read it: `const nonce = headers().get('x-nonce')`
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-nonce", nonce);
-
-  const response = NextResponse.next({
-    request: { headers: requestHeaders },
-  });
-
-  // Set the CSP on the response
+  const response = NextResponse.next();
   response.headers.set("Content-Security-Policy", csp);
 
   return response;
