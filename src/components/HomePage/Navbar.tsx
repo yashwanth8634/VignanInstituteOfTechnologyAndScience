@@ -55,14 +55,14 @@ const navLinks: NavLink[] = [
         hasSubmenu: true,
         submenu: [
           { label: "Computer Science & Engineering", href: "/academics/departments/cse" },
-          { label: "CSE (AI & ML)", href: "/academics/departments/cse-aiml" },
+          { label: "CSE (Artificial Intelligence & Machine Learning)", href: "/academics/departments/cse-aiml" },
           { label: "CSE (Data Science)", href: "/academics/departments/cse-ds" },
           { label: "CSE (Information Technology)", href: "/academics/departments/cse-it" },
-          { label: "AI & ML", href: "/academics/departments/aiml" },
-          { label: "AI & Data Science", href: "/academics/departments/aids" },
-          { label: "Electronics & Instrumentation Engg.", href: "/academics/departments/eie" },
-          { label: "Electronics & Communication Engg.", href: "/academics/departments/ece" },
-          { label: "Electrical & Electronics Engg.", href: "/academics/departments/eee" },
+          { label: "Artificial Intelligence & Machine Learning", href: "/academics/departments/aiml" },
+          { label: "Artificial Intelligenceh & Data Science", href: "/academics/departments/aids" },
+          { label: "Electronics & Instrumentation Engineering", href: "/academics/departments/eie" },
+          { label: "Electronics & Communication Engineering", href: "/academics/departments/ece" },
+          { label: "Electrical & Electronics Engineering", href: "/academics/departments/eee" },
           { label: "Mechanical Engineering", href: "/academics/departments/mech" },
           { label: "Civil Engineering", href: "/academics/departments/civil" },
           { label: "Basic Sciences & Humanities", href: "/academics/departments/bsh" },
@@ -152,14 +152,17 @@ export default function Navbar({ variant = "transparent" }: NavbarProps) {
       setScrolled(window.scrollY > 50);
     };
 
+    // Check initial scroll position on mount
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [variant]);
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-150 ${scrolled || mobileOpen
-        ? "bg-white shadow-md border-b border-gray-100 py-3"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled || mobileOpen
+        ? "bg-white/85 backdrop-blur-md shadow-sm border-b border-gray-100/50 py-3"
         : "bg-transparent py-4"
         }`}
     >
